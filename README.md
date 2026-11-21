@@ -1,4 +1,4 @@
-﻿# Pokédex Helper
+# Pokédex Helper
 
 Pokédex Helper is a portable Windows field guide for completing the 493-species National Pokédex in **Pokémon Platinum USA**. Keep the guide beside your emulator to see the current story stage, find an acquisition method and check which registrations still belong in Platinum.
 
@@ -30,3 +30,13 @@ Use **Backups** to select a game and profile, inspect a battery save, create a c
 The 493 route goals are checked structurally. Full gameplay, wireless trades, historical distributions and Gen III → IV Pal Park transfers still need owner verification. Pokédex Helper is an unofficial fan project. It is not affiliated with, endorsed by, or sponsored by Nintendo, Game Freak, or The Pokémon Company.
 
 [Portable installation and updates](PORTABLE.md) · [Build from source](BUILDING.md) · [Privacy](PRIVACY.md) · [Third-party notices](THIRD_PARTY_NOTICES.md) · [Release status](RELEASE_CHECKLIST.md)
+
+## Future of the Project
+
+Not a single line of code in this project was written by a human. The same goes for all the artwork and documentation, with the sole exception of this paragraph.
+
+The current maintainer is a former information security student who never finished his degree and became thoroughly disillusioned with the industry after the release of Mythos.
+
+Please, someone take this project off my hands before I burn through yet another week's worth of AI usage limits building a checklist for a twenty-year-old video game. I have neither the skills required to maintain it nor the slightest desire to acquire them.
+
+— **sonyapanzerfaust, November 21, 2026**
