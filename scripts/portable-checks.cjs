@@ -1,0 +1,46 @@
+﻿'use strict';
+const fs=require('node:fs'),os=require('node:os'),p=require('node:path'),assert=require('node:assert/strict');
+const base='../runtime/resources/app/',{initialize}=require(base+'portable.cjs'),{library,hash}=require(base+'library.cjs');
+const {managed}=require(base+'managed.cjs'),{battery,recovery}=require(base+'recovery.cjs'),{emerald}=require('./recovery-checks.cjs');
+async function test(){
+  const sandbox=fs.mkdtempSync(p.join(os.tmpdir(),'portable-check-')),oldHome=p.join(sandbox,'old-helper');
+  const old=library(p.join(sandbox,'old-library'),{create:true});
+  const data=p.join(sandbox,'Portable App','data'),oldConfig=p.join(oldHome,'data');
+  fs.mkdirSync(oldConfig,{recursive:true});fs.mkdirSync(p.join(oldHome,'backups'));
+  const write=(f,v)=>fs.writeFileSync(f,JSON.stringify(v));
+  write(p.join(oldConfig,'library-location.json'),{root:old.root});
+  const prefs={language:'ru',configured:true,deferred:{446:true},manual:{badge:true}};
+  write(p.join(oldConfig,'preferences-v1.json'),prefs);
+  const state={rom:{},save:{Emerald:true},emulator:{},metadata:{},migrated:true};
+  const pt=process.argv[2];if(pt){fs.copyFileSync(pt,old.game('Platinum','save'));state.save.Platinum=true}
+  write(old.at('config','connections.json'),state);
+  fs.writeFileSync(old.game('Emerald','save'),emerald());
+  const setup=async root=>{const m=managed({app:{getPath:()=>sandbox},home:oldHome,fixedRoot:root,legacy:{save:{},rom:{},emulator:{}},cache:{}});await m.init();return m};
+  const oldManager=await setup(old.root),alternate=oldManager.addProfile('Emerald','Treecko',old.game('Emerald','save'));
+  const other=oldManager.active('Emerald',alternate),bytes=emerald();bytes[bytes.length-8]=7;fs.writeFileSync(other,bytes);
+  fs.copyFileSync(other,p.join(oldHome,'backups','historical.sav'));
+  const history=recovery(old,'Emerald',alternate,other);const row=history.create(battery(other,'Emerald'));
+  const settingsFile=old.at('config','connections.json'),configHash=await hash(settingsFile),originalHash=await hash(other);
+  const choice={oldHome,choose:async()=>'copy'};
+  await assert.rejects(initialize(data,{...choice,checkSpace(){throw Error('disk full')}}),/disk full/);
+  assert(!fs.existsSync(p.join(data,'library')));
+  await assert.rejects(initialize(data,{...choice,onCopy(){throw Error('interrupted')}}),/interrupted/);
+  assert(!fs.existsSync(p.join(data,'library')));
+  const root=await initialize(data,choice);
+  assert.equal(await initialize(data,{oldHome,choose(){throw Error('unexpected prompt')}}),root);
+  const newFolder=p.join(sandbox,'Игры с пробелом','Pokédex Helper');fs.mkdirSync(p.dirname(newFolder));
+  fs.renameSync(p.dirname(data),newFolder);
+  const moved=await initialize(p.join(newFolder,'data')) ,m=await setup(moved);
+  assert.deepEqual(JSON.parse(fs.readFileSync(m.lib.at('config','preferences-v1.json'))),prefs);
+  assert.equal(await hash(m.lib.at('legacy-backups','historical.sav')),originalHash);
+  const saved=m.active('Emerald',alternate),main=m.active('Emerald','main'),mainHash=await hash(main);
+  assert.notEqual(saved,main);assert.equal(await hash(saved),originalHash);
+  fs.writeFileSync(saved,emerald());recovery(m.lib,'Emerald',alternate,saved).restore(row.key);
+  assert.equal(await hash(saved),originalHash);assert.equal(await hash(main),mainHash);
+  if(pt)assert.deepEqual(battery(m.active('Platinum'),'Platinum').data.caught,battery(pt,'Platinum').data.caught);
+  assert.equal(await hash(settingsFile),configHash);assert.equal(await hash(other),originalHash);
+  const empty=p.join(sandbox,'clean','data');const cleanRoot=await initialize(empty);assert.equal(await initialize(empty),cleanRoot);
+  fs.renameSync(cleanRoot,cleanRoot+'-disconnected');await assert.rejects(initialize(empty),/Missing portable library/);
+  console.log('Passed: initialization, disk space failure, interrupted copy and retry, history and alternate profile restoration after relocation, settings, old library integrity.');
+}
+test().catch(e=>{console.error(e);process.exitCode=1});

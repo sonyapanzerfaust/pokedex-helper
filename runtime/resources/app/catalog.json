@@ -1,0 +1,4301 @@
+{
+  "sections": [
+    {
+      "title": "01 · Twinleaf → Oreburgh · значок 1",
+      "desc": "Каждого вида ловим один раз, без повторов с соседних маршрутов.",
+      "entries": [
+        {
+          "place": "Route 218 (рыбак у западного выхода Jubilife)",
+          "name": "Old Rod",
+          "how": "Взять у рыбака в переходе; поймать Magikarp можно сразу.",
+          "kind": "story",
+          "id": "1-10",
+          "key": "1-10",
+          "legacyId": "1-10"
+        },
+        {
+          "place": "Oreburgh Gym",
+          "name": "Coal Badge",
+          "how": "Победить Roark.",
+          "kind": "story",
+          "id": "1-16",
+          "key": "1-16",
+          "legacyId": "1-16"
+        },
+        {
+          "key": "species-41",
+          "nationalId": 41,
+          "name": "Zubat",
+          "place": "Ravaged Path",
+          "how": "Пещера за Route 204, до Floaroma",
+          "legacyId": "1-9"
+        },
+        {
+          "key": "species-54",
+          "nationalId": 54,
+          "name": "Psyduck",
+          "place": "Ravaged Path",
+          "how": "Пещера за Route 204, до Floaroma",
+          "legacyId": "1-8"
+        },
+        {
+          "key": "species-66",
+          "nationalId": 66,
+          "name": "Machop",
+          "place": "Route 207",
+          "how": "Трава к северу от Oreburgh",
+          "legacyId": "1-14"
+        },
+        {
+          "key": "species-74",
+          "nationalId": 74,
+          "name": "Geodude",
+          "place": "Oreburgh Gate",
+          "how": "Пещера",
+          "legacyId": "1-12"
+        },
+        {
+          "key": "species-77",
+          "nationalId": 77,
+          "name": "Ponyta",
+          "place": "Route 207",
+          "how": "Трава к северу от Oreburgh",
+          "legacyId": "1-15"
+        },
+        {
+          "key": "species-95",
+          "nationalId": 95,
+          "name": "Onix",
+          "place": "Oreburgh Mine",
+          "how": "Пещера",
+          "legacyId": "1-13"
+        },
+        {
+          "key": "species-129",
+          "nationalId": 129,
+          "name": "Magikarp",
+          "place": "Route 218 / любой доступный водоём",
+          "how": "Old Rod",
+          "legacyId": "1-11"
+        },
+        {
+          "key": "species-265",
+          "nationalId": 265,
+          "name": "Wurmple",
+          "place": "Route 204 South",
+          "how": "Трава; обе развилки эволюции нужны для National Dex",
+          "legacyId": "1-7"
+        },
+        {
+          "key": "species-387",
+          "nationalId": 387,
+          "name": "Turtwig",
+          "place": "Route 201",
+          "how": "Подарок от профессора Rowan; наш основной стартер.",
+          "legacyId": "1-0"
+        },
+        {
+          "key": "species-396",
+          "nationalId": 396,
+          "name": "Starly",
+          "place": "Route 201",
+          "how": "Трава, сразу в начале",
+          "legacyId": "1-2"
+        },
+        {
+          "key": "species-399",
+          "nationalId": 399,
+          "name": "Bidoof",
+          "place": "Route 201",
+          "how": "Трава, сразу в начале",
+          "legacyId": "1-1"
+        },
+        {
+          "key": "species-401",
+          "nationalId": 401,
+          "name": "Kricketot",
+          "place": "Route 201",
+          "how": "Трава утром или ночью, днём не искать",
+          "legacyId": "1-3"
+        },
+        {
+          "key": "species-403",
+          "nationalId": 403,
+          "name": "Shinx",
+          "place": "Route 202",
+          "how": "Трава",
+          "legacyId": "1-4"
+        },
+        {
+          "key": "species-406",
+          "nationalId": 406,
+          "name": "Budew",
+          "place": "Route 204 South",
+          "how": "Трава",
+          "legacyId": "1-6"
+        },
+        {
+          "key": "species-63",
+          "nationalId": 63,
+          "name": "Abra",
+          "place": "Platinum · Oreburgh City, северо-западный дом",
+          "how": "Основной способ: поймать второго Machop на Route 207 и обменять у NPC на Abra Kazza. Первый Machop остаётся для своей линии. Если Abra уже Caught, повторный обмен не нужен.",
+          "legacyId": "1-5"
+        }
+      ],
+      "stage": 1
+    },
+    {
+      "title": "02 · Floaroma → Eterna · значок 2",
+      "desc": "Honey Trees начинай намазывать сразу. Первые 6 часов не тормозят сюжет.",
+      "entries": [
+        {
+          "place": "Floaroma Meadow",
+          "name": "Honey / медовые деревья",
+          "how": "Купить Honey и намазывать деревья в процессе прохождения; встречи спустя 6 часов.",
+          "kind": "story",
+          "id": "2-4",
+          "key": "2-4",
+          "legacyId": "2-4"
+        },
+        {
+          "place": "Eterna City",
+          "name": "Explorer Kit",
+          "how": "Получить для Underground / ископаемых.",
+          "kind": "story",
+          "id": "2-22",
+          "key": "2-22",
+          "legacyId": "2-22"
+        },
+        {
+          "place": "Eterna Gym",
+          "name": "Forest Badge",
+          "how": "Победить Gardenia.",
+          "kind": "story",
+          "id": "2-24",
+          "key": "2-24",
+          "legacyId": "2-24"
+        },
+        {
+          "key": "species-92",
+          "nationalId": 92,
+          "name": "Gastly",
+          "place": "Eterna Forest",
+          "how": "Трава; Hoothoot ночью, Gastly также в Old Chateau",
+          "legacyId": "2-13"
+        },
+        {
+          "key": "species-163",
+          "nationalId": 163,
+          "name": "Hoothoot",
+          "place": "Eterna Forest",
+          "how": "Трава; Hoothoot ночью, Gastly также в Old Chateau",
+          "legacyId": "2-12"
+        },
+        {
+          "key": "species-173",
+          "nationalId": 173,
+          "name": "Cleffa",
+          "place": "Mt. Coronet, вход с Route 211",
+          "how": "Пещера; Nosepass редкий",
+          "legacyId": "2-20"
+        },
+        {
+          "key": "species-190",
+          "nationalId": 190,
+          "name": "Aipom",
+          "place": "Honey Trees на 205 / Windworks / Floaroma",
+          "how": "Мёд на деревьях; редкость зависит от вида. Для Vespiquen нужна самка Combee, для Wormadam самка Burmy, для Mothim самец Burmy.",
+          "legacyId": "2-8"
+        },
+        {
+          "key": "species-214",
+          "nationalId": 214,
+          "name": "Heracross",
+          "place": "Honey Trees на 205 / Windworks / Floaroma",
+          "how": "Мёд на деревьях; редкость зависит от вида. Для Vespiquen нужна самка Combee, для Wormadam самка Burmy, для Mothim самец Burmy.",
+          "legacyId": "2-9"
+        },
+        {
+          "key": "species-299",
+          "nationalId": 299,
+          "name": "Nosepass",
+          "place": "Mt. Coronet, вход с Route 211",
+          "how": "Пещера; Nosepass редкий",
+          "legacyId": "2-21"
+        },
+        {
+          "key": "species-307",
+          "nationalId": 307,
+          "name": "Meditite",
+          "place": "Route 211 West",
+          "how": "Трава, западнее входа в Mt. Coronet",
+          "legacyId": "2-17"
+        },
+        {
+          "key": "species-412",
+          "nationalId": 412,
+          "name": "Burmy",
+          "place": "Honey Trees на 205 / Windworks / Floaroma",
+          "how": "Мёд на деревьях; редкость зависит от вида. Для Vespiquen нужна самка Combee, для Wormadam самка Burmy, для Mothim самец Burmy.",
+          "legacyId": "2-5"
+        },
+        {
+          "key": "species-415",
+          "nationalId": 415,
+          "name": "Combee",
+          "place": "Honey Trees на 205 / Windworks / Floaroma",
+          "how": "Мёд на деревьях; редкость зависит от вида. Для Vespiquen нужна самка Combee, для Wormadam самка Burmy, для Mothim самец Burmy.",
+          "legacyId": "2-7"
+        },
+        {
+          "key": "species-417",
+          "nationalId": 417,
+          "name": "Pachirisu",
+          "place": "Valley Windworks / Route 205 South",
+          "how": "Трава",
+          "legacyId": "2-2"
+        },
+        {
+          "key": "species-418",
+          "nationalId": 418,
+          "name": "Buizel",
+          "place": "Valley Windworks / Route 205 South",
+          "how": "Трава",
+          "legacyId": "2-1"
+        },
+        {
+          "key": "species-420",
+          "nationalId": 420,
+          "name": "Cherubi",
+          "place": "Honey Trees на 205 / Windworks / Floaroma",
+          "how": "Мёд на деревьях; редкость зависит от вида. Для Vespiquen нужна самка Combee, для Wormadam самка Burmy, для Mothim самец Burmy.",
+          "legacyId": "2-6"
+        },
+        {
+          "key": "species-422",
+          "nationalId": 422,
+          "name": "Shellos",
+          "place": "Valley Windworks / Route 205 South",
+          "how": "Трава",
+          "legacyId": "2-0"
+        },
+        {
+          "key": "species-425",
+          "nationalId": 425,
+          "name": "Drifloon",
+          "place": "Valley Windworks",
+          "how": "Пятница после изгнания Team Galactic (если зачистил в пятницу, ждать следующую).",
+          "legacyId": "2-3"
+        },
+        {
+          "key": "species-427",
+          "nationalId": 427,
+          "name": "Buneary",
+          "place": "Eterna Forest",
+          "how": "Трава; Hoothoot ночью, Gastly также в Old Chateau",
+          "legacyId": "2-11"
+        },
+        {
+          "key": "species-433",
+          "nationalId": 433,
+          "name": "Chingling",
+          "place": "Route 211 West",
+          "how": "Трава, западнее входа в Mt. Coronet",
+          "legacyId": "2-19"
+        },
+        {
+          "key": "species-436",
+          "nationalId": 436,
+          "name": "Bronzor",
+          "place": "Route 211 West",
+          "how": "Трава, западнее входа в Mt. Coronet",
+          "legacyId": "2-18"
+        },
+        {
+          "key": "species-441",
+          "nationalId": 441,
+          "name": "Chatot",
+          "place": "Eterna City (дом NPC)",
+          "how": "Внутриигровой обмен: отдать Buizel; ловля в другой локации тоже возможна.",
+          "legacyId": "2-16"
+        },
+        {
+          "key": "species-446",
+          "nationalId": 446,
+          "name": "Munchlax",
+          "place": "Honey Trees",
+          "how": "Очень редкий, лишь 4 определённых медовых дерева. Можно оставить до получения Snorlax-донора и вывести через Full Incense.",
+          "legacyId": "2-10"
+        },
+        {
+          "key": "species-266",
+          "nationalId": 266,
+          "name": "Silcoon",
+          "place": "Platinum · sinnoh-route-205 · east-towards-eterna-city",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос не нужен.",
+          "legacyId": "2-14"
+        },
+        {
+          "key": "species-267",
+          "nationalId": 267,
+          "name": "Beautifly",
+          "place": "Platinum · eterna-forest",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос не нужен."
+        },
+        {
+          "key": "species-268",
+          "nationalId": 268,
+          "name": "Cascoon",
+          "place": "Platinum · sinnoh-route-205 · east-towards-eterna-city",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос не нужен.",
+          "legacyId": "2-15"
+        },
+        {
+          "key": "species-269",
+          "nationalId": 269,
+          "name": "Dustox",
+          "place": "Platinum · eterna-forest",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос не нужен."
+        }
+      ],
+      "stage": 2
+    },
+    {
+      "title": "03 · Old Chateau → Hearthome · значок 3",
+      "desc": "Тут главный приоритет Gible, подарочный Eevee и Rotom.",
+      "entries": [
+        {
+          "place": "Route 208, мужчина у Honey Tree",
+          "name": "Odd Keystone",
+          "how": "Обязательно забрать Odd Keystone.",
+          "kind": "story",
+          "id": "3-8",
+          "key": "3-8",
+          "legacyId": "3-8"
+        },
+        {
+          "place": "Hearthome Gym",
+          "name": "Relic Badge",
+          "how": "Победить Fantina.",
+          "kind": "story",
+          "id": "3-11",
+          "key": "3-11",
+          "legacyId": "3-11"
+        },
+        {
+          "key": "species-133",
+          "nationalId": 133,
+          "name": "Eevee",
+          "place": "Hearthome City, дом Bebe",
+          "how": "Подарок Bebe при первом посещении Hearthome, National Dex не нужен. Не ждать Trophy Garden. Сохранить исходного Eevee до разведения; дополнительные нужны для семи эволюций.",
+          "legacyId": "3-10"
+        },
+        {
+          "key": "species-175",
+          "nationalId": 175,
+          "name": "Togepi",
+          "place": "Eterna City после Galactic HQ",
+          "how": "Яйцо от Cynthia после победы над Jupiter; освободить место.",
+          "legacyId": "3-0"
+        },
+        {
+          "key": "species-207",
+          "nationalId": 207,
+          "name": "Gligar",
+          "place": "Route 206 (под Cycling Road)",
+          "how": "Трава",
+          "legacyId": "3-2"
+        },
+        {
+          "key": "species-280",
+          "nationalId": 280,
+          "name": "Ralts",
+          "place": "Route 208",
+          "how": "Трава, если Roselia ещё нет",
+          "legacyId": "3-6"
+        },
+        {
+          "key": "species-443",
+          "nationalId": 443,
+          "name": "Gible",
+          "place": "Wayward Cave B1F (секретный вход под мостом)",
+          "how": "Скрытый вход под Cycling Road, нужен доступ на нижний уровень.",
+          "legacyId": "3-4"
+        },
+        {
+          "key": "species-479",
+          "nationalId": 479,
+          "name": "Rotom",
+          "place": "Old Chateau, TV 2F",
+          "how": "Ночью 20:00–03:59, после Cut; взаимодействие с телевизором.",
+          "legacyId": "3-1"
+        },
+        {
+          "key": "species-35",
+          "nationalId": 35,
+          "name": "Clefairy",
+          "place": "Platinum · mt-coronet · 1f-route-207",
+          "how": "Прямая встреча: walk, ур. 17–17. Условия: time-morning. Перенос не нужен.  Доступ: Нижний проход Mt. Coronet со стороны Route 207 на пути к Hearthome после Eterna/Cycling Road; это не ранняя часть Eterna. Доступ: Нижний проход Mt. Coronet со стороны Route 207 на пути к Hearthome после Eterna/Cycling Road; это не ранняя часть Eterna.",
+          "legacyId": "3-5",
+          "requirements": {
+            "access": "Нижний проход Mt. Coronet со стороны Route 207 на пути к Hearthome после Eterna/Cycling Road; это не ранняя часть Eterna.",
+            "minimumSection": "03"
+          }
+        },
+        {
+          "key": "species-400",
+          "nationalId": 400,
+          "name": "Bibarel",
+          "place": "Platinum · sinnoh route 208",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 20% / 20% / 20%. Без радара, swarm и GBA-вставки.",
+          "earlierChoice": {
+            "location": "sinnoh-route-208",
+            "rates": [
+              20,
+              20,
+              20
+            ],
+            "stage": 3,
+            "order": 2,
+            "minimum": 20
+          },
+          "alternative": {
+            "stage": 14,
+            "place": "Platinum · sendoff-spring",
+            "how": "Прямая встреча: walk, ур. 37–37. Перенос не нужен."
+          },
+          "requirements": {
+            "minimumSection": "03"
+          }
+        }
+      ],
+      "stage": 3
+    },
+    {
+      "title": "04 · Route 209 → Solaceon → Veilstone · значок 4",
+      "desc": "Получаем Good Rod, один Unown, Porygon. Не пропускай Duskull ночью.",
+      "entries": [
+        {
+          "place": "Route 209, рыбак",
+          "name": "Good Rod",
+          "how": "Получить улучшенную удочку.",
+          "kind": "story",
+          "id": "4-2",
+          "key": "4-2",
+          "legacyId": "4-2"
+        },
+        {
+          "place": "Veilstone Gym",
+          "name": "Cobble Badge",
+          "how": "Победить Maylene.",
+          "kind": "story",
+          "id": "4-13",
+          "key": "4-13",
+          "legacyId": "4-13"
+        },
+        {
+          "key": "species-108",
+          "nationalId": 108,
+          "name": "Lickitung",
+          "place": "Route 215",
+          "how": "Трава",
+          "legacyId": "4-11"
+        },
+        {
+          "key": "species-118",
+          "nationalId": 118,
+          "name": "Goldeen",
+          "place": "Route 209",
+          "how": "Good Rod, водоём",
+          "legacyId": "4-3"
+        },
+        {
+          "key": "species-123",
+          "nationalId": 123,
+          "name": "Scyther",
+          "place": "Route 210 South",
+          "how": "Трава; Noctowl ночью (или эволюция Hoothoot)",
+          "legacyId": "4-8"
+        },
+        {
+          "key": "species-137",
+          "nationalId": 137,
+          "name": "Porygon",
+          "place": "Veilstone City, NPC",
+          "how": "Бесплатный Porygon ур. 25 у NPC в Veilstone, до постгейма. Не искать дикую встречу и не получать через Game Corner в доноре. Для Porygon2: Upgrade + обмен; затем Dubious Disc + обмен для Porygon-Z.",
+          "legacyId": "4-12"
+        },
+        {
+          "key": "species-201",
+          "nationalId": 201,
+          "name": "Unown",
+          "place": "Solaceon Ruins",
+          "how": "Одна буква достаточно для National Dex, все 28 форм не нужны.",
+          "legacyId": "4-7"
+        },
+        {
+          "key": "species-339",
+          "nationalId": 339,
+          "name": "Barboach",
+          "place": "Mt. Coronet (рыбалка)",
+          "how": "Good Rod",
+          "legacyId": "4-4"
+        },
+        {
+          "key": "species-355",
+          "nationalId": 355,
+          "name": "Duskull",
+          "place": "Route 209 / Lost Tower",
+          "how": "Встреча ночью",
+          "legacyId": "4-1"
+        },
+        {
+          "key": "species-456",
+          "nationalId": 456,
+          "name": "Finneon",
+          "place": "Route 205 South (возврат)",
+          "how": "Good Rod; вернуться после получения удочки",
+          "legacyId": "4-5"
+        },
+        {
+          "key": "species-64",
+          "nationalId": 64,
+          "name": "Kadabra",
+          "place": "Platinum · sinnoh-route-215",
+          "how": "Прямая встреча: walk, ур. 21–21. Перенос не нужен."
+        },
+        {
+          "place": "Route 209, Hallowed Tower",
+          "name": "Установить Odd Keystone",
+          "how": "Вставь Odd Keystone в основание башни. Счётчик Underground можно заполнить позже.",
+          "kind": "story",
+          "id": "3-9",
+          "key": "3-9",
+          "legacyId": "3-9"
+        },
+        {
+          "key": "species-315",
+          "nationalId": 315,
+          "name": "Roselia",
+          "place": "Platinum · sinnoh route 209",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 25% / 25% / 25%. Без радара, swarm и GBA-вставки.",
+          "legacyId": "3-7",
+          "earlierChoice": {
+            "location": "sinnoh-route-209",
+            "rates": [
+              25,
+              25,
+              25
+            ],
+            "stage": 4,
+            "order": 0,
+            "minimum": 25
+          },
+          "alternative": {
+            "stage": 5,
+            "place": "Platinum · trophy-garden",
+            "how": "Прямая встреча: walk, ур. 22–22. Перенос не нужен."
+          },
+          "requirements": {
+            "minimumSection": "04"
+          }
+        },
+        {
+          "key": "species-183",
+          "nationalId": 183,
+          "name": "Marill",
+          "place": "Platinum · sinnoh route 215",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 25% / 25% / 45%. Без радара, swarm и GBA-вставки.",
+          "legacyId": "4-10",
+          "requirements": {
+            "minimumSection": "04"
+          },
+          "earlierChoice": {
+            "location": "sinnoh-route-215",
+            "rates": [
+              25,
+              25,
+              45
+            ],
+            "stage": 4,
+            "order": 2,
+            "minimum": 25
+          },
+          "alternative": {
+            "stage": 5,
+            "place": "Platinum · sinnoh-route-212 · north-towards-hearthome-city",
+            "how": "Прямая встреча: walk, ур. 21–21. Перенос не нужен.  Доступ: Основной обход Route 212 со стороны Pastoria; для отдельных водных участков нужен Surf."
+          }
+        },
+        {
+          "key": "species-397",
+          "nationalId": 397,
+          "name": "Staravia",
+          "place": "Platinum · sinnoh route 210 south towards solaceon town",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 20% / 20% / 20%. Без радара, swarm и GBA-вставки.",
+          "earlierChoice": {
+            "location": "sinnoh-route-210 south-towards-solaceon-town",
+            "rates": [
+              20,
+              20,
+              20
+            ],
+            "stage": 4,
+            "order": 1,
+            "minimum": 20
+          },
+          "alternative": {
+            "stage": 8,
+            "place": "Platinum · lake-valor",
+            "how": "Прямая встреча: walk, ур. 38–38. Перенос не нужен."
+          },
+          "requirements": {
+            "minimumSection": "04"
+          }
+        }
+      ],
+      "stage": 4
+    },
+    {
+      "title": "05 · Veilstone → Pastoria · значок 5",
+      "desc": "Сразу займись Great Marsh; редкие ежедневные виды не привязаны к National Dex.",
+      "entries": [
+        {
+          "place": "Pokémon Mansion, кабинет Backlot",
+          "name": "Manaphy: увидеть",
+          "how": "Прочитать книгу с изображением Manaphy для региональных 210 увиденных.",
+          "kind": "story",
+          "id": "5-16",
+          "key": "5-16",
+          "legacyId": "5-16"
+        },
+        {
+          "place": "Pastoria Gym",
+          "name": "Fen Badge",
+          "how": "Победить Crasher Wake.",
+          "kind": "story",
+          "id": "5-17",
+          "key": "5-17",
+          "legacyId": "5-17"
+        },
+        {
+          "key": "species-111",
+          "nationalId": 111,
+          "name": "Rhyhorn",
+          "place": "Route 214",
+          "how": "Трава",
+          "legacyId": "5-1"
+        },
+        {
+          "key": "species-114",
+          "nationalId": 114,
+          "name": "Tangela",
+          "place": "Great Marsh",
+          "how": "Сафари-боллы; Yanma/Tangela низкий шанс, но доступны ДО National Dex.",
+          "legacyId": "5-8"
+        },
+        {
+          "key": "species-172",
+          "nationalId": 172,
+          "name": "Pichu",
+          "place": "Pokémon Mansion, Trophy Garden",
+          "how": "Трава сада, без National Dex",
+          "legacyId": "5-14"
+        },
+        {
+          "key": "species-193",
+          "nationalId": 193,
+          "name": "Yanma",
+          "place": "Great Marsh",
+          "how": "Сафари-боллы; Yanma/Tangela низкий шанс, но доступны ДО National Dex.",
+          "legacyId": "5-9"
+        },
+        {
+          "key": "species-194",
+          "nationalId": 194,
+          "name": "Wooper",
+          "place": "Great Marsh",
+          "how": "Сафари-боллы; Yanma/Tangela низкий шанс, но доступны ДО National Dex.",
+          "legacyId": "5-6"
+        },
+        {
+          "key": "species-203",
+          "nationalId": 203,
+          "name": "Girafarig",
+          "place": "Valor Lakefront",
+          "how": "Трава",
+          "legacyId": "5-3"
+        },
+        {
+          "key": "species-223",
+          "nationalId": 223,
+          "name": "Remoraid",
+          "place": "Route 213, Good Rod",
+          "how": "Рыбалка",
+          "legacyId": "5-5"
+        },
+        {
+          "key": "species-228",
+          "nationalId": 228,
+          "name": "Houndour",
+          "place": "Route 214",
+          "how": "Трава",
+          "legacyId": "5-0"
+        },
+        {
+          "key": "species-278",
+          "nationalId": 278,
+          "name": "Wingull",
+          "place": "Route 213",
+          "how": "Трава",
+          "legacyId": "5-4"
+        },
+        {
+          "key": "species-357",
+          "nationalId": 357,
+          "name": "Tropius",
+          "place": "Great Marsh",
+          "how": "Сафари-боллы; Yanma/Tangela низкий шанс, но доступны ДО National Dex.",
+          "legacyId": "5-7"
+        },
+        {
+          "key": "species-449",
+          "nationalId": 449,
+          "name": "Hippopotas",
+          "place": "Maniac Tunnel / Ruin Maniac Cave",
+          "how": "В пещере возле Route 214; редкость зависит от прогресса Unown",
+          "legacyId": "5-2"
+        },
+        {
+          "key": "species-451",
+          "nationalId": 451,
+          "name": "Skorupi",
+          "place": "Great Marsh — ежедневные виды",
+          "how": "Меняются по дням/сектору. Осматривать бинокль на верхнем этаже каждый игровой день.",
+          "legacyId": "5-11"
+        },
+        {
+          "key": "species-453",
+          "nationalId": 453,
+          "name": "Croagunk",
+          "place": "Great Marsh — ежедневные виды",
+          "how": "Меняются по дням/сектору. Осматривать бинокль на верхнем этаже каждый игровой день.",
+          "legacyId": "5-12"
+        },
+        {
+          "key": "species-455",
+          "nationalId": 455,
+          "name": "Carnivine",
+          "place": "Great Marsh — ежедневные виды",
+          "how": "Меняются по дням/сектору. Осматривать бинокль на верхнем этаже каждый игровой день.",
+          "legacyId": "5-10"
+        },
+        {
+          "key": "species-25",
+          "nationalId": 25,
+          "name": "Pikachu",
+          "place": "Platinum · trophy-garden",
+          "how": "Прямая встреча: walk, ур. 22–22. Перенос не нужен.",
+          "legacyId": "5-15"
+        },
+        {
+          "key": "species-402",
+          "nationalId": 402,
+          "name": "Kricketune",
+          "place": "Platinum · trophy-garden",
+          "how": "Прямая встреча: walk, ур. 22–22. Условия: time-night. Перенос не нужен.",
+          "legacyId": "3-3"
+        },
+        {
+          "key": "species-195",
+          "nationalId": 195,
+          "name": "Quagsire",
+          "place": "Platinum · sinnoh-route-212 · east-towards-pastoria-city",
+          "how": "Прямая встреча: walk, ур. 24–24. Перенос не нужен.  Доступ: Основной обход Route 212 со стороны Pastoria; для отдельных водных участков нужен Surf.",
+          "requirements": {
+            "access": "Основной обход Route 212 со стороны Pastoria; для отдельных водных участков нужен Surf.",
+            "minimumSection": "05"
+          }
+        },
+        {
+          "key": "species-281",
+          "nationalId": 281,
+          "name": "Kirlia",
+          "place": "Platinum · sinnoh-route-212 · north-towards-hearthome-city",
+          "how": "Прямая встреча: walk, ур. 22–22. Условия: time-morning. Перенос не нужен.  Доступ: Основной обход Route 212 со стороны Pastoria; для отдельных водных участков нужен Surf.",
+          "legacyId": "5-13",
+          "requirements": {
+            "access": "Основной обход Route 212 со стороны Pastoria; для отдельных водных участков нужен Surf.",
+            "minimumSection": "05"
+          }
+        }
+      ],
+      "stage": 5
+    },
+    {
+      "title": "06 · Celestic / Surf / Canalave · значок 6",
+      "desc": "После получения Surf выгодно вернуться в пропущенные воды. Iron Island завершить с местом для яйца.",
+      "entries": [
+        {
+          "place": "Celestic Town",
+          "name": "HM03 Surf",
+          "how": "Получить у бабушки Cynthia по сюжету.",
+          "kind": "story",
+          "id": "6-1",
+          "key": "6-1",
+          "legacyId": "6-1"
+        },
+        {
+          "place": "Canalave Gym",
+          "name": "Mine Badge",
+          "how": "Победить Byron.",
+          "kind": "story",
+          "id": "6-9",
+          "key": "6-9",
+          "legacyId": "6-9"
+        },
+        {
+          "key": "species-72",
+          "nationalId": 72,
+          "name": "Tentacool",
+          "place": "Route 205 / Fuego (Surf)",
+          "how": "Водная встреча Surf; при желании эволюционировать",
+          "legacyId": "6-4"
+        },
+        {
+          "key": "species-81",
+          "nationalId": 81,
+          "name": "Magnemite",
+          "place": "Fuego Ironworks (Surf через Route 205)",
+          "how": "Трава у завода, Magmar пригодится и для Magby",
+          "legacyId": "6-2"
+        },
+        {
+          "key": "species-333",
+          "nationalId": 333,
+          "name": "Swablu",
+          "place": "Route 210 North после SecretPotion",
+          "how": "Трава в северной части маршрута",
+          "legacyId": "6-0"
+        },
+        {
+          "key": "species-447",
+          "nationalId": 447,
+          "name": "Riolu",
+          "place": "Iron Island, Riley",
+          "how": "Яйцо за завершение совместной прогулки; держать свободный слот в команде.",
+          "legacyId": "6-8"
+        },
+        {
+          "key": "species-126",
+          "nationalId": 126,
+          "name": "Magmar",
+          "place": "Platinum · fuego-ironworks",
+          "how": "Прямая встреча: walk, ур. 28–28. Перенос не нужен.  Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+          "legacyId": "6-3",
+          "requirements": {
+            "access": "Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+            "minimumSection": "06"
+          }
+        },
+        {
+          "key": "species-122",
+          "nationalId": 122,
+          "name": "Mr. Mime",
+          "place": "Platinum · sinnoh-route-218",
+          "how": "Прямая встреча: walk, ур. 29–29. Перенос не нужен.  Альтернатива: Предыдущая стадия: Mime Jr.. Условия зависят от игры. Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть. Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+          "legacyId": "6-5",
+          "requirements": {
+            "access": "Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+            "minimumSection": "06"
+          }
+        },
+        {
+          "key": "species-423",
+          "nationalId": 423,
+          "name": "Gastrodon",
+          "place": "Platinum · sinnoh-route-218",
+          "how": "Прямая встреча: walk, ур. 28–28. Перенос не нужен.  Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть. Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+          "requirements": {
+            "access": "Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+            "minimumSection": "06"
+          }
+        },
+        {
+          "key": "species-185",
+          "nationalId": 185,
+          "name": "Sudowoodo",
+          "place": "Platinum · sinnoh-route-221",
+          "how": "Прямая встреча: walk, ур. 31–31. Перенос не нужен.  Доступ: Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+          "legacyId": "6-6",
+          "requirements": {
+            "access": "Нужны Fen Badge и HM03 Surf, полученный в Celestic Town после события с Cyrus. К траве Route 218/221 и Fuego Ironworks требуется доплыть.",
+            "minimumSection": "06"
+          }
+        },
+        {
+          "key": "species-75",
+          "nationalId": 75,
+          "name": "Graveler",
+          "place": "Platinum · iron island b1f left",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 70% / 70% / 70%. Без радара, swarm и GBA-вставки.",
+          "requirements": {
+            "minimumSection": "06"
+          },
+          "earlierChoice": {
+            "location": "iron-island b1f-left",
+            "rates": [
+              70,
+              70,
+              70
+            ],
+            "stage": 6,
+            "order": 5,
+            "minimum": 70
+          },
+          "alternative": {
+            "stage": 8,
+            "place": "Platinum · mt-coronet · 2f",
+            "how": "Прямая встреча: walk, ур. 38–38. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам."
+          }
+        },
+        {
+          "key": "species-419",
+          "nationalId": 419,
+          "name": "Floatzel",
+          "place": "Platinum · sinnoh route 218",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 30% / 30% / 40%. Без радара, swarm и GBA-вставки.",
+          "requirements": {
+            "minimumSection": "06"
+          },
+          "earlierChoice": {
+            "location": "sinnoh-route-218",
+            "rates": [
+              30,
+              30,
+              40
+            ],
+            "stage": 6,
+            "order": 3,
+            "minimum": 30
+          },
+          "alternative": {
+            "stage": 9,
+            "place": "Platinum · sinnoh-victory-road · b1f",
+            "how": "Прямая встреча: surf, ур. 30–50. Перенос не нужен.  Доступ: Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода."
+          }
+        },
+        {
+          "key": "species-42",
+          "nationalId": 42,
+          "name": "Golbat",
+          "place": "Platinum · iron island b1f left",
+          "how": "Обычная пешая встреча по пути через эту локацию. Доли вида в обычной таблице утром, днём и ночью: 20% / 20% / 20%. Без радара, swarm и GBA-вставки.",
+          "earlierChoice": {
+            "location": "iron-island b1f-left",
+            "rates": [
+              20,
+              20,
+              20
+            ],
+            "stage": 6,
+            "order": 5,
+            "minimum": 20
+          },
+          "alternative": {
+            "stage": 10,
+            "place": "Platinum · snowpoint-temple · 1f",
+            "how": "Прямая встреча: walk, ур. 47–47. Перенос не нужен."
+          },
+          "requirements": {
+            "minimumSection": "06"
+          }
+        }
+      ],
+      "stage": 6
+    },
+    {
+      "title": "07 · Lake Valor / Mt. Coronet / Snowpoint · значок 7",
+      "desc": "Перед Snowpoint поймай Snorunt, в снегу не забудь Rock Climb.",
+      "entries": [
+        {
+          "place": "Route 217, возле дома",
+          "name": "HM08 Rock Climb",
+          "how": "Подобрать на земле, не уходить без HM.",
+          "kind": "story",
+          "id": "7-6",
+          "key": "7-6",
+          "legacyId": "7-6"
+        },
+        {
+          "place": "Snowpoint Gym",
+          "name": "Icicle Badge",
+          "how": "Победить Candice.",
+          "kind": "story",
+          "id": "7-8",
+          "key": "7-8",
+          "legacyId": "7-8"
+        },
+        {
+          "key": "species-215",
+          "nationalId": 215,
+          "name": "Sneasel",
+          "place": "Route 216",
+          "how": "Трава в снегу",
+          "legacyId": "7-3"
+        },
+        {
+          "key": "species-220",
+          "nationalId": 220,
+          "name": "Swinub",
+          "place": "Route 217",
+          "how": "Трава в снегу",
+          "legacyId": "7-5"
+        },
+        {
+          "key": "species-349",
+          "nationalId": 349,
+          "name": "Feebas",
+          "place": "Mt. Coronet B1F, туманная пещера",
+          "how": "Рыбалка на 4 случайных клетках воды (меняются ежедневно); можно оставить на зачистку перед Лигой.",
+          "legacyId": "7-1"
+        },
+        {
+          "key": "species-361",
+          "nationalId": 361,
+          "name": "Snorunt",
+          "place": "Route 216 (ночью)",
+          "how": "Ночная встреча",
+          "legacyId": "7-4"
+        },
+        {
+          "key": "species-459",
+          "nationalId": 459,
+          "name": "Snover",
+          "place": "Route 216",
+          "how": "Трава в снегу",
+          "legacyId": "7-2"
+        },
+        {
+          "key": "species-93",
+          "nationalId": 93,
+          "name": "Haunter",
+          "place": "Platinum · Snowpoint City, северо-западный дом",
+          "how": "Обмен NPC Mindy: Medicham → Haunter. Он держит Everstone и при получении НЕ станет Gengar. Снять Everstone; затем отдельный DS-обмен Haunter туда и обратно даст Gengar. Альтернатива: Gastly → Haunter на ур. 25."
+        }
+      ],
+      "stage": 7
+    },
+    {
+      "title": "08 · Galactic HQ → Spear Pillar → Distortion World",
+      "desc": "Сюжетные неповторимые встречи. Master Ball сохранить.",
+      "entries": [
+        {
+          "place": "Veilstone Galactic HQ, Cyrus",
+          "name": "Master Ball",
+          "how": "Получить сюжетный Master Ball от Cyrus, не расходовать до Mesprit.",
+          "kind": "story",
+          "id": "8-0",
+          "key": "8-0",
+          "legacyId": "8-0"
+        },
+        {
+          "key": "species-359",
+          "nationalId": 359,
+          "name": "Absol",
+          "place": "Mt. Coronet, снежные склоны",
+          "how": "Дикая встреча на внешних заснеженных участках! Не нужно искать его в Emerald.",
+          "legacyId": "8-4"
+        },
+        {
+          "key": "species-487",
+          "nationalId": 487,
+          "name": "Giratina",
+          "place": "Distortion World",
+          "how": "Сохраниться перед боем, поймать без Master Ball.",
+          "legacyId": "8-6"
+        },
+        {
+          "key": "species-164",
+          "nationalId": 164,
+          "name": "Noctowl",
+          "place": "Platinum · mt-coronet · exterior-snowfall",
+          "how": "Прямая встреча: walk, ур. 39–39. Условия: time-night. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+          "legacyId": "4-9",
+          "requirements": {
+            "access": "Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+            "minimumSection": "08"
+          }
+        },
+        {
+          "key": "species-308",
+          "nationalId": 308,
+          "name": "Medicham",
+          "place": "Platinum · mt-coronet · 2f",
+          "how": "Прямая встреча: walk, ур. 37–37. Условия: time-morning. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+          "legacyId": "8-1",
+          "requirements": {
+            "access": "Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+            "minimumSection": "08"
+          }
+        },
+        {
+          "key": "species-358",
+          "nationalId": 358,
+          "name": "Chimecho",
+          "place": "Platinum · mt-coronet · 6f",
+          "how": "Прямая встреча: walk, ур. 39–39. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+          "legacyId": "8-3",
+          "requirements": {
+            "access": "Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+            "minimumSection": "08"
+          }
+        },
+        {
+          "key": "species-437",
+          "nationalId": 437,
+          "name": "Bronzong",
+          "place": "Platinum · mt-coronet · 2f",
+          "how": "Прямая встреча: walk, ур. 37–37. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+          "legacyId": "8-2",
+          "requirements": {
+            "access": "Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+            "minimumSection": "08"
+          }
+        },
+        {
+          "key": "species-460",
+          "nationalId": 460,
+          "name": "Abomasnow",
+          "place": "Platinum · mt-coronet · exterior-snowfall",
+          "how": "Прямая встреча: walk, ур. 38–38. Перенос не нужен.  Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам. Доступ: Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+          "legacyId": "8-5",
+          "requirements": {
+            "access": "Поздний подъём Mt. Coronet к Spear Pillar: после Icicle Badge и Galactic HQ; нужны Surf, Strength и Rock Climb. Нижний проход Route 207 не даёт доступа к этим этажам.",
+            "minimumSection": "08"
+          }
+        },
+        {
+          "key": "species-480",
+          "nationalId": 480,
+          "name": "Uxie",
+          "place": "Lake Acuity",
+          "how": "Статичная легендарная встреча после Distortion World. После выхода из Distortion World используй Surf до пещеры в центре озера.",
+          "legacyId": "8-7"
+        },
+        {
+          "key": "species-481",
+          "nationalId": 481,
+          "name": "Mesprit",
+          "place": "Lake Verity",
+          "how": "Выпустить из пещеры, отследить роумера в Pokétch и поймать Master Ball. После выхода из Distortion World используй Surf до пещеры в центре озера.",
+          "legacyId": "8-9"
+        },
+        {
+          "key": "species-482",
+          "nationalId": 482,
+          "name": "Azelf",
+          "place": "Lake Valor",
+          "how": "Статичная легендарная встреча после Distortion World. После выхода из Distortion World используй Surf до пещеры в центре озера.",
+          "legacyId": "8-8"
+        }
+      ],
+      "stage": 8
+    },
+    {
+      "title": "09 · Sunyshore → Pokémon League",
+      "desc": "Финиш сюжета. Проверка 210 seen и получение National Dex.",
+      "entries": [
+        {
+          "place": "Sunyshore Gym",
+          "name": "Beacon Badge",
+          "how": "Победить Volkner.",
+          "kind": "story",
+          "id": "9-4",
+          "key": "9-4",
+          "legacyId": "9-4"
+        },
+        {
+          "place": "Pokémon League",
+          "name": "Чемпион Cynthia",
+          "how": "Победить Elite Four и Cynthia.",
+          "kind": "story",
+          "id": "9-7",
+          "key": "9-7",
+          "legacyId": "9-7"
+        },
+        {
+          "place": "Сверка Sinnoh Dex",
+          "name": "210 увиденных",
+          "how": "Перед получением National Dex проверить записи; в том числе Rotom, Manaphy (книга), Uxie, Azelf, Mesprit.",
+          "kind": "story",
+          "id": "9-8",
+          "key": "9-8",
+          "legacyId": "9-8"
+        },
+        {
+          "place": "Sandgem Town, Rowan + Oak",
+          "name": "National Dex",
+          "how": "Получить после регистрации 210 виденных и победы в Лиге.",
+          "kind": "story",
+          "id": "9-9",
+          "key": "9-9",
+          "legacyId": "9-9"
+        },
+        {
+          "key": "species-458",
+          "nationalId": 458,
+          "name": "Mantyke",
+          "place": "Route 223",
+          "how": "Surf по морскому маршруту",
+          "legacyId": "9-2"
+        },
+        {
+          "key": "species-82",
+          "nationalId": 82,
+          "name": "Magneton",
+          "place": "Platinum · sinnoh-victory-road · 2f",
+          "how": "Прямая встреча: walk, ур. 41–41. Перенос не нужен.  Доступ: Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+          "legacyId": "9-1",
+          "requirements": {
+            "access": "Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-184",
+          "nationalId": 184,
+          "name": "Azumarill",
+          "place": "Platinum · sinnoh-victory-road · b1f",
+          "how": "Прямая встреча: walk, ур. 41–41. Перенос не нужен.  Доступ: Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+          "requirements": {
+            "access": "Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-208",
+          "nationalId": 208,
+          "name": "Steelix",
+          "place": "Platinum · sinnoh-victory-road · 2f",
+          "how": "Прямая встреча: walk, ур. 42–42. Перенос не нужен.  Доступ: Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+          "legacyId": "6-7",
+          "requirements": {
+            "access": "Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-444",
+          "nationalId": 444,
+          "name": "Gabite",
+          "place": "Platinum · sinnoh-victory-road · 1f",
+          "how": "Прямая встреча: walk, ур. 41–41. Перенос не нужен.  Доступ: Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+          "legacyId": "9-5",
+          "requirements": {
+            "access": "Основная Victory Road перед Лигой: Beacon Badge, Surf, Waterfall и доступ к Pokémon League; Strength/Rock Smash для прохода.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-73",
+          "nationalId": 73,
+          "name": "Tentacruel",
+          "place": "Platinum · sinnoh-sea-route-223",
+          "how": "Прямая встреча: surf, ур. 30–50. Перенос не нужен.  Доступ: После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+          "requirements": {
+            "access": "После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-125",
+          "nationalId": 125,
+          "name": "Electabuzz",
+          "place": "Platinum · sinnoh-route-222",
+          "how": "Прямая встреча: walk, ур. 39–39. Перенос не нужен.  Доступ: После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+          "legacyId": "9-0",
+          "requirements": {
+            "access": "После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+            "minimumSection": "09"
+          }
+        },
+        {
+          "key": "species-404",
+          "nationalId": 404,
+          "name": "Luxio",
+          "place": "Platinum · sinnoh-route-222",
+          "how": "Прямая встреча: walk, ур. 38–38. Перенос не нужен.  Доступ: После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+          "requirements": {
+            "access": "После событий Distortion World открывается путь к Sunyshore; для воды Route 223 нужен Surf.",
+            "minimumSection": "09"
+          }
+        }
+      ],
+      "stage": 9
+    },
+    {
+      "title": "10 · Националка: легендарные и статичные",
+      "desc": "После получения National Dex разблокируются важные уникальные встречи. Птиц брать в HGSS, не здесь.",
+      "entries": [
+        {
+          "place": "Fight Area · северо-западный выход",
+          "name": "Super Rod и другая рыбалка",
+          "how": "После National Dex взять Super Rod в Fight Area, открыть postgame рыбалку.",
+          "kind": "story",
+          "id": "10-6",
+          "key": "10-6",
+          "legacyId": "10-6"
+        },
+        {
+          "key": "species-483",
+          "nationalId": 483,
+          "name": "Dialga",
+          "place": "Celestic Town → Mt. Coronet → Spear Pillar",
+          "how": "Поговорить с бабушкой Cynthia, подобрать Adamant Orb; открыть портал и поймать.",
+          "legacyId": "10-0"
+        },
+        {
+          "key": "species-484",
+          "nationalId": 484,
+          "name": "Palkia",
+          "place": "Celestic Town → Mt. Coronet → Spear Pillar",
+          "how": "Аналогично с Lustrous Orb, отдельный портал и поимка.",
+          "legacyId": "10-1"
+        },
+        {
+          "key": "species-488",
+          "nationalId": 488,
+          "name": "Cresselia",
+          "place": "Canalave City → Fullmoon Island",
+          "how": "Отправиться с моряком ради Lunar Wing, затем ловить роумера по карте.",
+          "legacyId": "10-2"
+        },
+        {
+          "key": "species-124",
+          "nationalId": 124,
+          "name": "Jynx",
+          "place": "Platinum · snowpoint-temple · b1f",
+          "how": "Прямая встреча: walk, ур. 47–47. Перенос не нужен.",
+          "legacyId": "14-45"
+        }
+      ],
+      "stage": 10
+    },
+    {
+      "title": "11 · Postgame: Victory Road, Route 224",
+      "desc": "Дополнительный выход из Victory Road и доступ в Battle Zone.",
+      "entries": [
+        {
+          "key": "species-43",
+          "nationalId": 43,
+          "name": "Oddish",
+          "place": "Route 224",
+          "how": "Трава; время суток влияет на встречу",
+          "legacyId": "11-2"
+        },
+        {
+          "key": "species-69",
+          "nationalId": 69,
+          "name": "Bellsprout",
+          "place": "Route 224",
+          "how": "Трава; время суток влияет на встречу",
+          "legacyId": "11-3"
+        },
+        {
+          "key": "species-131",
+          "nationalId": 131,
+          "name": "Lapras",
+          "place": "Victory Road, открытая позднее зона",
+          "how": "Пещера (Dewgong) и Surf (Lapras).",
+          "legacyId": "11-1"
+        },
+        {
+          "key": "species-177",
+          "nationalId": 177,
+          "name": "Natu",
+          "place": "Route 224",
+          "how": "Массовое появление, только по нужному дню.",
+          "legacyId": "11-4"
+        },
+        {
+          "key": "species-44",
+          "nationalId": 44,
+          "name": "Gloom",
+          "place": "Platinum · sinnoh-route-224",
+          "how": "Прямая встреча: walk, ур. 51–51. Перенос не нужен."
+        },
+        {
+          "key": "species-70",
+          "nationalId": 70,
+          "name": "Weepinbell",
+          "place": "Platinum · sinnoh-route-224",
+          "how": "Прямая встреча: walk, ур. 51–51. Перенос не нужен."
+        },
+        {
+          "key": "species-87",
+          "nationalId": 87,
+          "name": "Dewgong",
+          "place": "Platinum · sinnoh-victory-road · inside-b1f",
+          "how": "Прямая встреча: surf, ур. 35–55. Перенос не нужен.",
+          "legacyId": "11-0"
+        },
+        {
+          "key": "species-279",
+          "nationalId": 279,
+          "name": "Pelipper",
+          "place": "Platinum · sinnoh-route-224",
+          "how": "Прямая встреча: surf, ур. 35–55. Перенос не нужен."
+        }
+      ],
+      "stage": 11
+    },
+    {
+      "title": "12 · Battle Zone: Route 225 → Stark Mountain",
+      "desc": "Каждая новая территория: базовые семьи и нужные сюжетные разблокировки.",
+      "entries": [
+        {
+          "key": "species-19",
+          "nationalId": 19,
+          "name": "Rattata",
+          "place": "Route 225",
+          "how": "Трава (Banette чаще ночью)",
+          "legacyId": "12-1"
+        },
+        {
+          "key": "species-21",
+          "nationalId": 21,
+          "name": "Spearow",
+          "place": "Route 225",
+          "how": "Трава (Banette чаще ночью)",
+          "legacyId": "12-0"
+        },
+        {
+          "key": "species-56",
+          "nationalId": 56,
+          "name": "Mankey",
+          "place": "Route 225, Poké Radar",
+          "how": "Радар после National Dex.",
+          "legacyId": "12-3"
+        },
+        {
+          "key": "species-109",
+          "nationalId": 109,
+          "name": "Koffing",
+          "place": "Stark Mountain",
+          "how": "Пещера: вход Slugma, внутренние комнаты Koffing",
+          "legacyId": "12-10"
+        },
+        {
+          "key": "species-116",
+          "nationalId": 116,
+          "name": "Horsea",
+          "place": "Route 226, Good Rod",
+          "how": "Рыбалка",
+          "legacyId": "12-4"
+        },
+        {
+          "key": "species-218",
+          "nationalId": 218,
+          "name": "Slugma",
+          "place": "Stark Mountain",
+          "how": "Пещера: вход Slugma, внутренние комнаты Koffing",
+          "legacyId": "12-9"
+        },
+        {
+          "key": "species-227",
+          "nationalId": 227,
+          "name": "Skarmory",
+          "place": "Route 227",
+          "how": "Трава",
+          "legacyId": "12-7"
+        },
+        {
+          "key": "species-322",
+          "nationalId": 322,
+          "name": "Numel",
+          "place": "Route 227",
+          "how": "Трава",
+          "legacyId": "12-6"
+        },
+        {
+          "key": "species-324",
+          "nationalId": 324,
+          "name": "Torkoal",
+          "place": "Route 227, Poké Radar",
+          "how": "Радар",
+          "legacyId": "12-8"
+        },
+        {
+          "key": "species-369",
+          "nationalId": 369,
+          "name": "Relicanth",
+          "place": "Route 226, Super Rod",
+          "how": "Рыбалка; необязательно ловить его в Emerald, но для Реджи там он нужен.",
+          "legacyId": "12-5"
+        },
+        {
+          "key": "species-20",
+          "nationalId": 20,
+          "name": "Raticate",
+          "place": "Platinum · sinnoh-route-225",
+          "how": "Прямая встреча: walk, ур. 50–50. Перенос не нужен."
+        },
+        {
+          "key": "species-61",
+          "nationalId": 61,
+          "name": "Poliwhirl",
+          "place": "Platinum · sinnoh-route-227",
+          "how": "Прямая встреча: surf, ур. 35–55. Перенос не нужен."
+        },
+        {
+          "key": "species-67",
+          "nationalId": 67,
+          "name": "Machoke",
+          "place": "Platinum · sinnoh-route-225",
+          "how": "Прямая встреча: walk, ур. 48–48. Перенос не нужен."
+        },
+        {
+          "key": "species-354",
+          "nationalId": 354,
+          "name": "Banette",
+          "place": "Platinum · sinnoh-route-225",
+          "how": "Прямая встреча: walk, ур. 48–48. Условия: time-night. Перенос не нужен.",
+          "legacyId": "12-2"
+        },
+        {
+          "key": "species-22",
+          "nationalId": 22,
+          "name": "Fearow",
+          "place": "Platinum · stark-mountain",
+          "how": "Прямая встреча: walk, ур. 51–51. Условия: time-morning. Перенос не нужен.  Доступ: Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+          "requirements": {
+            "access": "Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+            "minimumSection": "12"
+          }
+        },
+        {
+          "key": "species-110",
+          "nationalId": 110,
+          "name": "Weezing",
+          "place": "Platinum · stark-mountain",
+          "how": "Прямая встреча: walk, ур. 52–52. Перенос не нужен.  Доступ: Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+          "requirements": {
+            "access": "Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+            "minimumSection": "12"
+          }
+        },
+        {
+          "key": "species-112",
+          "nationalId": 112,
+          "name": "Rhydon",
+          "place": "Platinum · stark-mountain",
+          "how": "Прямая встреча: walk, ур. 54–54. Перенос не нужен.  Доступ: Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+          "legacyId": "9-6",
+          "requirements": {
+            "access": "Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+            "minimumSection": "12"
+          }
+        },
+        {
+          "key": "species-219",
+          "nationalId": 219,
+          "name": "Magcargo",
+          "place": "Platinum · stark-mountain · entrance",
+          "how": "Прямая встреча: walk, ур. 54–54. Перенос не нужен.  Доступ: Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+          "requirements": {
+            "access": "Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+            "minimumSection": "12"
+          }
+        },
+        {
+          "key": "species-323",
+          "nationalId": 323,
+          "name": "Camerupt",
+          "place": "Platinum · stark-mountain",
+          "how": "Прямая встреча: walk, ур. 53–53. Перенос не нужен.  Доступ: Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+          "requirements": {
+            "access": "Постгейм: Лига и National Dex, доступ к Route 225–227 и Stark Mountain.",
+            "minimumSection": "12"
+          }
+        },
+        {
+          "key": "species-485",
+          "nationalId": 485,
+          "name": "Heatran",
+          "place": "Stark Mountain · последняя комната",
+          "how": "После событий с Buck и Team Galactic вернись в последнюю комнату Stark Mountain. Подойди к Heatran и начни бой.",
+          "legacyId": "10-3"
+        }
+      ],
+      "stage": 12
+    },
+    {
+      "title": "13 · Battle Zone: Route 228 → 230",
+      "desc": "Включая редкие Surf и дневные события. Гонки за свармами оставим необязательными.",
+      "entries": [
+        {
+          "key": "species-16",
+          "nationalId": 16,
+          "name": "Pidgey",
+          "place": "Route 229",
+          "how": "Трава",
+          "legacyId": "13-4"
+        },
+        {
+          "key": "species-48",
+          "nationalId": 48,
+          "name": "Venonat",
+          "place": "Route 229, Poké Radar",
+          "how": "Радар",
+          "legacyId": "13-8"
+        },
+        {
+          "key": "species-50",
+          "nationalId": 50,
+          "name": "Diglett",
+          "place": "Route 228",
+          "how": "Трава в песчаной буре",
+          "legacyId": "13-2"
+        },
+        {
+          "key": "species-60",
+          "nationalId": 60,
+          "name": "Poliwag",
+          "place": "Route 228, Surf",
+          "how": "Вода",
+          "legacyId": "13-3"
+        },
+        {
+          "key": "species-222",
+          "nationalId": 222,
+          "name": "Corsola",
+          "place": "Route 230, swarm",
+          "how": "Массовое появление, по дню.",
+          "legacyId": "13-10"
+        },
+        {
+          "key": "species-283",
+          "nationalId": 283,
+          "name": "Surskit",
+          "place": "Route 229, Surf",
+          "how": "Водная встреча",
+          "legacyId": "13-7"
+        },
+        {
+          "key": "species-313",
+          "nationalId": 313,
+          "name": "Volbeat",
+          "place": "Route 229",
+          "how": "Трава",
+          "legacyId": "13-5"
+        },
+        {
+          "key": "species-314",
+          "nationalId": 314,
+          "name": "Illumise",
+          "place": "Route 229",
+          "how": "Трава",
+          "legacyId": "13-6"
+        },
+        {
+          "key": "species-331",
+          "nationalId": 331,
+          "name": "Cacnea",
+          "place": "Route 228",
+          "how": "Трава в песчаной буре",
+          "legacyId": "13-1"
+        },
+        {
+          "key": "species-51",
+          "nationalId": 51,
+          "name": "Dugtrio",
+          "place": "Platinum · sinnoh-route-228",
+          "how": "Прямая встреча: walk, ур. 51–51. Перенос не нужен."
+        },
+        {
+          "key": "species-166",
+          "nationalId": 166,
+          "name": "Ledian",
+          "place": "Platinum · sinnoh-route-229",
+          "how": "Прямая встреча: walk, ур. 50–50. Условия: time-morning. Перенос не нужен."
+        },
+        {
+          "key": "species-168",
+          "nationalId": 168,
+          "name": "Ariados",
+          "place": "Platinum · sinnoh-route-229",
+          "how": "Прямая встреча: walk, ур. 50–50. Условия: time-night. Перенос не нужен."
+        },
+        {
+          "key": "species-284",
+          "nationalId": 284,
+          "name": "Masquerain",
+          "place": "Platinum · sinnoh-route-229",
+          "how": "Прямая встреча: surf, ур. 35–55. Перенос не нужен."
+        },
+        {
+          "key": "species-332",
+          "nationalId": 332,
+          "name": "Cacturne",
+          "place": "Platinum · sinnoh-route-228",
+          "how": "Прямая встреча: walk, ур. 52–52. Перенос не нужен."
+        },
+        {
+          "key": "species-364",
+          "nationalId": 364,
+          "name": "Sealeo",
+          "place": "Platinum · sinnoh-sea-route-230",
+          "how": "Прямая встреча: surf, ур. 35–55. Перенос не нужен.",
+          "legacyId": "13-9"
+        },
+        {
+          "key": "species-450",
+          "nationalId": 450,
+          "name": "Hippowdon",
+          "place": "Platinum · sinnoh-route-228",
+          "how": "Прямая встреча: walk, ур. 50–50. Условия: time-morning. Перенос не нужен.",
+          "legacyId": "13-0"
+        }
+      ],
+      "stage": 13
+    },
+    {
+      "title": "14 · Возврат по Синно после National Dex",
+      "desc": "Poké Radar, Super Rod, окаменелости и постсюжетные виды там, где уже бывали.",
+      "entries": [
+        {
+          "key": "species-29",
+          "nationalId": 29,
+          "name": "Nidoran♀",
+          "place": "Route 201, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-0"
+        },
+        {
+          "key": "species-32",
+          "nationalId": 32,
+          "name": "Nidoran♂",
+          "place": "Route 201, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-1"
+        },
+        {
+          "key": "species-46",
+          "nationalId": 46,
+          "name": "Paras",
+          "place": "Great Marsh, ежедневные после NatDex",
+          "how": "Особые дневные появления, искать через бинокль.",
+          "legacyId": "14-31"
+        },
+        {
+          "key": "species-52",
+          "nationalId": 52,
+          "name": "Meowth",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-37"
+        },
+        {
+          "key": "species-79",
+          "nationalId": 79,
+          "name": "Slowpoke",
+          "place": "Route 205, Poké Radar",
+          "how": "Южная часть: Hoppip; северная: Slowpoke",
+          "legacyId": "14-5"
+        },
+        {
+          "key": "species-88",
+          "nationalId": 88,
+          "name": "Grimer",
+          "place": "Route 212 South, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-16"
+        },
+        {
+          "key": "species-90",
+          "nationalId": 90,
+          "name": "Shellder",
+          "place": "Route 205 South, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-6"
+        },
+        {
+          "key": "species-102",
+          "nationalId": 102,
+          "name": "Exeggcute",
+          "place": "Great Marsh, ежедневные после NatDex",
+          "how": "Особые дневные появления, искать через бинокль.",
+          "legacyId": "14-29"
+        },
+        {
+          "key": "species-115",
+          "nationalId": 115,
+          "name": "Kangaskhan",
+          "place": "Great Marsh, ежедневные после NatDex",
+          "how": "Особые дневные появления, искать через бинокль.",
+          "legacyId": "14-32"
+        },
+        {
+          "key": "species-120",
+          "nationalId": 120,
+          "name": "Staryu",
+          "place": "Canalave City, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-24"
+        },
+        {
+          "key": "species-128",
+          "nationalId": 128,
+          "name": "Tauros",
+          "place": "Route 210 South, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-14"
+        },
+        {
+          "key": "species-132",
+          "nationalId": 132,
+          "name": "Ditto",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-35"
+        },
+        {
+          "key": "species-147",
+          "nationalId": 147,
+          "name": "Dratini",
+          "place": "Mt. Coronet 4F, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-21"
+        },
+        {
+          "key": "species-161",
+          "nationalId": 161,
+          "name": "Sentret",
+          "place": "Route 202, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-2"
+        },
+        {
+          "key": "species-170",
+          "nationalId": 170,
+          "name": "Chinchou",
+          "place": "Route 220, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-23"
+        },
+        {
+          "key": "species-174",
+          "nationalId": 174,
+          "name": "Igglybuff",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-36"
+        },
+        {
+          "key": "species-179",
+          "nationalId": 179,
+          "name": "Mareep",
+          "place": "Valley Windworks, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-7"
+        },
+        {
+          "key": "species-187",
+          "nationalId": 187,
+          "name": "Hoppip",
+          "place": "Route 205, Poké Radar",
+          "how": "Южная часть: Hoppip; северная: Slowpoke",
+          "legacyId": "14-4"
+        },
+        {
+          "key": "species-191",
+          "nationalId": 191,
+          "name": "Sunkern",
+          "place": "Route 204 North, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-3"
+        },
+        {
+          "key": "species-211",
+          "nationalId": 211,
+          "name": "Qwilfish",
+          "place": "Iron Island, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-25"
+        },
+        {
+          "key": "species-234",
+          "nationalId": 234,
+          "name": "Stantler",
+          "place": "Route 207, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-10"
+        },
+        {
+          "key": "species-235",
+          "nationalId": 235,
+          "name": "Smeargle",
+          "place": "Route 208, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-11"
+        },
+        {
+          "key": "species-236",
+          "nationalId": 236,
+          "name": "Tyrogue",
+          "place": "Route 211 West, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-12"
+        },
+        {
+          "key": "species-238",
+          "nationalId": 238,
+          "name": "Smoochum",
+          "place": "Snowpoint Temple",
+          "how": "Дикие встречи в храме; нужен NatDex.",
+          "legacyId": "14-44"
+        },
+        {
+          "key": "species-241",
+          "nationalId": 241,
+          "name": "Miltank",
+          "place": "Route 210 South, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-15"
+        },
+        {
+          "key": "species-261",
+          "nationalId": 261,
+          "name": "Poochyena",
+          "place": "Route 214, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-18"
+        },
+        {
+          "key": "species-285",
+          "nationalId": 285,
+          "name": "Shroomish",
+          "place": "Great Marsh, ежедневные после NatDex",
+          "how": "Особые дневные появления, искать через бинокль.",
+          "legacyId": "14-30"
+        },
+        {
+          "key": "species-290",
+          "nationalId": 290,
+          "name": "Nincada",
+          "place": "Eterna Forest, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-8"
+        },
+        {
+          "key": "species-304",
+          "nationalId": 304,
+          "name": "Aron",
+          "place": "Fuego Ironworks, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-19"
+        },
+        {
+          "key": "species-311",
+          "nationalId": 311,
+          "name": "Plusle",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-39"
+        },
+        {
+          "key": "species-312",
+          "nationalId": 312,
+          "name": "Minun",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-40"
+        },
+        {
+          "key": "species-316",
+          "nationalId": 316,
+          "name": "Gulpin",
+          "place": "Great Marsh, ежедневные после NatDex",
+          "how": "Особые дневные появления, искать через бинокль.",
+          "legacyId": "14-33"
+        },
+        {
+          "key": "species-318",
+          "nationalId": 318,
+          "name": "Carvanha",
+          "place": "Great Marsh, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-28"
+        },
+        {
+          "key": "species-320",
+          "nationalId": 320,
+          "name": "Wailmer",
+          "place": "Route 223, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-26"
+        },
+        {
+          "key": "species-341",
+          "nationalId": 341,
+          "name": "Corphish",
+          "place": "Celestic Town, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-22"
+        },
+        {
+          "key": "species-343",
+          "nationalId": 343,
+          "name": "Baltoy",
+          "place": "Route 206, Poké Radar",
+          "how": "Радар",
+          "legacyId": "14-9"
+        },
+        {
+          "key": "species-351",
+          "nationalId": 351,
+          "name": "Castform",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-41"
+        },
+        {
+          "key": "species-370",
+          "nationalId": 370,
+          "name": "Luvdisc",
+          "place": "Pokémon League, Super Rod",
+          "how": "Рыбалка",
+          "legacyId": "14-27"
+        },
+        {
+          "key": "species-371",
+          "nationalId": 371,
+          "name": "Bagon",
+          "place": "Route 210 North, Poké Radar",
+          "how": "Радар; до этого нужен был Emerald/HGSS, теперь можно здесь",
+          "legacyId": "14-13"
+        },
+        {
+          "key": "species-438",
+          "nationalId": 438,
+          "name": "Bonsly",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-42"
+        },
+        {
+          "key": "species-439",
+          "nationalId": 439,
+          "name": "Mime Jr.",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-43"
+        },
+        {
+          "key": "species-440",
+          "nationalId": 440,
+          "name": "Happiny",
+          "place": "Trophy Garden, ежедневный рассказ Backlot",
+          "how": "Поговорить с владельцем особняка, два дополнительных вида сохраняются в ротации.",
+          "legacyId": "14-38"
+        },
+        {
+          "key": "species-55",
+          "nationalId": 55,
+          "name": "Golduck",
+          "place": "Platinum · sendoff-spring",
+          "how": "Прямая встреча: surf, ур. 20–40. Перенос не нужен."
+        },
+        {
+          "key": "species-119",
+          "nationalId": 119,
+          "name": "Seaking",
+          "place": "Platinum · sendoff-spring",
+          "how": "Прямая встреча: super-rod, ур. 30–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "legacyId": "7-0",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-224",
+          "nationalId": 224,
+          "name": "Octillery",
+          "place": "Platinum · pastoria-city",
+          "how": "Прямая встреча: super-rod, ур. 30–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "legacyId": "9-3",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-321",
+          "nationalId": 321,
+          "name": "Wailord",
+          "place": "Platinum · sinnoh-sea-route-223",
+          "how": "Прямая встреча: super-rod, ур. 40–55. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-356",
+          "nationalId": 356,
+          "name": "Dusclops",
+          "place": "Platinum · sendoff-spring",
+          "how": "Прямая встреча: walk, ур. 39–39. Условия: time-night. Перенос не нужен."
+        },
+        {
+          "key": "species-148",
+          "nationalId": 148,
+          "name": "Dragonair",
+          "place": "Platinum · mt-coronet · 4f",
+          "how": "Прямая встреча: super-rod, ур. 20–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-340",
+          "nationalId": 340,
+          "name": "Whiscash",
+          "place": "Platinum · eterna-city",
+          "how": "Прямая встреча: super-rod, ур. 30–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-298",
+          "nationalId": 298,
+          "name": "Azurill",
+          "place": "Platinum · trophy-garden",
+          "how": "Прямая встреча: walk, ур. 22–22. Условия: story-progress-national-dex, backlot-mentioned. Перенос не нужен.  Доступ: Только после National Dex; для Trophy Garden нужен вид, объявленный Backlot, а не обычный постоянный энкаунтер.",
+          "requirements": {
+            "access": "Только после National Dex; для Trophy Garden нужен вид, объявленный Backlot, а не обычный постоянный энкаунтер.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-113",
+          "nationalId": 113,
+          "name": "Chansey",
+          "place": "Platinum · trophy-garden",
+          "how": "Прямая встреча: walk, ур. 22–22. Условия: story-progress-national-dex, backlot-mentioned. Перенос не нужен.  Доступ: Только после National Dex; для Trophy Garden нужен вид, объявленный Backlot, а не обычный постоянный энкаунтер.",
+          "legacyId": "4-0",
+          "requirements": {
+            "access": "Только после National Dex; для Trophy Garden нужен вид, объявленный Backlot, а не обычный постоянный энкаунтер.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-342",
+          "nationalId": 342,
+          "name": "Crawdaunt",
+          "place": "Platinum · celestic-town",
+          "how": "Прямая встреча: super-rod, ур. 40–55. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-130",
+          "nationalId": 130,
+          "name": "Gyarados",
+          "place": "Platinum · canalave-city",
+          "how": "Прямая встреча: super-rod, ур. 30–55. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-457",
+          "nationalId": 457,
+          "name": "Lumineon",
+          "place": "Platinum · canalave-city",
+          "how": "Прямая встреча: super-rod, ур. 30–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "legacyId": "4-6",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-117",
+          "nationalId": 117,
+          "name": "Seadra",
+          "place": "Platinum · sinnoh-sea-route-226",
+          "how": "Прямая встреча: super-rod, ур. 30–40. Перенос не нужен.  Доступ: Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+          "requirements": {
+            "access": "Только постгейм: Super Rod у рыбака в Fight Area после Лиги и National Dex.",
+            "minimumSection": "14"
+          }
+        },
+        {
+          "key": "species-239",
+          "nationalId": 239,
+          "name": "Elekid",
+          "place": "Platinum · Solaceon Day Care",
+          "how": "Оставь Electabuzz и Ditto у воспитателей. Забери и вылупи яйцо. Для самки подойдёт также совместимый самец."
+        },
+        {
+          "key": "species-240",
+          "nationalId": 240,
+          "name": "Magby",
+          "place": "Platinum · Solaceon Day Care",
+          "how": "Оставь Magmar и Ditto у воспитателей. Забери и вылупи яйцо. Для самки подойдёт также совместимый самец."
+        },
+        {
+          "key": "species-144",
+          "nationalId": 144,
+          "name": "Articuno",
+          "place": "Platinum · Pal Park → Eterna City → Sinnoh",
+          "how": "После National Dex встреть Oak в Pal Park. Поговори с ним в доме в Eterna City, чтобы выпустить трёх птиц. Ищи значки на Marking Map в Pokétch. Каждая птица — отдельная встреча."
+        },
+        {
+          "key": "species-145",
+          "nationalId": 145,
+          "name": "Zapdos",
+          "place": "Platinum · Pal Park → Eterna City → Sinnoh",
+          "how": "После National Dex встреть Oak в Pal Park. Поговори с ним в доме в Eterna City, чтобы выпустить трёх птиц. Ищи значки на Marking Map в Pokétch. Каждая птица — отдельная встреча."
+        },
+        {
+          "key": "species-146",
+          "nationalId": 146,
+          "name": "Moltres",
+          "place": "Platinum · Pal Park → Eterna City → Sinnoh",
+          "how": "После National Dex встреть Oak в Pal Park. Поговори с ним в доме в Eterna City, чтобы выпустить трёх птиц. Ищи значки на Marking Map в Pokétch. Каждая птица — отдельная встреча."
+        },
+        {
+          "key": "species-138",
+          "nationalId": 138,
+          "name": "Omanyte",
+          "place": "Platinum · Underground → Oreburgh Mining Museum",
+          "how": "После National Dex выкопай Helix Fossil в Underground и отдай учёному у стойки в музее Oreburgh. Выйди, вернись со свободным местом и получи покемона.",
+          "legacyId": "14-46"
+        },
+        {
+          "key": "species-140",
+          "nationalId": 140,
+          "name": "Kabuto",
+          "place": "Platinum · Underground → Oreburgh Mining Museum",
+          "how": "После National Dex выкопай Dome Fossil в Underground и отдай учёному у стойки в музее Oreburgh. Выйди, вернись со свободным местом и получи покемона.",
+          "legacyId": "14-47"
+        },
+        {
+          "key": "species-142",
+          "nationalId": 142,
+          "name": "Aerodactyl",
+          "place": "Platinum · Underground → Oreburgh Mining Museum",
+          "how": "После National Dex выкопай Old Amber в Underground и отдай учёному у стойки в музее Oreburgh. Выйди, вернись со свободным местом и получи покемона.",
+          "legacyId": "14-48"
+        },
+        {
+          "key": "species-345",
+          "nationalId": 345,
+          "name": "Lileep",
+          "place": "Platinum · Underground → Oreburgh Mining Museum",
+          "how": "После National Dex выкопай Root Fossil в Underground и отдай учёному у стойки в музее Oreburgh. Выйди, вернись со свободным местом и получи покемона.",
+          "legacyId": "14-49"
+        },
+        {
+          "key": "species-347",
+          "nationalId": 347,
+          "name": "Anorith",
+          "place": "Platinum · Underground → Oreburgh Mining Museum",
+          "how": "После National Dex выкопай Claw Fossil в Underground и отдай учёному у стойки в музее Oreburgh. Выйди, вернись со свободным местом и получи покемона.",
+          "legacyId": "14-50"
+        }
+      ],
+      "stage": 14
+    },
+    {
+      "title": "15 · Свармы: необязательная охота на редкости",
+      "desc": "Каждый день только один swarm, узнавать у сестры Dawn/Lucas в Sandgem. Можно вместо ожидания взять виды из Emerald/HGSS.",
+      "entries": [
+        {
+          "key": "species-83",
+          "nationalId": 83,
+          "name": "Farfetch’d",
+          "place": "Route 221",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-11"
+        },
+        {
+          "key": "species-84",
+          "nationalId": 84,
+          "name": "Doduo",
+          "place": "Route 201",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-0"
+        },
+        {
+          "key": "species-96",
+          "nationalId": 96,
+          "name": "Drowzee",
+          "place": "Route 215",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-8"
+        },
+        {
+          "key": "species-98",
+          "nationalId": 98,
+          "name": "Krabby",
+          "place": "Route 226",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-15"
+        },
+        {
+          "key": "species-100",
+          "nationalId": 100,
+          "name": "Voltorb",
+          "place": "Route 218",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-10"
+        },
+        {
+          "key": "species-104",
+          "nationalId": 104,
+          "name": "Cubone",
+          "place": "Route 203",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-2"
+        },
+        {
+          "key": "species-127",
+          "nationalId": 127,
+          "name": "Pinsir",
+          "place": "Route 229",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-18"
+        },
+        {
+          "key": "species-206",
+          "nationalId": 206,
+          "name": "Dunsparce",
+          "place": "Route 208",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-5"
+        },
+        {
+          "key": "species-209",
+          "nationalId": 209,
+          "name": "Snubbull",
+          "place": "Route 209",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-6"
+        },
+        {
+          "key": "species-225",
+          "nationalId": 225,
+          "name": "Delibird",
+          "place": "Route 217",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-9"
+        },
+        {
+          "key": "species-231",
+          "nationalId": 231,
+          "name": "Phanpy",
+          "place": "Route 207",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-4"
+        },
+        {
+          "key": "species-246",
+          "nationalId": 246,
+          "name": "Larvitar",
+          "place": "Route 206",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-3"
+        },
+        {
+          "key": "species-263",
+          "nationalId": 263,
+          "name": "Zigzagoon",
+          "place": "Route 202",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-1"
+        },
+        {
+          "key": "species-287",
+          "nationalId": 287,
+          "name": "Slakoth",
+          "place": "Eterna Forest",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-21"
+        },
+        {
+          "key": "species-296",
+          "nationalId": 296,
+          "name": "Makuhita",
+          "place": "Route 225",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-14"
+        },
+        {
+          "key": "species-300",
+          "nationalId": 300,
+          "name": "Skitty",
+          "place": "Route 222",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-12"
+        },
+        {
+          "key": "species-309",
+          "nationalId": 309,
+          "name": "Electrike",
+          "place": "Valley Windworks",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-20"
+        },
+        {
+          "key": "species-325",
+          "nationalId": 325,
+          "name": "Spoink",
+          "place": "Route 214",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-7"
+        },
+        {
+          "key": "species-327",
+          "nationalId": 327,
+          "name": "Spinda",
+          "place": "Route 227",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-16"
+        },
+        {
+          "key": "species-374",
+          "nationalId": 374,
+          "name": "Beldum",
+          "place": "Route 228",
+          "how": "Daily swarm: только при соответствующем сообщении сестры Dawn/Lucas; иначе получим от донора.",
+          "legacyId": "15-17"
+        }
+      ],
+      "stage": 15
+    },
+    {
+      "title": "16.A · Emerald",
+      "desc": "Получение в Hoenn → Pal Park в Platinum.",
+      "entries": [
+        {
+          "key": "species-270",
+          "nationalId": 270,
+          "name": "Lotad",
+          "place": "Emerald · hoenn-route-114",
+          "how": "Прямая встреча: walk, ур. 16–16. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-293",
+          "nationalId": 293,
+          "name": "Whismur",
+          "place": "Emerald · hoenn-route-116",
+          "how": "Прямая встреча: walk, ур. 6–6. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-302",
+          "nationalId": 302,
+          "name": "Sableye",
+          "place": "Emerald · hoenn-victory-road · b2f",
+          "how": "Прямая встреча: walk, ур. 40–40. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-303",
+          "nationalId": 303,
+          "name": "Mawile",
+          "place": "Emerald · hoenn-victory-road · b1f",
+          "how": "Прямая встреча: walk, ур. 38–38. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-328",
+          "nationalId": 328,
+          "name": "Trapinch",
+          "place": "Emerald · hoenn-route-111",
+          "how": "Прямая встреча: walk, ур. 20–20. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-336",
+          "nationalId": 336,
+          "name": "Seviper",
+          "place": "Emerald · hoenn-route-114",
+          "how": "Прямая встреча: walk, ур. 17–17. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-338",
+          "nationalId": 338,
+          "name": "Solrock",
+          "place": "Emerald · meteor-falls · backsmall-room",
+          "how": "Прямая встреча: walk, ур. 35–35. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-353",
+          "nationalId": 353,
+          "name": "Shuppet",
+          "place": "Emerald · mt-pyre · 1f",
+          "how": "Прямая встреча: walk, ур. 27–27. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-262",
+          "nationalId": 262,
+          "name": "Mightyena",
+          "place": "Emerald · hoenn-route-120",
+          "how": "Прямая встреча: walk, ур. 25–25. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-264",
+          "nationalId": 264,
+          "name": "Linoone",
+          "place": "Emerald · hoenn-route-119",
+          "how": "Прямая встреча: walk, ур. 25–25. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-271",
+          "nationalId": 271,
+          "name": "Lombre",
+          "place": "Emerald · hoenn-route-114",
+          "how": "Прямая встреча: walk, ур. 16–16. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-274",
+          "nationalId": 274,
+          "name": "Nuzleaf",
+          "place": "Emerald · hoenn-route-114",
+          "how": "Прямая встреча: walk, ур. 15–15. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-277",
+          "nationalId": 277,
+          "name": "Swellow",
+          "place": "Emerald · hoenn-route-115",
+          "how": "Прямая встреча: walk, ур. 25–25. Перенос: Pal Park → Platinum.",
+          "legacyId": "14-17"
+        },
+        {
+          "key": "species-294",
+          "nationalId": 294,
+          "name": "Loudred",
+          "place": "Emerald · hoenn-victory-road · 1f",
+          "how": "Прямая встреча: walk, ур. 40–40. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-297",
+          "nationalId": 297,
+          "name": "Hariyama",
+          "place": "Emerald · hoenn-victory-road · 1f",
+          "how": "Прямая встреча: walk, ур. 40–40. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-305",
+          "nationalId": 305,
+          "name": "Lairon",
+          "place": "Emerald · hoenn-victory-road · 1f",
+          "how": "Прямая встреча: walk, ур. 40–40. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-310",
+          "nationalId": 310,
+          "name": "Manectric",
+          "place": "Emerald · hoenn-route-118",
+          "how": "Прямая встреча: walk, ур. 26–26. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-334",
+          "nationalId": 334,
+          "name": "Altaria",
+          "place": "Emerald · sky-pillar · 5f",
+          "how": "Прямая встреча: walk, ур. 38–38. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-344",
+          "nationalId": 344,
+          "name": "Claydol",
+          "place": "Emerald · sky-pillar · 1f",
+          "how": "Прямая встреча: walk, ур. 36–36. Перенос: Pal Park → Platinum."
+        },
+        {
+          "key": "species-252",
+          "nationalId": 252,
+          "name": "Treecko",
+          "place": "Emerald · Route 101",
+          "how": "Выбери Treecko в сумке Birch на Route 101. Одна линия на сохранение. Два остальных стартера возьми в отдельных коротких прохождениях и положи в PC с пятью другими покемонами для Pal Park. Дополнительный вариант после Red — подарок Steven в HG/SS, один из трёх."
+        },
+        {
+          "key": "species-255",
+          "nationalId": 255,
+          "name": "Torchic",
+          "place": "Emerald · Route 101",
+          "how": "Выбери Torchic в сумке Birch на Route 101. Одна линия на сохранение. Два остальных стартера возьми в отдельных коротких прохождениях и положи в PC с пятью другими покемонами для Pal Park. Дополнительный вариант после Red — подарок Steven в HG/SS, один из трёх."
+        },
+        {
+          "key": "species-258",
+          "nationalId": 258,
+          "name": "Mudkip",
+          "place": "Emerald · Route 101",
+          "how": "Выбери Mudkip в сумке Birch на Route 101. Одна линия на сохранение. Два остальных стартера возьми в отдельных коротких прохождениях и положи в PC с пятью другими покемонами для Pal Park. Дополнительный вариант после Red — подарок Steven в HG/SS, один из трёх."
+        },
+        {
+          "key": "species-360",
+          "nationalId": 360,
+          "name": "Wynaut",
+          "place": "Emerald · Lavaridge Town",
+          "how": "Женщина у горячих источников даст яйцо Wynaut один раз при свободном месте в команде. Вылупи его и перенеси через Pal Park."
+        },
+        {
+          "key": "species-382",
+          "nationalId": 382,
+          "name": "Kyogre",
+          "place": "Emerald · Weather Institute → Marine Cave",
+          "how": "После Лиги спроси учёного на верхнем этаже Weather Institute об аномальном ливне. На названном морском маршруте используй Dive и войди в Marine Cave. Поймай Kyogre и перенеси через Pal Park."
+        },
+        {
+          "key": "species-383",
+          "nationalId": 383,
+          "name": "Groudon",
+          "place": "Emerald · Weather Institute → Terra Cave",
+          "how": "После Лиги узнай у метеоролога Weather Institute маршрут с аномальной жарой. Найди временный вход в Terra Cave. Если погода сменилась, уточни маршрут ещё раз. Поймай Groudon и перенеси через Pal Park."
+        },
+        {
+          "key": "species-384",
+          "nationalId": 384,
+          "name": "Rayquaza",
+          "place": "Emerald · Sky Pillar",
+          "how": "После того как Rayquaza остановит битву в Sootopolis, вернись на Sky Pillar с Mach Bike. Пройди разрушающийся пол и поймай Rayquaza на крыше. Перенеси через Pal Park."
+        },
+        {
+          "key": "species-377",
+          "nationalId": 377,
+          "name": "Regirock",
+          "place": "Emerald · Desert Ruins · Route 111",
+          "how": "В Sealed Chamber на Route 134 используй Dive у надписи, затем Dig у дальней стены. Во второй комнате прочти надпись с Wailord первым и Relicanth последним в команде. У надписи сделай два шага влево и два вниз, используй Rock Smash. Поймай титана и перенеси через Pal Park. Сохрани его для встречи с Regigigas."
+        },
+        {
+          "key": "species-378",
+          "nationalId": 378,
+          "name": "Regice",
+          "place": "Emerald · Island Cave · Route 105",
+          "how": "В Sealed Chamber на Route 134 используй Dive у надписи, затем Dig у дальней стены. Во второй комнате прочти надпись с Wailord первым и Relicanth последним в команде. Прочитай надпись и обойди зал по часовой стрелке вдоль стен. Поймай титана и перенеси через Pal Park. Сохрани его для встречи с Regigigas."
+        },
+        {
+          "key": "species-379",
+          "nationalId": 379,
+          "name": "Registeel",
+          "place": "Emerald · Ancient Tomb · Route 120",
+          "how": "В Sealed Chamber на Route 134 используй Dive у надписи, затем Dig у дальней стены. Во второй комнате прочти надпись с Wailord первым и Relicanth последним в команде. Прочитай надпись и используй Flash в центре комнаты. Поймай титана и перенеси через Pal Park. Сохрани его для встречи с Regigigas."
+        },
+        {
+          "key": "species-352",
+          "nationalId": 352,
+          "name": "Kecleon",
+          "place": "Emerald · Route 120",
+          "how": "Встреть Steven на мосту. Его Devon Scope обнаружит невидимого Kecleon. Поймай во время боя и перенеси через Pal Park.",
+          "legacyId": "14-34"
+        }
+      ],
+      "stage": 16
+    },
+    {
+      "title": "16.B · HeartGold",
+      "desc": "Получение в HeartGold → DS-обмен в Platinum.",
+      "entries": [
+        {
+          "key": "species-10",
+          "nationalId": 10,
+          "name": "Caterpie",
+          "place": "HeartGold · Route 30 → DS-обмен в Platinum",
+          "how": "Обычная трава утром или днём; ночью не искать. Доступно в начале игры после получения Poké Balls. В Pal Park-шестёрку FireRed не включать."
+        },
+        {
+          "key": "species-27",
+          "nationalId": 27,
+          "name": "Sandshrew",
+          "place": "HeartGold · union-cave · 1f",
+          "how": "Прямая встреча: walk, ур. 6–6. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-58",
+          "nationalId": 58,
+          "name": "Growlithe",
+          "place": "HeartGold · johto-route-48",
+          "how": "Прямая встреча: walk, ур. 25–25. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-86",
+          "nationalId": 86,
+          "name": "Seel",
+          "place": "HeartGold · seafoam-islands · b4f",
+          "how": "Прямая встреча: surf, ур. 30–40. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-167",
+          "nationalId": 167,
+          "name": "Spinarak",
+          "place": "HeartGold · johto-route-30",
+          "how": "Прямая встреча: walk, ур. 2–2. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-198",
+          "nationalId": 198,
+          "name": "Murkrow",
+          "place": "HeartGold · kanto-route-7",
+          "how": "Прямая встреча: walk, ур. 17–17. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-200",
+          "nationalId": 200,
+          "name": "Misdreavus",
+          "place": "HeartGold · mt-silver · 3f",
+          "how": "Прямая встреча: walk, ур. 45–45. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-204",
+          "nationalId": 204,
+          "name": "Pineco",
+          "place": "HeartGold · kanto-route-1",
+          "how": "Прямая встреча: headbutt, ур. 2–3. Условия: headbutt-tree-common. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-213",
+          "nationalId": 213,
+          "name": "Shuckle",
+          "place": "HeartGold · cianwood-city",
+          "how": "Прямая встреча: rock-smash, ур. 23–28. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-273",
+          "nationalId": 273,
+          "name": "Seedot",
+          "place": "HeartGold · viridian-forest",
+          "how": "Прямая встреча: headbutt, ур. 3–4. Условия: headbutt-tree-common. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-276",
+          "nationalId": 276,
+          "name": "Taillow",
+          "place": "HeartGold · cherrygrove-city",
+          "how": "Прямая встреча: headbutt, ур. 18–20. Условия: headbutt-tree-secret. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-380",
+          "nationalId": 380,
+          "name": "Latias",
+          "place": "HeartGold · roaming-johto · area",
+          "how": "Прямая встреча: roaming-grass, ур. 35–35. Условия: story-progress-vermilion-copycat. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-11",
+          "nationalId": 11,
+          "name": "Metapod",
+          "place": "HeartGold · johto-route-47",
+          "how": "Прямая встреча: headbutt, ур. 25–28. Условия: headbutt-tree-secret. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-12",
+          "nationalId": 12,
+          "name": "Butterfree",
+          "place": "HeartGold · johto-route-47",
+          "how": "Прямая встреча: headbutt, ур. 25–28. Условия: headbutt-tree-secret. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-14",
+          "nationalId": 14,
+          "name": "Kakuna",
+          "place": "HeartGold · national-park",
+          "how": "Прямая встреча: walk, ур. 9–18. Условия: bug-catching-contest-yes, story-progress-before-national-dex. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-15",
+          "nationalId": 15,
+          "name": "Beedrill",
+          "place": "HeartGold · national-park",
+          "how": "Прямая встреча: walk, ур. 12–15. Условия: bug-catching-contest-yes, story-progress-before-national-dex. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-17",
+          "nationalId": 17,
+          "name": "Pidgeotto",
+          "place": "HeartGold · kanto-route-8",
+          "how": "Прямая встреча: walk, ур. 17–17. Условия: time-morning. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-28",
+          "nationalId": 28,
+          "name": "Sandslash",
+          "place": "HeartGold · kanto-route-26",
+          "how": "Прямая встреча: walk, ур. 28–28. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-30",
+          "nationalId": 30,
+          "name": "Nidorina",
+          "place": "HeartGold · kanto-route-13",
+          "how": "Прямая встреча: walk, ур. 23–23. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-33",
+          "nationalId": 33,
+          "name": "Nidorino",
+          "place": "HeartGold · kanto-route-13",
+          "how": "Прямая встреча: walk, ур. 23–23. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-47",
+          "nationalId": 47,
+          "name": "Parasect",
+          "place": "HeartGold · cerulean-cave · 1f",
+          "how": "Прямая встреча: walk, ур. 38–38. Условия: time-morning. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-49",
+          "nationalId": 49,
+          "name": "Venomoth",
+          "place": "HeartGold · kanto-route-24",
+          "how": "Прямая встреча: walk, ур. 14–14. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-57",
+          "nationalId": 57,
+          "name": "Primeape",
+          "place": "HeartGold · kanto-route-9",
+          "how": "Прямая встреча: walk, ур. 15–15. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-78",
+          "nationalId": 78,
+          "name": "Rapidash",
+          "place": "HeartGold · mt-silver · outside",
+          "how": "Прямая встреча: walk, ур. 44–44. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-80",
+          "nationalId": 80,
+          "name": "Slowbro",
+          "place": "HeartGold · slowpoke-well · b1f",
+          "how": "Прямая встреча: surf, ур. 15–25. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-85",
+          "nationalId": 85,
+          "name": "Dodrio",
+          "place": "HeartGold · blackthorn-city",
+          "how": "Прямая встреча: npc-trade, ур. 30–100. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-89",
+          "nationalId": 89,
+          "name": "Muk",
+          "place": "HeartGold · celadon-city",
+          "how": "Прямая встреча: surf, ур. 15–15. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-97",
+          "nationalId": 97,
+          "name": "Hypno",
+          "place": "HeartGold · kanto-route-11",
+          "how": "Прямая встреча: walk, ур. 16–16. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-99",
+          "nationalId": 99,
+          "name": "Kingler",
+          "place": "HeartGold · kanto-sea-route-19",
+          "how": "Прямая встреча: rock-smash, ур. 28–31. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-101",
+          "nationalId": 101,
+          "name": "Electrode",
+          "place": "HeartGold · team-rocket-hq",
+          "how": "Прямая встреча: static, ур. 23–23. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-105",
+          "nationalId": 105,
+          "name": "Marowak",
+          "place": "HeartGold · rock-tunnel · b1f",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-143",
+          "nationalId": 143,
+          "name": "Snorlax",
+          "place": "HeartGold · kanto-route-11",
+          "how": "Прямая встреча: pokeflute, ур. 50–50. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-162",
+          "nationalId": 162,
+          "name": "Furret",
+          "place": "HeartGold · kanto-route-1",
+          "how": "Прямая встреча: walk, ур. 6–6. Условия: time-morning. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-171",
+          "nationalId": 171,
+          "name": "Lanturn",
+          "place": "HeartGold · new-bark-town",
+          "how": "Прямая встреча: super-rod, ур. 40–40. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-178",
+          "nationalId": 178,
+          "name": "Xatu",
+          "place": "HeartGold · pewter-city",
+          "how": "Прямая встреча: npc-trade, ур. 16–100. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-180",
+          "nationalId": 180,
+          "name": "Flaaffy",
+          "place": "HeartGold · johto-route-43",
+          "how": "Прямая встреча: walk, ур. 15–15. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-188",
+          "nationalId": 188,
+          "name": "Skiploom",
+          "place": "HeartGold · kanto-route-14",
+          "how": "Прямая встреча: walk, ур. 26–26. Условия: time-morning. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-202",
+          "nationalId": 202,
+          "name": "Wobbuffet",
+          "place": "HeartGold · dark-cave · blackthorn-city-entrance",
+          "how": "Прямая встреча: walk, ур. 20–20. Перенос: DS-обмен → Platinum.",
+          "legacyId": "14-20"
+        },
+        {
+          "key": "species-226",
+          "nationalId": 226,
+          "name": "Mantine",
+          "place": "HeartGold · johto-sea-route-41",
+          "how": "Прямая встреча: surf, ур. 15–25. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-232",
+          "nationalId": 232,
+          "name": "Donphan",
+          "place": "HeartGold · mt-silver · 1f",
+          "how": "Прямая встреча: walk, ур. 44–44. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-247",
+          "nationalId": 247,
+          "name": "Pupitar",
+          "place": "HeartGold · mt-silver · 3f",
+          "how": "Прямая встреча: walk, ур. 45–45. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-152",
+          "nationalId": 152,
+          "name": "Chikorita",
+          "place": "HG/SS · New Bark Town, Professor Elm",
+          "how": "Выбрать Chikorita в отдельном новом сейве HG/SS. Выполнить поручение Mr. Pokémon, получить Pokédex, вернуться к Elm и получить Poké Balls; поймать второго Pokémon и обменять стартера в Platinum. Один из трёх — стартер основного HG/SS, для двух других достаточно коротких независимых сейвов."
+        },
+        {
+          "key": "species-155",
+          "nationalId": 155,
+          "name": "Cyndaquil",
+          "place": "HG/SS · New Bark Town, Professor Elm",
+          "how": "Выбрать Cyndaquil в отдельном новом сейве HG/SS. Выполнить поручение Mr. Pokémon, получить Pokédex, вернуться к Elm и получить Poké Balls; поймать второго Pokémon и обменять стартера в Platinum. Один из трёх — стартер основного HG/SS, для двух других достаточно коротких независимых сейвов."
+        },
+        {
+          "key": "species-158",
+          "nationalId": 158,
+          "name": "Totodile",
+          "place": "HG/SS · New Bark Town, Professor Elm",
+          "how": "Выбрать Totodile в отдельном новом сейве HG/SS. Выполнить поручение Mr. Pokémon, получить Pokédex, вернуться к Elm и получить Poké Balls; поймать второго Pokémon и обменять стартера в Platinum. Один из трёх — стартер основного HG/SS, для двух других достаточно коротких независимых сейвов."
+        },
+        {
+          "key": "species-335",
+          "nationalId": 335,
+          "name": "Zangoose",
+          "place": "HG/SS · Safari Zone, Peak",
+          "how": "Выполни задания Baoba и открой расстановку объектов после National Dex. Размести 12 объектов типа Plains в области Peak, войди в траву и поймай вид Safari Ball. Обменяй в Platinum."
+        },
+        {
+          "key": "species-337",
+          "nationalId": 337,
+          "name": "Lunatone",
+          "place": "HG/SS · Safari Zone, Mountain",
+          "how": "Выполни задания Baoba и открой расстановку объектов после National Dex. Размести 15 объектов типа Peak в области Mountain, войди в траву и поймай вид Safari Ball. Обменяй в Platinum."
+        },
+        {
+          "key": "species-243",
+          "nationalId": 243,
+          "name": "Raikou",
+          "place": "HG/SS · Burned Tower → Johto",
+          "how": "Спустись в подвал Burned Tower в Ecruteak City. После пробуждения зверей следи за значком покемона в Pokégear и встречай его в траве Johto. Один на сохранение. Обменяй в Platinum."
+        },
+        {
+          "key": "species-244",
+          "nationalId": 244,
+          "name": "Entei",
+          "place": "HG/SS · Burned Tower → Johto",
+          "how": "Спустись в подвал Burned Tower в Ecruteak City. После пробуждения зверей следи за значком покемона в Pokégear и встречай его в траве Johto. Один на сохранение. Обменяй в Platinum."
+        },
+        {
+          "key": "species-245",
+          "nationalId": 245,
+          "name": "Suicune",
+          "place": "HG/SS · Johto → Route 25",
+          "how": "После Burned Tower проследи за Suicune у Cianwood, на Route 42, в Vermilion и на Route 14. После ухода Misty с Cape встреть Suicune на Route 25. Обменяй в Platinum."
+        },
+        {
+          "key": "species-249",
+          "nationalId": 249,
+          "name": "Lugia",
+          "place": "SoulSilver · Whirl Islands",
+          "how": "В Goldenrod Radio Tower получи Silver Wing у директора. После восьмого значка победи Kimono Girls в Ecruteak, получи Tidal Bell. Пройди от северо-восточного острова к водопаду в глубине пещеры. После танца поймай Lugia. Альтернатива в HeartGold — Silver Wing у старика в Pewter, Lugia ур. 70."
+        },
+        {
+          "key": "species-250",
+          "nationalId": 250,
+          "name": "Ho-Oh",
+          "place": "HeartGold · Bell Tower",
+          "how": "После спасения Goldenrod Radio Tower получи Rainbow Wing у директора. С восемью значками победи Kimono Girls в Ecruteak и получи Clear Bell. Поднимись на крышу Bell Tower, дождись танца и поймай Ho-Oh. Обменяй в Platinum."
+        },
+        {
+          "key": "species-150",
+          "nationalId": 150,
+          "name": "Mewtwo",
+          "place": "HG/SS · Cerulean Cave",
+          "how": "Собери 16 значков Johto и Kanto. Используй Surf для входа в пещеру к северо-западу от Cerulean. Найди Mewtwo в B1F и обменяй в Platinum."
+        },
+        {
+          "key": "species-23",
+          "nationalId": 23,
+          "name": "Ekans",
+          "place": "SoulSilver · Route 32",
+          "how": "Поймай в траве Route 32. Обменяй в Platinum. Альтернатива — FireRed, Route 4 после Mt. Moon."
+        }
+      ],
+      "stage": 17
+    },
+    {
+      "title": "16.C · SoulSilver",
+      "desc": "Получение в SoulSilver → DS-обмен в Platinum.",
+      "entries": [
+        {
+          "key": "species-37",
+          "nationalId": 37,
+          "name": "Vulpix",
+          "place": "SoulSilver · johto-route-48",
+          "how": "Прямая встреча: walk, ур. 24–24. Условия: time-night. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-165",
+          "nationalId": 165,
+          "name": "Ledyba",
+          "place": "SoulSilver · johto-route-30",
+          "how": "Прямая встреча: walk, ур. 3–3. Условия: time-morning. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-216",
+          "nationalId": 216,
+          "name": "Teddiursa",
+          "place": "SoulSilver · johto-route-45",
+          "how": "Прямая встреча: walk, ур. 20–20. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-381",
+          "nationalId": 381,
+          "name": "Latios",
+          "place": "SoulSilver · roaming-johto · area",
+          "how": "Прямая встреча: roaming-grass, ур. 35–35. Условия: story-progress-vermilion-copycat. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-24",
+          "nationalId": 24,
+          "name": "Arbok",
+          "place": "SoulSilver · kanto-route-27",
+          "how": "Прямая встреча: walk, ур. 28–28. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-53",
+          "nationalId": 53,
+          "name": "Persian",
+          "place": "SoulSilver · kanto-route-7",
+          "how": "Прямая встреча: walk, ур. 19–19. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-217",
+          "nationalId": 217,
+          "name": "Ursaring",
+          "place": "SoulSilver · mt-silver · 1f",
+          "how": "Прямая встреча: walk, ур. 44–44. Перенос: DS-обмен → Platinum."
+        }
+      ],
+      "stage": 18
+    },
+    {
+      "title": "16.D · Diamond",
+      "desc": "Получение в Diamond → DS-обмен в Platinum.",
+      "entries": [
+        {
+          "key": "species-366",
+          "nationalId": 366,
+          "name": "Clamperl",
+          "place": "Diamond · sinnoh-route-219",
+          "how": "Прямая встреча: super-rod, ур. 20–30. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-434",
+          "nationalId": 434,
+          "name": "Stunky",
+          "place": "Diamond · sinnoh-route-206",
+          "how": "Прямая встреча: walk, ур. 14–14. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-319",
+          "nationalId": 319,
+          "name": "Sharpedo",
+          "place": "Diamond · sinnoh-route-213",
+          "how": "Прямая встреча: super-rod, ур. 40–55. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-435",
+          "nationalId": 435,
+          "name": "Skuntank",
+          "place": "Diamond · sinnoh-route-221",
+          "how": "Прямая встреча: walk, ур. 29–29. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-390",
+          "nationalId": 390,
+          "name": "Chimchar",
+          "place": "Diamond · Route 201, стартер Rowan",
+          "how": "Отдельное короткое прохождение Diamond: выбрать Chimchar. Получить Pokédex и доступ к Union Room, поймать второго Pokémon и обменять Chimchar в Platinum. Продолжать донорское прохождение ради его эволюций не нужно: ур. 14 → Monferno, ур. 36 → Infernape уже в Platinum."
+        },
+        {
+          "key": "species-408",
+          "nationalId": 408,
+          "name": "Cranidos",
+          "place": "Diamond · Eterna City → Oreburgh Mining Museum",
+          "how": "Возьми Explorer Kit в Eterna и выкопай Skull Fossil в Underground. Отдай ископаемое учёному за стойкой музея Oreburgh, выйди и вернись со свободным местом. Обменяй покемона в Platinum. В Platinum доступное ископаемое зависит от чётности Trainer ID."
+        }
+      ],
+      "stage": 19
+    },
+    {
+      "title": "16.E · Pearl",
+      "desc": "Получение в Pearl → DS-обмен в Platinum.",
+      "entries": [
+        {
+          "key": "species-363",
+          "nationalId": 363,
+          "name": "Spheal",
+          "place": "Pearl · sinnoh-sea-route-226",
+          "how": "Прямая встреча: surf, ур. 35–45. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-431",
+          "nationalId": 431,
+          "name": "Glameow",
+          "place": "Pearl · sinnoh-route-222",
+          "how": "Прямая встреча: walk, ур. 40–40. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-432",
+          "nationalId": 432,
+          "name": "Purugly",
+          "place": "Pearl · sinnoh-route-222",
+          "how": "Прямая встреча: walk, ур. 41–41. Перенос: DS-обмен → Platinum."
+        },
+        {
+          "key": "species-393",
+          "nationalId": 393,
+          "name": "Piplup",
+          "place": "Pearl · Route 201, стартер Rowan",
+          "how": "Отдельное короткое прохождение Pearl: выбрать Piplup. Получить Pokédex и доступ к Union Room, поймать второго Pokémon и обменять в Platinum. Ур. 16 → Prinplup, ур. 36 → Empoleon уже в Platinum."
+        },
+        {
+          "key": "species-410",
+          "nationalId": 410,
+          "name": "Shieldon",
+          "place": "Pearl · Eterna City → Oreburgh Mining Museum",
+          "how": "Возьми Explorer Kit в Eterna и выкопай Armor Fossil в Underground. Отдай ископаемое учёному за стойкой музея Oreburgh, выйди и вернись со свободным местом. Обменяй покемона в Platinum. В Platinum доступное ископаемое зависит от чётности Trainer ID."
+        }
+      ],
+      "stage": 20
+    },
+    {
+      "title": "16.F · FireRed — полезная шестёрка Pal Park",
+      "desc": "Bulbasaur, Charmander, Squirtle, Weedle, Ekans и Jigglypuff. Два GBA-обмена, одна миграция; поддержку связи эмулятора проверить перед началом.",
+      "entries": [
+        {
+          "key": "species-1",
+          "nationalId": 1,
+          "name": "Bulbasaur",
+          "place": "FireRed / LeafGreen · Pallet Town",
+          "how": "Выбери Bulbasaur в лаборатории Oak. Один стартер на сохранение. Для трёх линий используй отдельные короткие прохождения, в каждом подготовь шесть покемонов в PC для Pal Park. Альтернатива — один подарок Oak в HG/SS после Red."
+        },
+        {
+          "key": "species-4",
+          "nationalId": 4,
+          "name": "Charmander",
+          "place": "FireRed / LeafGreen · Pallet Town",
+          "how": "Выбери Charmander в лаборатории Oak. Один стартер на сохранение. Для трёх линий используй отдельные короткие прохождения, в каждом подготовь шесть покемонов в PC для Pal Park. Альтернатива — один подарок Oak в HG/SS после Red."
+        },
+        {
+          "key": "species-7",
+          "nationalId": 7,
+          "name": "Squirtle",
+          "place": "FireRed / LeafGreen · Pallet Town",
+          "how": "Выбери Squirtle в лаборатории Oak. Один стартер на сохранение. Для трёх линий используй отдельные короткие прохождения, в каждом подготовь шесть покемонов в PC для Pal Park. Альтернатива — один подарок Oak в HG/SS после Red."
+        },
+        {
+          "key": "species-13",
+          "nationalId": 13,
+          "name": "Weedle",
+          "place": "FireRed → Pal Park → Platinum",
+          "how": "Viridian Forest: обычная трава, 40%, ур. 3–5. Включить в общую шестёрку со стартерами."
+        },
+        {
+          "key": "species-39",
+          "nationalId": 39,
+          "name": "Jigglypuff",
+          "place": "FireRed → Pal Park → Platinum",
+          "how": "Route 3 после Brock: трава, 10%, ур. 3–7. Обходит ежедневную ротацию Trophy Garden. В Platinum: Moon Stone → Wigglytuff; разведение с Ditto → Igglybuff."
+        }
+      ],
+      "stage": 21
+    },
+    {
+      "title": "17 · Эволюционные стадии",
+      "desc": "Все стадии по National Dex. Caught подтверждает получение вида, но не способ получения.",
+      "entries": [
+        {
+          "key": "species-2",
+          "nationalId": 2,
+          "name": "Ivysaur",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Bulbasaur. Условия зависят от игры."
+        },
+        {
+          "key": "species-3",
+          "nationalId": 3,
+          "name": "Venusaur",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Ivysaur. Условия зависят от игры."
+        },
+        {
+          "key": "species-5",
+          "nationalId": 5,
+          "name": "Charmeleon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Charmander. Условия зависят от игры."
+        },
+        {
+          "key": "species-6",
+          "nationalId": 6,
+          "name": "Charizard",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Charmeleon. Условия зависят от игры."
+        },
+        {
+          "key": "species-8",
+          "nationalId": 8,
+          "name": "Wartortle",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Squirtle. Условия зависят от игры."
+        },
+        {
+          "key": "species-9",
+          "nationalId": 9,
+          "name": "Blastoise",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Wartortle. Условия зависят от игры."
+        },
+        {
+          "key": "species-18",
+          "nationalId": 18,
+          "name": "Pidgeot",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Pidgeotto. Условия зависят от игры."
+        },
+        {
+          "key": "species-26",
+          "nationalId": 26,
+          "name": "Raichu",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Pikachu. Условия зависят от игры."
+        },
+        {
+          "key": "species-31",
+          "nationalId": 31,
+          "name": "Nidoqueen",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nidorina. Условия зависят от игры."
+        },
+        {
+          "key": "species-34",
+          "nationalId": 34,
+          "name": "Nidoking",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nidorino. Условия зависят от игры."
+        },
+        {
+          "key": "species-36",
+          "nationalId": 36,
+          "name": "Clefable",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Clefairy. Условия зависят от игры."
+        },
+        {
+          "key": "species-38",
+          "nationalId": 38,
+          "name": "Ninetales",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Vulpix. Условия зависят от игры."
+        },
+        {
+          "key": "species-40",
+          "nationalId": 40,
+          "name": "Wigglytuff",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Jigglypuff. Условия зависят от игры."
+        },
+        {
+          "key": "species-45",
+          "nationalId": 45,
+          "name": "Vileplume",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Gloom. Условия зависят от игры."
+        },
+        {
+          "key": "species-59",
+          "nationalId": 59,
+          "name": "Arcanine",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Growlithe. Условия зависят от игры."
+        },
+        {
+          "key": "species-62",
+          "nationalId": 62,
+          "name": "Poliwrath",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Poliwhirl. Условия зависят от игры."
+        },
+        {
+          "key": "species-65",
+          "nationalId": 65,
+          "name": "Alakazam",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Kadabra. Условия зависят от игры."
+        },
+        {
+          "key": "species-68",
+          "nationalId": 68,
+          "name": "Machamp",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Machoke. Условия зависят от игры."
+        },
+        {
+          "key": "species-71",
+          "nationalId": 71,
+          "name": "Victreebel",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Weepinbell. Условия зависят от игры."
+        },
+        {
+          "key": "species-76",
+          "nationalId": 76,
+          "name": "Golem",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Graveler. Условия зависят от игры."
+        },
+        {
+          "key": "species-91",
+          "nationalId": 91,
+          "name": "Cloyster",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Shellder. Условия зависят от игры."
+        },
+        {
+          "key": "species-103",
+          "nationalId": 103,
+          "name": "Exeggutor",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Exeggcute. Условия зависят от игры."
+        },
+        {
+          "key": "species-106",
+          "nationalId": 106,
+          "name": "Hitmonlee",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Tyrogue. Условия зависят от игры."
+        },
+        {
+          "key": "species-107",
+          "nationalId": 107,
+          "name": "Hitmonchan",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Tyrogue. Условия зависят от игры."
+        },
+        {
+          "key": "species-121",
+          "nationalId": 121,
+          "name": "Starmie",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Staryu. Условия зависят от игры."
+        },
+        {
+          "key": "species-134",
+          "nationalId": 134,
+          "name": "Vaporeon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-135",
+          "nationalId": 135,
+          "name": "Jolteon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-136",
+          "nationalId": 136,
+          "name": "Flareon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-139",
+          "nationalId": 139,
+          "name": "Omastar",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Omanyte. Условия зависят от игры."
+        },
+        {
+          "key": "species-141",
+          "nationalId": 141,
+          "name": "Kabutops",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Kabuto. Условия зависят от игры."
+        },
+        {
+          "key": "species-149",
+          "nationalId": 149,
+          "name": "Dragonite",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Dragonair. Условия зависят от игры."
+        },
+        {
+          "key": "species-153",
+          "nationalId": 153,
+          "name": "Bayleef",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Chikorita. Условия зависят от игры."
+        },
+        {
+          "key": "species-154",
+          "nationalId": 154,
+          "name": "Meganium",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Bayleef. Условия зависят от игры."
+        },
+        {
+          "key": "species-156",
+          "nationalId": 156,
+          "name": "Quilava",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Cyndaquil. Условия зависят от игры."
+        },
+        {
+          "key": "species-157",
+          "nationalId": 157,
+          "name": "Typhlosion",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Quilava. Условия зависят от игры."
+        },
+        {
+          "key": "species-159",
+          "nationalId": 159,
+          "name": "Croconaw",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Totodile. Условия зависят от игры."
+        },
+        {
+          "key": "species-160",
+          "nationalId": 160,
+          "name": "Feraligatr",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Croconaw. Условия зависят от игры."
+        },
+        {
+          "key": "species-169",
+          "nationalId": 169,
+          "name": "Crobat",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Golbat. Условия зависят от игры."
+        },
+        {
+          "key": "species-176",
+          "nationalId": 176,
+          "name": "Togetic",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Togepi. Условия зависят от игры."
+        },
+        {
+          "key": "species-181",
+          "nationalId": 181,
+          "name": "Ampharos",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Flaaffy. Условия зависят от игры."
+        },
+        {
+          "key": "species-182",
+          "nationalId": 182,
+          "name": "Bellossom",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Gloom. Условия зависят от игры."
+        },
+        {
+          "key": "species-186",
+          "nationalId": 186,
+          "name": "Politoed",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Poliwhirl. Условия зависят от игры."
+        },
+        {
+          "key": "species-189",
+          "nationalId": 189,
+          "name": "Jumpluff",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Skiploom. Условия зависят от игры."
+        },
+        {
+          "key": "species-192",
+          "nationalId": 192,
+          "name": "Sunflora",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Sunkern. Условия зависят от игры."
+        },
+        {
+          "key": "species-196",
+          "nationalId": 196,
+          "name": "Espeon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-197",
+          "nationalId": 197,
+          "name": "Umbreon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-199",
+          "nationalId": 199,
+          "name": "Slowking",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Slowpoke. Условия зависят от игры."
+        },
+        {
+          "key": "species-205",
+          "nationalId": 205,
+          "name": "Forretress",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Pineco. Условия зависят от игры."
+        },
+        {
+          "key": "species-210",
+          "nationalId": 210,
+          "name": "Granbull",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Snubbull. Условия зависят от игры."
+        },
+        {
+          "key": "species-212",
+          "nationalId": 212,
+          "name": "Scizor",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Scyther. Условия зависят от игры."
+        },
+        {
+          "key": "species-221",
+          "nationalId": 221,
+          "name": "Piloswine",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Swinub. Условия зависят от игры."
+        },
+        {
+          "key": "species-229",
+          "nationalId": 229,
+          "name": "Houndoom",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Houndour. Условия зависят от игры."
+        },
+        {
+          "key": "species-230",
+          "nationalId": 230,
+          "name": "Kingdra",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Seadra. Условия зависят от игры."
+        },
+        {
+          "key": "species-233",
+          "nationalId": 233,
+          "name": "Porygon2",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Porygon. Условия зависят от игры."
+        },
+        {
+          "key": "species-237",
+          "nationalId": 237,
+          "name": "Hitmontop",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Tyrogue. Условия зависят от игры."
+        },
+        {
+          "key": "species-242",
+          "nationalId": 242,
+          "name": "Blissey",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Chansey. Условия зависят от игры."
+        },
+        {
+          "key": "species-248",
+          "nationalId": 248,
+          "name": "Tyranitar",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Pupitar. Условия зависят от игры."
+        },
+        {
+          "key": "species-253",
+          "nationalId": 253,
+          "name": "Grovyle",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Treecko. Условия зависят от игры."
+        },
+        {
+          "key": "species-254",
+          "nationalId": 254,
+          "name": "Sceptile",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Grovyle. Условия зависят от игры."
+        },
+        {
+          "key": "species-256",
+          "nationalId": 256,
+          "name": "Combusken",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Torchic. Условия зависят от игры."
+        },
+        {
+          "key": "species-257",
+          "nationalId": 257,
+          "name": "Blaziken",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Combusken. Условия зависят от игры."
+        },
+        {
+          "key": "species-259",
+          "nationalId": 259,
+          "name": "Marshtomp",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Mudkip. Условия зависят от игры."
+        },
+        {
+          "key": "species-260",
+          "nationalId": 260,
+          "name": "Swampert",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Marshtomp. Условия зависят от игры."
+        },
+        {
+          "key": "species-272",
+          "nationalId": 272,
+          "name": "Ludicolo",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Lombre. Условия зависят от игры."
+        },
+        {
+          "key": "species-275",
+          "nationalId": 275,
+          "name": "Shiftry",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nuzleaf. Условия зависят от игры."
+        },
+        {
+          "key": "species-282",
+          "nationalId": 282,
+          "name": "Gardevoir",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Kirlia. Условия зависят от игры."
+        },
+        {
+          "key": "species-286",
+          "nationalId": 286,
+          "name": "Breloom",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Shroomish. Условия зависят от игры."
+        },
+        {
+          "key": "species-288",
+          "nationalId": 288,
+          "name": "Vigoroth",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Slakoth. Условия зависят от игры."
+        },
+        {
+          "key": "species-289",
+          "nationalId": 289,
+          "name": "Slaking",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Vigoroth. Условия зависят от игры."
+        },
+        {
+          "key": "species-291",
+          "nationalId": 291,
+          "name": "Ninjask",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nincada. Условия зависят от игры."
+        },
+        {
+          "key": "species-292",
+          "nationalId": 292,
+          "name": "Shedinja",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nincada. Условия зависят от игры."
+        },
+        {
+          "key": "species-295",
+          "nationalId": 295,
+          "name": "Exploud",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Loudred. Условия зависят от игры."
+        },
+        {
+          "key": "species-301",
+          "nationalId": 301,
+          "name": "Delcatty",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Skitty. Условия зависят от игры."
+        },
+        {
+          "key": "species-306",
+          "nationalId": 306,
+          "name": "Aggron",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Lairon. Условия зависят от игры."
+        },
+        {
+          "key": "species-317",
+          "nationalId": 317,
+          "name": "Swalot",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Gulpin. Условия зависят от игры."
+        },
+        {
+          "key": "species-326",
+          "nationalId": 326,
+          "name": "Grumpig",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Spoink. Условия зависят от игры."
+        },
+        {
+          "key": "species-329",
+          "nationalId": 329,
+          "name": "Vibrava",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Trapinch. Условия зависят от игры."
+        },
+        {
+          "key": "species-330",
+          "nationalId": 330,
+          "name": "Flygon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Vibrava. Условия зависят от игры."
+        },
+        {
+          "key": "species-346",
+          "nationalId": 346,
+          "name": "Cradily",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Lileep. Условия зависят от игры."
+        },
+        {
+          "key": "species-348",
+          "nationalId": 348,
+          "name": "Armaldo",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Anorith. Условия зависят от игры."
+        },
+        {
+          "key": "species-350",
+          "nationalId": 350,
+          "name": "Milotic",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Feebas. Условия зависят от игры."
+        },
+        {
+          "key": "species-362",
+          "nationalId": 362,
+          "name": "Glalie",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Snorunt. Условия зависят от игры."
+        },
+        {
+          "key": "species-365",
+          "nationalId": 365,
+          "name": "Walrein",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Sealeo. Условия зависят от игры."
+        },
+        {
+          "key": "species-367",
+          "nationalId": 367,
+          "name": "Huntail",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Clamperl. Условия зависят от игры."
+        },
+        {
+          "key": "species-368",
+          "nationalId": 368,
+          "name": "Gorebyss",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Clamperl. Условия зависят от игры."
+        },
+        {
+          "key": "species-372",
+          "nationalId": 372,
+          "name": "Shelgon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Bagon. Условия зависят от игры."
+        },
+        {
+          "key": "species-373",
+          "nationalId": 373,
+          "name": "Salamence",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Shelgon. Условия зависят от игры."
+        },
+        {
+          "key": "species-375",
+          "nationalId": 375,
+          "name": "Metang",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Beldum. Условия зависят от игры."
+        },
+        {
+          "key": "species-376",
+          "nationalId": 376,
+          "name": "Metagross",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Metang. Условия зависят от игры."
+        },
+        {
+          "key": "species-388",
+          "nationalId": 388,
+          "name": "Grotle",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Turtwig. Условия зависят от игры."
+        },
+        {
+          "key": "species-389",
+          "nationalId": 389,
+          "name": "Torterra",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Grotle. Условия зависят от игры."
+        },
+        {
+          "key": "species-391",
+          "nationalId": 391,
+          "name": "Monferno",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Chimchar. Условия зависят от игры."
+        },
+        {
+          "key": "species-392",
+          "nationalId": 392,
+          "name": "Infernape",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Monferno. Условия зависят от игры."
+        },
+        {
+          "key": "species-394",
+          "nationalId": 394,
+          "name": "Prinplup",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Piplup. Условия зависят от игры."
+        },
+        {
+          "key": "species-395",
+          "nationalId": 395,
+          "name": "Empoleon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Prinplup. Условия зависят от игры."
+        },
+        {
+          "key": "species-398",
+          "nationalId": 398,
+          "name": "Staraptor",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Staravia. Условия зависят от игры."
+        },
+        {
+          "key": "species-405",
+          "nationalId": 405,
+          "name": "Luxray",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Luxio. Условия зависят от игры."
+        },
+        {
+          "key": "species-407",
+          "nationalId": 407,
+          "name": "Roserade",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Roselia. Условия зависят от игры."
+        },
+        {
+          "key": "species-409",
+          "nationalId": 409,
+          "name": "Rampardos",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Cranidos. Условия зависят от игры."
+        },
+        {
+          "key": "species-411",
+          "nationalId": 411,
+          "name": "Bastiodon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Shieldon. Условия зависят от игры."
+        },
+        {
+          "key": "species-413",
+          "nationalId": 413,
+          "name": "Wormadam",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Burmy. Условия зависят от игры."
+        },
+        {
+          "key": "species-414",
+          "nationalId": 414,
+          "name": "Mothim",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Burmy. Условия зависят от игры."
+        },
+        {
+          "key": "species-416",
+          "nationalId": 416,
+          "name": "Vespiquen",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Combee. Условия зависят от игры."
+        },
+        {
+          "key": "species-421",
+          "nationalId": 421,
+          "name": "Cherrim",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Cherubi. Условия зависят от игры."
+        },
+        {
+          "key": "species-424",
+          "nationalId": 424,
+          "name": "Ambipom",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Aipom. Условия зависят от игры."
+        },
+        {
+          "key": "species-426",
+          "nationalId": 426,
+          "name": "Drifblim",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Drifloon. Условия зависят от игры."
+        },
+        {
+          "key": "species-428",
+          "nationalId": 428,
+          "name": "Lopunny",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Buneary. Условия зависят от игры."
+        },
+        {
+          "key": "species-429",
+          "nationalId": 429,
+          "name": "Mismagius",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Misdreavus. Условия зависят от игры."
+        },
+        {
+          "key": "species-430",
+          "nationalId": 430,
+          "name": "Honchkrow",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Murkrow. Условия зависят от игры."
+        },
+        {
+          "key": "species-445",
+          "nationalId": 445,
+          "name": "Garchomp",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Gabite. Условия зависят от игры."
+        },
+        {
+          "key": "species-448",
+          "nationalId": 448,
+          "name": "Lucario",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Riolu. Условия зависят от игры."
+        },
+        {
+          "key": "species-452",
+          "nationalId": 452,
+          "name": "Drapion",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Skorupi. Условия зависят от игры."
+        },
+        {
+          "key": "species-454",
+          "nationalId": 454,
+          "name": "Toxicroak",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Croagunk. Условия зависят от игры."
+        },
+        {
+          "key": "species-461",
+          "nationalId": 461,
+          "name": "Weavile",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Sneasel. Условия зависят от игры."
+        },
+        {
+          "key": "species-462",
+          "nationalId": 462,
+          "name": "Magnezone",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Magneton. Условия зависят от игры."
+        },
+        {
+          "key": "species-463",
+          "nationalId": 463,
+          "name": "Lickilicky",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Lickitung. Условия зависят от игры."
+        },
+        {
+          "key": "species-464",
+          "nationalId": 464,
+          "name": "Rhyperior",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Rhydon. Условия зависят от игры."
+        },
+        {
+          "key": "species-465",
+          "nationalId": 465,
+          "name": "Tangrowth",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Tangela. Условия зависят от игры."
+        },
+        {
+          "key": "species-466",
+          "nationalId": 466,
+          "name": "Electivire",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Electabuzz. Условия зависят от игры."
+        },
+        {
+          "key": "species-467",
+          "nationalId": 467,
+          "name": "Magmortar",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Magmar. Условия зависят от игры."
+        },
+        {
+          "key": "species-468",
+          "nationalId": 468,
+          "name": "Togekiss",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Togetic. Условия зависят от игры."
+        },
+        {
+          "key": "species-469",
+          "nationalId": 469,
+          "name": "Yanmega",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Yanma. Условия зависят от игры."
+        },
+        {
+          "key": "species-470",
+          "nationalId": 470,
+          "name": "Leafeon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-471",
+          "nationalId": 471,
+          "name": "Glaceon",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Eevee. Условия зависят от игры."
+        },
+        {
+          "key": "species-472",
+          "nationalId": 472,
+          "name": "Gliscor",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Gligar. Условия зависят от игры."
+        },
+        {
+          "key": "species-473",
+          "nationalId": 473,
+          "name": "Mamoswine",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Piloswine. Условия зависят от игры."
+        },
+        {
+          "key": "species-474",
+          "nationalId": 474,
+          "name": "Porygon-Z",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Porygon2. Условия зависят от игры."
+        },
+        {
+          "key": "species-475",
+          "nationalId": 475,
+          "name": "Gallade",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Kirlia. Условия зависят от игры."
+        },
+        {
+          "key": "species-476",
+          "nationalId": 476,
+          "name": "Probopass",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Nosepass. Условия зависят от игры."
+        },
+        {
+          "key": "species-477",
+          "nationalId": 477,
+          "name": "Dusknoir",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Dusclops. Условия зависят от игры."
+        },
+        {
+          "key": "species-478",
+          "nationalId": 478,
+          "name": "Froslass",
+          "place": "Эволюционная линия",
+          "how": "Предыдущая стадия: Snorunt. Условия зависят от игры."
+        },
+        {
+          "key": "species-94",
+          "nationalId": 94,
+          "name": "Gengar",
+          "place": "Platinum ↔ DS-донор",
+          "how": "Haunter без Everstone → DS-обмен → Gengar → вернуть в основной Platinum. Можно использовать Haunter от Mindy. Не искать Gengar через Slot-2, если доступен обычный обмен."
+        }
+      ],
+      "stage": 22
+    },
+    {
+      "title": "18 · Финал: Spiritomb и мифики",
+      "desc": "Восстановление игровых событий, флагов и Mystery Gift. Без генерации Pokémon.",
+      "entries": [
+        {
+          "place": "National Dex",
+          "name": "493 / 493 caught",
+          "how": "Итоговая сверка National Pokédex в Platinum; именно пойманных, а не только увиденных.",
+          "kind": "story",
+          "id": "17-10",
+          "key": "17-10",
+          "legacyId": "17-10"
+        },
+        {
+          "key": "species-151",
+          "nationalId": 151,
+          "name": "Mew",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-251",
+          "nationalId": 251,
+          "name": "Celebi",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-385",
+          "nationalId": 385,
+          "name": "Jirachi",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-386",
+          "nationalId": 386,
+          "name": "Deoxys",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-442",
+          "nationalId": 442,
+          "name": "Spiritomb",
+          "place": "Финал · игровые события",
+          "how": "Platinum: установить флаг/счётчик Spiritomb редактором сейва, затем получить Pokémon через игровую встречу."
+        },
+        {
+          "key": "species-489",
+          "nationalId": 489,
+          "name": "Phione",
+          "place": "Финал · игровые события",
+          "how": "Phione: разведение полученного Manaphy с Ditto."
+        },
+        {
+          "key": "species-490",
+          "nationalId": 490,
+          "name": "Manaphy",
+          "place": "Финал · игровые события",
+          "how": "Manaphy: добавить Mystery Gift подходящим редактором сейва, затем получить подарок в игре. Не генерировать Pokémon напрямую."
+        },
+        {
+          "key": "species-491",
+          "nationalId": 491,
+          "name": "Darkrai",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-492",
+          "nationalId": 492,
+          "name": "Shaymin",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-493",
+          "nationalId": 493,
+          "name": "Arceus",
+          "place": "Финал · игровые события",
+          "how": "Восстановить доступное событие в подходящей игре, затем получить Pokémon игровым способом. Конкретное событие и совместимость проверить перед применением; напрямую Pokémon не генерировать."
+        },
+        {
+          "key": "species-486",
+          "nationalId": 486,
+          "name": "Regigigas",
+          "place": "Platinum · Snowpoint Temple B5F",
+          "how": "После National Dex перенеси трёх титанов из Emerald. С Regirock, Regice и Registeel в команде спустись к статуе на нижнем этаже. В Platinum Regigigas всего 1 уровня.",
+          "legacyId": "10-4"
+        }
+      ],
+      "stage": 23
+    }
+  ]
+}

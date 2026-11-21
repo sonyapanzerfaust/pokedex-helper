@@ -1,0 +1,7 @@
+﻿# Local data and network access
+
+The portable client stores its library beside the executable in data/library. This includes imported cartridges, battery saves, user-named profiles, verified backup copies, preferences, manual marks, deferred tasks and last-known parser snapshots. Snapshots can contain trainer identifiers, party and box records. Logs can contain local paths and emulator launch details. Chromium caches and local diagnostic files are also inside data. These files may identify the player. Keep the entire working data folder private.
+
+A user can explicitly export a save or progress file to another location. Initial migration reads the previous Helper configuration in Documents and copies the chosen library after confirmation. A default settings reset keeps saves, backups and route progress. Optional deletion requires separate confirmation.
+
+The reviewed application code contacts GitHub Releases when the user checks, installs or updates emulator components. Downloads follow the official release asset endpoint and are checked against the supported hashes. The remote service receives ordinary download request metadata such as IP address. Build scripts also download Electron when the runtime cache is absent. Local save synchronization and route browsing require no network. No application telemetry endpoint or save-upload routine was found in the reviewed client. Independently launched emulators and OS services have their own behavior.

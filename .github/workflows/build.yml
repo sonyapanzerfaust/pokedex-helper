@@ -1,0 +1,17 @@
+﻿name: Check local release candidate
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.13.1
+      - run: node scripts/verify.cjs
+      - run: node scripts/portable-checks.cjs
+      - run: node scripts/recovery-checks.cjs
+      - run: node scripts/build.cjs source win32-x64
+

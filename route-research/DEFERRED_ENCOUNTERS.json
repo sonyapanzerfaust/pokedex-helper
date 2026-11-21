@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "policy": "Хранить по профилю и виду до отмены или Caught в Platinum. При пропуске скрыть раннюю попытку, показать конкретную позднюю; без изменений Caught, Seen и сюжетных флагов.",
+  "entries": [
+    {
+      "id": 214,
+      "early": "platinum.2",
+      "target": "get.214",
+      "method": "Headbutt: Ilex Forest → Route 33. Выучи у наставника, меняй дерево до подходящей группы.",
+      "early_method": "Honey Trees",
+      "reason": "С деревьев Floaroma на этап HG/SS: Ilex Forest, наставник Headbutt → Route 33, группа A."
+    },
+    {
+      "id": 446,
+      "early": "platinum.2",
+      "target": "get.446",
+      "method": "После Kanto Power Plant, EXPN Card и поимки Snorlax обменяй его в Platinum. Rock Climb в Veilstone → Full Incense для Snorlax → Solaceon с Ditto → вылупи Munchlax.",
+      "early_method": "Special Honey Trees",
+      "reason": "Вместо ожидания особого дерева вернись после получения Snorlax в Канто и Rock Climb в Platinum."
+    },
+    {
+      "id": 349,
+      "early": "platinum.7",
+      "target": "deferred.feebas",
+      "method": "Route 119, после Surf, шесть подходящих клеток в реке Emerald; любая удочка. Добавь пойманного Feebas в партию Pal Park.",
+      "early_method": "Mt. Coronet B1F, четыре клетки",
+      "reason": "Если поиск затянулся, перейти к озёрам по сюжету; при прохождении Emerald попробовать Route 119 (6 клеток, любая удочка)."
+    }
+  ],
+  "calendar_reminders": [
+    425,
+    442,
+    451,
+    455
+  ],
+  "note": "Календарные возвраты и ожидание партнёра сами по себе не дают альтернативного метода."
+}
