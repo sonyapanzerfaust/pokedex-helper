@@ -1,12 +1,7 @@
-﻿# Pokédex Helper 1.0.0 — Windows portable
+# Pokédex Helper 1.0.1
 
-Stable release, promoted from 1.0.0-rc.1 with the melonDS configuration persistence fix.
+Fixed a Windows launcher bug that could reset melonDS keyboard bindings when starting Platinum. The launcher now preserves CRLF line endings when updating the save path.
 
-- Preserve existing custom keyboard, controller, hotkey, display, audio and firmware preferences when preparing portable melonDS settings.
-- Preserve portable configuration resources when registering an updated melonDS release.
-- Keep verified, immutable recovery copies before configuration migration or save-profile path changes.
-- Add disposable configuration and launcher regression tests.
+Verified with three consecutive launches and normal exits using melonDS 1.1 and a disposable Platinum library. All keyboard assignments persisted.
 
-Extract into a writable folder. When updating an existing portable installation, retain its entire `data` folder; do not replace it with the empty folder in the download. ROMs, saves, personal settings and emulators are not bundled. The prior v1.0.0-rc.1 release is retained.
-
-Validation: automated configuration, launcher-process-stub, library, recovery and relocation tests; source and Windows x64 packaging. Actual melonDS GUI persistence across direct/Helper launches still requires the manual checklist in `docs/melonds-config-regression.md`; no claim is made that an unavailable owner's configuration was recovered.
+For an existing portable installation, update the application files and keep your entire data folder.
