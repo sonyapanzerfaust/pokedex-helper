@@ -17,11 +17,11 @@ function checkOption(label,value,change){
   if(change)input.onchange=safely(()=>change(input.checked));field.append(input,document.createTextNode(' '+label));return {field,input};
 }
 const panels=['appearance','roms','emulators','saves','app'];
-const pageScroll={route:0,settings:0,backups:0};
+const pageScroll={route:0,settings:0,backups:0,requirements:0};
 function navigate(page){
   if(activePage!==page){pageScroll[activePage]=window.scrollY;viewGeneration++;$('pageStatus').textContent=''}
   activePage=page;
-  for(const [key,nav] of Object.entries({route:'routeNav',settings:'setup',backups:'backups'})){
+  for(const [key,nav] of Object.entries({route:'routeNav',settings:'setup',backups:'backups',requirements:'requirementsNav'})){
     $(key+'Page').hidden=key!==page;
     if(key===page)$(nav).setAttribute('aria-current','page');else $(nav).removeAttribute('aria-current');
   }

@@ -106,3 +106,6 @@ nav button[aria-current=page]{background:var(--card);color:var(--accent);border-
 .now{position:relative;isolation:isolate}.now:before{content:'';position:absolute;z-index:-1;inset:0;border-radius:inherit;background:linear-gradient(90deg,var(--card) 48%,transparent),var(--scene) right bottom/auto 100% no-repeat;opacity:.66}
 #progress{accent-color:var(--accent)}.route-subheading .section-art{vertical-align:middle;margin-right:.6rem}
 @media(max-width:480px){#sections summary{display:grid;grid-template-columns:2.5rem minmax(0,1fr)}.section-art{width:2.5rem;height:2.2rem}#sections summary .counter{grid-column:2}#sections summary:after{display:none}.brand img{width:1.5rem}}
+
+#requirementsPage .info-card{margin-block-end:.85rem;max-width:72ch}
+.compact aside #requirementsNav::before{content:attr(data-icon);font-size:1.15rem}

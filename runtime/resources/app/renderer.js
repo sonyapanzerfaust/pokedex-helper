@@ -195,7 +195,7 @@ function render(){
   for(const [id,key] of Object.entries({routeNav:'routeNav',campaignLabel:'campaign',objectiveLabel:'objective',jump:'jump',currentNav:'current',availableFilter:'availableNow',deferredFilter:'deferFilter'}))$(id).textContent=routeWord(key);
   $('compact').title=routeWord('compact');$('compact').setAttribute('aria-label',routeWord('compact'));
   updateLaunch();roster();
-  for(const [id,icon] of Object.entries({routeNav:'⌖',setup:'⚙',backups:'▤',export:'↑',import:'↓',play:'▶'})){const el=$(id);el.dataset.icon=icon;el.title=el.textContent;el.setAttribute('aria-label',el.textContent)}
+  for(const [id,icon] of Object.entries({routeNav:'⌖',requirementsNav:'☷',setup:'⚙',backups:'▤',export:'↑',import:'↓',play:'▶'})){const el=$(id);el.dataset.icon=icon;el.title=el.textContent;el.setAttribute('aria-label',el.textContent)}
   decorateNavigation();
   $('donorSelect').title=$('donorSelect').value;
   $('diagnostics').hidden=!auto||!Object.keys(model.errors).length;
@@ -366,7 +366,7 @@ function wizard(){
   $('step').hidden=step<0;$('prev').hidden=step<0;$('next').hidden=step<0;
 
   $('prev').disabled=step===0;$('next').textContent=step===5?I18n.t("renderer.finish"):I18n.t("renderer.next");
-  if(step===0)area.append(select(I18n.t('settings.language'),'language',[['en','English'],['ru','Русский']]),node('p',I18n.t("renderer.pok_dex_helper_guides_you_through_catching_all")),node('small',model.platform));
+  if(step===0)area.append(select(I18n.t('settings.language'),'language',[['en','English'],['ru','Русский']]),node('p',I18n.t("renderer.pok_dex_helper_guides_you_through_catching_all")),node('p',I18n.t('requirements.summary')),node('small',model.platform));
   if(step===1)area.append(select(I18n.t("renderer.mode"),'mode',[['auto',I18n.t("renderer.automatic")],['manual',I18n.t("renderer.manual")]]),node('p',I18n.t("renderer.automatic_mode_is_for_emulator_play_helper_reads")),node('p',I18n.t("renderer.manual_mode_is_for_nintendo_ds_or_tracking")));
   if(step===1)emulatorControls(area);
   if(step===2||step===3)fileControls(area,step===2?'rom':'save');
@@ -403,6 +403,9 @@ async function init(){
   });
   $('export').onclick=safely(()=>service.exportProgress({version:3,...prefs,dex:dex()}));
   $('import').onclick=safely(async()=>{const value=await service.importProgress();if(!value)return;if(!value.done&&!value.manual)throw Error(I18n.t("renderer.unknown_progress_format"));mergeLegacy(value);if(value.version===3){for(const [k,allowed] of Object.entries({mode:['auto','manual'],theme:['auto','387','390','393'],starter:['387','390','393']}))if(allowed.includes(value[k]))prefs[k]=value[k];if(typeof value.runner==='boolean')prefs.runner=value.runner;for(const [k,v] of Object.entries(value.milestones||{}))if(v?.reached)prefs.milestones[k]={count:493,reached:true}}await save();render()});
+  $('requirementsNav').onclick=()=>{
+    navigate('requirements');$('requirementsPage').querySelector('h1').focus({preventScroll:true});window.scrollTo(0,pageScroll.requirements);
+  };
   $('setup').onclick=showSettings;$('prev').onclick=()=>{step--;wizard()};
   $('next').onclick=safely(async()=>{if(step<5){step++;wizard()}else{prefs.configured=true;await save();$('wizard').close();render()}});
   service.updates(safely(async update=>{Object.assign(model,update);await milestone();render();if($('wizard').open)wizard();else if(activePage==='settings'&&['saves','appearance'].includes(settingsPanel)&&!$('settingsContent').contains(document.activeElement))showSettings();else if(activePage==='backups'&&!inArchive&&!$('backupContent').contains(document.activeElement))await openBackups()}));
