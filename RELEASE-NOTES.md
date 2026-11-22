@@ -1,7 +1,12 @@
-﻿# Pokédex Helper 1.0.0-rc.1 — Windows portable field guide
+﻿# Pokédex Helper 1.0.0 — Windows portable
 
-A local desktop companion for the 493-species Pokémon Platinum route. This candidate combines automatic save tracking, donor campaigns, reversible encounter deferral and profile backups with original field-guide artwork.
+Stable release, promoted from 1.0.0-rc.1 with the melonDS configuration persistence fix.
 
-Extract the complete ZIP on a Windows x86_64 PC to a writable folder and run PokedexHelper.exe. Supply your own games and battery saves. Internet access is required to download optional emulators. Existing portable users should follow PORTABLE.md before replacing a working installation.
+- Preserve existing custom keyboard, controller, hotkey, display, audio and firmware preferences when preparing portable melonDS settings.
+- Preserve portable configuration resources when registering an updated melonDS release.
+- Keep verified, immutable recovery copies before configuration migration or save-profile path changes.
+- Add disposable configuration and launcher regression tests.
 
-The candidate is unsigned. Physical-console interoperability, multiplayer trades, Pal Park transfers and a complete 493/493 playthrough remain manual acceptance items. The ZIP has an adjacent .sha256 file. The ROM setup step distinguishes a verified cartridge from an optional adjacent battery save. Original code is MIT-licensed and original project artwork is dedicated under CC0 1.0.
+Extract into a writable folder. When updating an existing portable installation, retain its entire `data` folder; do not replace it with the empty folder in the download. ROMs, saves, personal settings and emulators are not bundled. The prior v1.0.0-rc.1 release is retained.
+
+Validation: automated configuration, launcher-process-stub, library, recovery and relocation tests; source and Windows x64 packaging. Actual melonDS GUI persistence across direct/Helper launches still requires the manual checklist in `docs/melonds-config-regression.md`; no claim is made that an unavailable owner's configuration was recovered.

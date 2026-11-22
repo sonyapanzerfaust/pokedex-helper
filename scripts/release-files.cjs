@@ -8,7 +8,7 @@ const desktop=[
 ];
 const docs=['README.md','BUILDING.md','PORTABLE.md','PRIVACY.md','THIRD_PARTY_NOTICES.md','CHANGELOG.md','RELEASE_CHECKLIST.md','LICENSE','RELEASE-NOTES.md'];
 const source=[
-  '.gitignore','.github/workflows/build.yml',...docs,
+  '.gitignore','.gitattributes','docs/melonds-config-regression.md','.github/workflows/build.yml',...docs,
   ...['route','campaigns','settings','backups'].map(f=>'docs/screenshots/'+f+'.png'),
   ...['ORDERED_ROUTE','NATIONAL_DEX_493','DEFERRED_ENCOUNTERS'].map(f=>'route-research/'+f+'.json'),
   ...[...desktop,'route.js'].map(f=>'runtime/resources/app/'+f),

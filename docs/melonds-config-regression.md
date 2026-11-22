@@ -12,7 +12,7 @@ Upstream: https://github.com/melonDS-emu/melonDS/blob/1.1/src/frontend/qt_sdl/ma
 
 Run `node scripts/melonds-config-checks.cjs`. Disposable fixtures cover custom keys/hotkeys, joystick, screen layout, audio and firmware preferences; initial migration and immutable recovery; four repeated preparations; conflicting adjacent defaults; upgrading resources; fresh installation; legacy INI; relocation; and no game/save writes. The real managed launcher is exercised through three process-stub launches, asserting executable, cwd, arguments and unchanged custom settings. These are not GUI tests.
 
-Library, recovery, portable-copy checks and source package build passed. `node scripts/verify.cjs` is blocked by the existing ORDERED_ROUTE.json byte-hash mismatch caused by CRLF checkout (`core.autocrlf=true`); the HEAD blob matches the expected hash. The route was not modified to hide this unrelated failure. Interface checks require Electron, which is not installed in the source checkout.
+Library, recovery, portable-copy checks and source package build passed. The initial `node scripts/verify.cjs` failed because Windows CRLF checkout changed byte hashes of approved route inputs. The v1.0.0 release pins those JSON files to LF with `.gitattributes`; their expected hashes and route content remain unchanged and verify now passes. Interface checks require Electron, which is not installed in the source checkout.
 
 ## Manual checks still required
 

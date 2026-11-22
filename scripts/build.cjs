@@ -9,7 +9,7 @@ async function get(url){const r=await fetch(url,{signal:AbortSignal.timeout(3000
 async function build(target){
   if(!['source','win32-ia32','win32-x64','win32-arm64','linux-x64','linux-arm64'].includes(target))throw Error('Unknown target '+target);
   const stage=fs.mkdtempSync(path.join(os.tmpdir(),'pokedex-build-'));
-  const portable=target==='win32-x64',prefix='Pokedex-Helper-1.0.0-rc.1-portable-'+target,folderName=portable?'PokedexHelper':prefix,folder=path.join(stage,folderName);fs.mkdirSync(folder);
+  const portable=target==='win32-x64',prefix='Pokedex-Helper-'+require(path.join(app,'package.json')).version+'-portable-'+target,folderName=portable?'PokedexHelper':prefix,folder=path.join(stage,folderName);fs.mkdirSync(folder);
   if(target==='source'){copy(root,folder,source)}
   else{
     const version=target==='win32-ia32'?'43.8.12':'45.3.3';
