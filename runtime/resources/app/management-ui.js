@@ -79,20 +79,34 @@ async function openBackups(g=backupGame,id=backupProfile,notice=''){
   const entering=activePage!=='backups';
   navigate('backups');inArchive=false;
   const body=$('backupContent'),title=$('backupsPage').querySelector('h1');title.textContent=mt('title');
-  const token=++viewGeneration,view=await service.saveView(g,id);if(token!==viewGeneration)return;
+  const token=++viewGeneration;
+  const previousSelector=body.contains(document.activeElement)?document.activeElement.dataset.backupSelector:null;
+  let view;
+  try{view=await service.saveView(g,id)}
+  catch(error){
+    if(token!==viewGeneration)return;
+    body.replaceChildren(button(mt('refresh'),()=>openBackups(g,id)));
+    $('pageStatus').textContent=managementError(error);
+    return;
+  }
+  if(token!==viewGeneration)return;
   backupGame=view.g;backupProfile=view.id;
   body.replaceChildren(node('p',mt('subtitle')));$('pageStatus').textContent=notice;
   if(entering)window.scrollTo(0,0);
   const archiveButton=button(mt('archive'),()=>openArchive(view));
   if(!view.g){body.append(node('p',mt('empty')),archiveButton);return}
   const perform=async(op,key)=>{
+    if(token!==viewGeneration)return;
     const result=await service.saveAction(op,view.g,view.id,key);if(token!==viewGeneration)return;
     await openBackups(view.g,view.id,result?mt(result):'');
   };
   const selectors=node('div',null,'selectors');
   selectors.append(picker(mt('game'),view.games.map(g=>[g,'Pokémon '+g]),view.g,g=>openBackups(g,null)),
     picker(mt('profile'),view.profiles.map(p=>[p.id,p.name||mt('main')]),view.id,id=>openBackups(view.g,id)));
+  const [gameMenu,profileMenu]=selectors.querySelectorAll('select');
+  gameMenu.dataset.backupSelector='game';profileMenu.dataset.backupSelector='profile';
   body.append(selectors);
+  if(previousSelector&&document.activeElement===document.body)(previousSelector==='game'?gameMenu:profileMenu).focus({preventScroll:true});
   const card=node('section',null,'info-card'),stats=node('dl');
   function stat(k,v){stats.append(node('dt',k),node('dd',v))}
   stat(mt('status'),view.data.error||mt('valid'));

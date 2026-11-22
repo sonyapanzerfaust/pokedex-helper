@@ -46,6 +46,29 @@ app.on('browser-window-created',(_,win)=>{
           !check[3].includes('214')||check[3].includes(expected)||!check[4])throw Error('Catch detail or saved checkpoint: '+check);
       }
 
+      await js(`(async()=>{
+        const search=document.getElementById('search'),filter=document.getElementById('filter'),expand=document.getElementById('expand');
+        search.value='#185';search.dispatchEvent(new Event('input'));
+        if(!document.querySelector('[data-task="get.185"]')||document.querySelector('[data-species]:not([data-species="185"])'))throw Error('Displayed Dex number lookup');
+        const savedOpen=JSON.stringify(prefs.open);
+        expand.click();render();
+        if(document.querySelector('#sections details[open]')||expand.disabled||JSON.stringify(prefs.open)!==savedOpen)throw Error('Filtered section disclosure');
+        search.value='no-such-pokemon';search.dispatchEvent(new Event('input'));
+        if(!expand.disabled)throw Error('Empty result actions');
+        document.querySelector('#sections .empty button').click();
+        if(document.activeElement!==search||filter.value!=='all'||!document.querySelector('[data-task="get.185"]'))throw Error('Recover from empty search');
+        const checkpoint=document.querySelector('[data-task="2-24"] input');
+        checkpoint.closest('details').open=true;checkpoint.focus();render();
+        if(document.activeElement!==document.querySelector('[data-task="2-24"] input')&&document.activeElement!==document.querySelector('[data-task="2-24"]').closest('details').querySelector('summary'))throw Error('Route keyboard focus');
+        model.errors.Platinum='ENOENT';render();
+        if(document.getElementById('diagnostics').hidden||!document.getElementById('status').textContent.includes('ENOENT'))throw Error('SAV error diagnostics');
+        delete model.errors.Platinum;render();
+        if(!document.getElementById('diagnostics').hidden)throw Error('Recovered SAV diagnostics');
+        await openBackups('invalid-game');
+        if(!document.getElementById('pageStatus').textContent||!document.querySelector('#backupContent button')||document.querySelector('#backupContent .backup-actions'))throw Error('Unavailable backup view');
+        await openBackups();document.getElementById('routeNav').click();
+        search.focus({preventScroll:true});window.scrollTo(0,0);
+      })()`);
       await capturePage('route');
       await js("document.querySelector('[data-section=emerald]').scrollIntoView({block:'start'})");await capturePage('campaigns');
       await js("Promise.all([...new Set([...document.querySelectorAll('img.section-art')].map(i=>i.src))].map(url=>{const img=new Image();img.src=url;return img.decode()}))");

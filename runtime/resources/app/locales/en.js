@@ -1,5 +1,10 @@
 globalThis.dexLocales ||= {};
 globalThis.dexLocales.en = {
+  "navigation.filter_tasks": "Filter route tasks",
+  "navigation.collapse_all": "Collapse all",
+  "navigation.clear_search_filters": "Show all tasks",
+  "renderer.save_source": "Platinum · Caught flags · Trainer ID {id}",
+  "renderer.pc_box": "PC Box {number}",
   "management.fileError": "Unable to access the file. Check the disk, free space and file permissions.",
   "management.present": "Available",
   "management.missingFile": "Configured file is missing",

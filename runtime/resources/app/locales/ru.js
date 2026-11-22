@@ -1,5 +1,10 @@
 globalThis.dexLocales ||= {};
 globalThis.dexLocales.ru = {
+  "navigation.filter_tasks": "Фильтр задач маршрута",
+  "navigation.collapse_all": "Свернуть все",
+  "navigation.clear_search_filters": "Показать все задачи",
+  "renderer.save_source": "Platinum · Пойманные по данным SAV · ID тренера {id}",
+  "renderer.pc_box": "Ящик ПК {number}",
   "management.fileError": "Не удалось обратиться к файлу. Проверь диск, свободное место и права доступа.",
   "management.present": "Доступен",
   "management.missingFile": "Настроенный файл отсутствует",

@@ -37,7 +37,7 @@ function revealTask(section,key){
   $('search').value='';$('filter').value='all';render();
   const card=document.querySelector('[data-section="'+section.stage+'"]');
   if(!card)return;
-  card.open=true;const target=key?card.querySelector('[data-task="'+CSS.escape(key)+'"]'):card.querySelector('summary');
+  card.open=true;updateExpandButton();const target=key?card.querySelector('[data-task="'+CSS.escape(key)+'"]'):card.querySelector('summary');
   if(target){target.tabIndex=-1;target.focus({preventScroll:true});target.scrollIntoView({block:'center'})}
 }
 function save(){const copy=structuredClone(prefs);queued=queued.catch(()=>{}).then(()=>service.prefs(copy));return queued}
@@ -103,7 +103,7 @@ async function milestone(){
 function updateLaunch(){
   const game=$('donorSelect').value;
   const emu=['Emerald','FireRed','LeafGreen'].includes(game)?'mGBA':'melonDS';
-  const missing=!model.paths.rom[game]?'ROM '+game:!model.paths.emulator[emu]?emu:'';
+  const missing=!model.availability.rom[game]?'ROM '+game:!model.availability.emulator[emu]?emu:'';
   $('play').textContent=I18n.t("renderer.play")+game;$('play').disabled=!!missing;
   $('play').textContent=$('play').textContent.replace(/^[▶▷]\s*/, '');$('play').prepend(fieldIcon('launch'));
   $('play').title=$('play').textContent;$('play').setAttribute('aria-label',$('play').title);
@@ -117,7 +117,7 @@ function roster(){
   if(!pt){root.append(node('p',I18n.t("renderer.connect_your_platinum_save")));return}
   const selector=node('select');selector.setAttribute('aria-label',I18n.t("renderer.party_or_box"));
   for(let i=0;i<=18;i++){
-    const o=node('option',i?'PC Box '+i:I18n.t("renderer.active_party"));o.value=i;selector.append(o);
+    const o=node('option',i?I18n.t('renderer.pc_box',{number:i}):I18n.t("renderer.active_party"));o.value=i;selector.append(o);
   }
   selector.value=boxNumber;selector.onchange=()=>{boxNumber=Number(selector.value);roster();root.querySelector('select').focus()};
   const grid=node('div',null,'members');root.append(selector,grid);
@@ -139,6 +139,12 @@ function taskMark(e,s){
   return routeWord('task');
 }
 
+let routeFilterKey,filteredOpen=new Map();
+function updateExpandButton(){
+  const cards=[...$('sections').querySelectorAll('details')];
+  $('expand').disabled=!cards.length;
+  $('expand').textContent=cards.length&&cards.every(card=>card.open)?I18n.t('navigation.collapse_all'):I18n.t('navigation.expand_all');
+}
 function render(){
 
   const pt=dex(),auto=automatic(),caught=new Set(auto?pt?.caught:Object.keys(prefs.caught).filter(id=>prefs.caught[id]).map(Number)),seen=new Set(auto?pt?.seen:[]);
@@ -158,7 +164,7 @@ function render(){
   const q=$('search').value.trim().toLowerCase(),filter=$('filter').value;
   $('caught').textContent=auto&&!pt?'—':caught.size;$('seen').textContent=auto&&pt?seen.size:'—';
   $('manual').textContent=storyStages.filter(s=>story(gateOf(s))).length+' / '+storyStages.length;$('progress').value=caught.size;
-  $('source').textContent=auto?(pt?'Platinum · Caught Flags · Trainer ID '+pt.tid:I18n.t("renderer.automatic_mode_connect_your_platinum_save")):I18n.t("renderer.manual_mode_record_catches_from_your_console");
+  $('source').textContent=auto?(pt?I18n.t('renderer.save_source',{id:String(pt.tid)}):I18n.t("renderer.automatic_mode_connect_your_platinum_save")):I18n.t("renderer.manual_mode_record_catches_from_your_console");
   if(!(auto&&pt?.starter)&&!prefs.starter)$('source').textContent+=I18n.t("renderer.previewing_the_turtwig_line_choose_your_starter_in");
   const entriesByKey=new Map(sections.flatMap(section=>section.entries.map(e=>[e.key,e])));
   const available=e=>{
@@ -192,22 +198,25 @@ function render(){
   for(const [id,icon] of Object.entries({routeNav:'⌖',setup:'⚙',backups:'▤',export:'↑',import:'↓',play:'▶'})){const el=$(id);el.dataset.icon=icon;el.title=el.textContent;el.setAttribute('aria-label',el.textContent)}
   decorateNavigation();
   $('donorSelect').title=$('donorSelect').value;
-  // TODO(PH-1.0): Review and relocate save diagnostics into
-  // the Backups / Save Management interface.
-  // Keep parser diagnostics and logging available for debugging.
-  // Remove obsolete diagnostic UI only after the replacement is verified.
-  $('status').textContent=Object.entries(model.errors).map(([g,msg])=>g+' · '+I18n.message(msg)+I18n.t("renderer.showing_the_last_known_data")).join('\n')||(pt?I18n.t("renderer.last_platinum_read_succeeded_sha_256")+pt.hash:I18n.t("renderer.waiting_for_a_save"));
+  $('diagnostics').hidden=!auto||!Object.keys(model.errors).length;
+  $('status').textContent=Object.entries(model.errors).map(([g,msg])=>g+' · '+I18n.message(msg)+(model.cache[g]?I18n.t("renderer.showing_the_last_known_data"):'')).join('\n')||(pt?I18n.t("renderer.last_platinum_read_succeeded_sha_256")+pt.hash:I18n.t("renderer.waiting_for_a_save"));
   const line=selected();document.body.dataset.theme=prefs.theme==='auto'?String(line):prefs.theme;
+  const focused=document.activeElement,oldRow=focused.closest('[data-task]');
+  const oldSection=focused.closest('details[data-section]');
+  const controlIndex=oldRow?[...oldRow.querySelectorAll('input,button')].indexOf(focused):-1;
+  const byNumber=/^#(\d{1,3})$/.exec(q);
+  const filtered=!!q||filter!=='all',filterKey=JSON.stringify([q,filter]);
+  if(filterKey!==routeFilterKey){routeFilterKey=filterKey;filteredOpen.clear()}
   $('sections').replaceChildren();
   for(const s of sections){
     const entries=s.entries.filter(e=>{
       const c=caught.has(e.nationalId),v=seen.has(e.nationalId);
-      return [e.name,e.place,e.how,...[e.name,e.place,e.how].map(I18n.display),String(e.nationalId||'').padStart(3,'0')].join(' ').toLowerCase().includes(q)&&
+      return (byNumber?e.nationalId===Number(byNumber[1]):[e.name,e.place,e.how,...[e.name,e.place,e.how].map(I18n.display),e.nationalId?String(e.nationalId).padStart(3,'0'):''].join(' ').toLowerCase().includes(q))&&
         (filter==='all'||filter==='available'&&available(e)||filter==='deferred'&&e.deferred||filter==='missing'&&e.nationalId&&!c||filter==='seen'&&v&&!c||filter==='caught'&&c||filter==='done'&&complete(e)||filter==='donor'&&!c&&e.nationalId&&donorGames(e.nationalId).length);
     });
     if(!entries.length)continue;
-    const d=node('details'),title=node('div'),summary=node('summary');d.dataset.section=s.stage;d.open=!!q||sectionOpen(prefs.open,s.stage,s.stage===active);
-    summary.onclick=ev=>{ev.preventDefault();d.open=!d.open;if(!q){prefs.open[s.stage]=d.open;safely(save)()}};
+    const d=node('details'),title=node('div'),summary=node('summary');d.dataset.section=s.stage;d.open=filtered?(filteredOpen.get(String(s.stage))??true):sectionOpen(prefs.open,s.stage,s.stage===active);
+    summary.onclick=ev=>{ev.preventDefault();d.open=!d.open;updateExpandButton();if(filtered)filteredOpen.set(String(s.stage),d.open);else{prefs.open[s.stage]=d.open;safely(save)()}};
     const species=s.entries.filter(e=>e.goal);
     const gate=s.stage<=9?s.entries.find(e=>e.name===boundaries[s.stage-1]):null;
     const status=gate&&story(gate)?I18n.t("renderer.story_complete"):s.stage===active?I18n.t("renderer.current_stage"):gate?I18n.t("renderer.story_pending"):'';
@@ -252,13 +261,31 @@ function render(){
     }
     $('sections').append(d);
   }
-  if(!$('sections').childElementCount)$('sections').append(node('p',I18n.t("renderer.no_matches"),'empty'));
+  updateExpandButton();
+  if(!$('sections').childElementCount){
+    const empty=node('div',null,'empty'),message=node('p',I18n.t("renderer.no_matches"));
+    message.setAttribute('role','status');
+    empty.append(message,button(I18n.t('navigation.clear_search_filters'),()=>{
+      $('search').value='';$('filter').value='all';render();$('search').focus();
+    }));
+    $('sections').append(empty);
+  }
+  if(oldSection){
+    const card=$('sections').querySelector('[data-section="'+CSS.escape(oldSection.dataset.section)+'"]');
+    const row=oldRow&&card?.querySelector('[data-task="'+CSS.escape(oldRow.dataset.task)+'"]');
+    const target=(card?.open&&row&&(controlIndex<0?row:row.querySelectorAll('input,button')[controlIndex]))||card?.querySelector('summary')||$('filter');
+    if(target===row)target.tabIndex=-1;
+    target.focus({preventScroll:true});
+  }
 }
 const pages=['Добро пожаловать','Эмуляторы и режим','ROM-файлы','Сохранения','Стартер','Итоговая конфигурация'];
 function select(label,key,options){
   const field=node('label',label+' '),menu=node('select');
   for(const [value,name] of options){const o=node('option',name);o.value=value;menu.append(o)}
-  menu.dataset.preference=key;menu.value=prefs[key];menu.onchange=safely(async()=>{prefs[key]=menu.value;if(key==='language')applyLocale();await save();render();refreshControls()});field.append(menu);return field;
+  menu.dataset.preference=key;menu.value=prefs[key];menu.onchange=safely(async()=>{prefs[key]=menu.value;if(key==='language')applyLocale();await save();const restoreFocus=document.activeElement===menu;render();refreshControls();
+    const area=$('wizard').open?$('choices'):$('settingsContent');
+    if(restoreFocus)area.querySelector('[data-preference="'+key+'"]')?.focus({preventScroll:true});
+  });field.append(menu);return field;
 }
 const romMessages=new Map();
 async function choose(kind,g){
@@ -297,7 +324,10 @@ function emulatorControls(parent){
     const info=model.paths.emulator[name];area.append(node('h3',name),node('p',info?[mt(model.availability.emulator[name]?'present':'missingFile'),I18n.display(info.version),info.arch,info.path].filter(Boolean).join(' · '):I18n.t("renderer.not_connected")));
     const trigger=button(info?I18n.t("renderer.update"):I18n.t("renderer.install")+name,()=>install(name));trigger.disabled=installs.has(name);
     area.append(trigger,button(I18n.t("renderer.import_official_archive"),()=>choose('emulator',name)));
-    if(info)area.append(button(I18n.t("renderer.launch"),()=>service.component(name,'launch')),button(I18n.t("renderer.check_for_updates"),async()=>{const r=await service.component(name,'check');(activePage==='settings'?$('pageStatus'):$('wizardError')).textContent=r.available?I18n.t("renderer.available_version")+r.version:I18n.t("renderer.up_to_date")}));
+    if(info){
+      const launch=button(I18n.t("renderer.launch"),()=>service.component(name,'launch'));
+      launch.disabled=!model.availability.emulator[name];area.append(launch,button(I18n.t("renderer.check_for_updates"),async()=>{const r=await service.component(name,'check');(activePage==='settings'?$('pageStatus'):$('wizardError')).textContent=r.available?I18n.t("renderer.available_version")+r.version:I18n.t("renderer.up_to_date")}));
+    }
     const box=node('div',null,'install-meter');box.id='install-'+name;
     const bar=node('progress');bar.setAttribute('aria-label',I18n.t("renderer.installing")+name);
     box.append(node('span'),bar);area.append(box);showProgress(name);
@@ -365,7 +395,12 @@ async function init(){
   $('donorSelect').onchange=updateLaunch;$('team').ontoggle=roster;
   $('play').onclick=safely(()=>service.play($('donorSelect').value));$('backups').onclick=safely(()=>openBackups());
   $('search').oninput=render;$('filter').onchange=render;
-  $('expand').onclick=safely(async()=>{if($('search').value.trim())return;const expand=sections.some(s=>!sectionOpen(prefs.open,s.stage,false));for(const s of sections)prefs.open[s.stage]=expand;await save();render()});
+  $('expand').onclick=safely(async()=>{
+    const cards=[...$('sections').querySelectorAll('details')],expand=cards.some(card=>!card.open);
+    const persist=!$('search').value.trim()&&$('filter').value==='all';
+    for(const card of cards){card.open=expand;if(persist)prefs.open[card.dataset.section]=expand;else filteredOpen.set(card.dataset.section,expand)}
+    updateExpandButton();if(persist)await save();
+  });
   $('export').onclick=safely(()=>service.exportProgress({version:3,...prefs,dex:dex()}));
   $('import').onclick=safely(async()=>{const value=await service.importProgress();if(!value)return;if(!value.done&&!value.manual)throw Error(I18n.t("renderer.unknown_progress_format"));mergeLegacy(value);if(value.version===3){for(const [k,allowed] of Object.entries({mode:['auto','manual'],theme:['auto','387','390','393'],starter:['387','390','393']}))if(allowed.includes(value[k]))prefs[k]=value[k];if(typeof value.runner==='boolean')prefs.runner=value.runner;for(const [k,v] of Object.entries(value.milestones||{}))if(v?.reached)prefs.milestones[k]={count:493,reached:true}}await save();render()});
   $('setup').onclick=showSettings;$('prev').onclick=()=>{step--;wizard()};

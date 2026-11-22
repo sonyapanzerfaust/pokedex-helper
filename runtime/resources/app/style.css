@@ -50,9 +50,9 @@ body.compact{grid-template-columns:3.7rem minmax(0,1fr)}body.compact aside{paddi
 .objective{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:.35rem .8rem;padding:.55rem .8rem;border:1px solid var(--line);border-inline-start:3px solid var(--accent);background:var(--side);border-radius:.6rem}.objective small{color:var(--accent);font-size:.87rem}.objective p{flex:1 1 10rem;min-width:0;font-weight:600}.objective button{margin-left:auto}.now,.collection,.row,dialog{overflow-wrap:anywhere}
 .current>summary{background:linear-gradient(105deg,var(--raised),var(--card) 70%)}.current>summary strong:before,.now h2:before{content:'◆';color:var(--accent);font-size:.7em;margin-right:.5em}
 .row{grid-template-columns:1.25rem minmax(0,1fr)}.row .badge{display:inline-block;max-width:100%;margin:.1rem 0 .25rem;color:var(--status);font-size:.87rem;font-weight:600}.row[data-state=registered] .badge{color:var(--accent)}.row[data-state=deferred] .badge,.row[data-state=donor] .badge{color:var(--warning)}.row[data-state=missing] .badge{color:var(--secondary)}
-.row .note{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.row:not([data-species]) .note{display:block}.row:focus{outline:2px solid var(--focus);outline-offset:-2px}
+.row .note{overflow-wrap:anywhere}.row:focus{outline:2px solid var(--focus);outline-offset:-2px}
 .scale-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem}.scale-control input{width:100%;min-width:0}.scale-control label{grid-column:1/-1}
-.empty{background:var(--card) var(--scene, url('art/grassland.svg')) right bottom/auto 2.8rem no-repeat;padding:1rem 1rem 3rem;border-radius:.6rem}
+.empty button{margin-top:.5rem}.empty{background:var(--card) var(--scene, url('art/grassland.svg')) right bottom/auto 2.8rem no-repeat;padding:1rem 1rem 3rem;border-radius:.6rem}
 @media(max-width:690px){.overview{grid-template-columns:1fr}.totals{flex-wrap:wrap}.file-actions{display:grid}.toolbar>*{max-width:100%}aside{gap:.8rem}dialog{padding:.85rem}}
 @media(max-width:480px){body:not(.compact){grid-template-columns:7.1rem minmax(0,1fr)}.brand{flex-wrap:wrap}aside{padding:.5rem .3rem}aside button{overflow-wrap:anywhere}.overview section{padding:.65rem}.setting{flex-wrap:wrap}}
 
