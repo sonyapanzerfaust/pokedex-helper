@@ -1,3 +1,4 @@
+require('./melonds-config-checks.cjs');
 require('./save-checks.cjs');
 require('./locale-checks.cjs');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');

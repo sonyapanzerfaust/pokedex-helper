@@ -84,6 +84,7 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
     if(state.cleared?.[g]?.[selected(g)]){delete state.cleared[g][selected(g)];saveState()}
   }
   function recordComponent(name,result){
+    if(name==='melonDS')require('./melonds-config.cjs').prepare(lib,result.path,state.emulator[name]?lib.at(state.emulator[name].relative):undefined);
     state.emulator[name]={relative:path.relative(lib.root,result.path),arch:result.arch,version:result.version,sha256:result.sha256};saveState();
   }
   function running(name){
@@ -148,7 +149,7 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
       if(rom&&!state.rom[g]){const b=await backup(g,rom,gba(g)?'.gba':'.nds');if(!await importRom(g,b))return}
     }
     for(const [name,info] of Object.entries(legacy.emulator)){
-      if(!state.emulator[name])recordComponent(name,await components.fromArchive(lib,name,archive(name,info.path)));
+      if(!state.emulator[name]){const result=await components.fromArchive(lib,name,archive(name,info.path));if(name==='melonDS')require('./melonds-config.cjs').prepare(lib,result.path,info.path);recordComponent(name,result)};
     }
     state.migrated=true;staging=false;saveState();
     }finally{if(staging){state=previous;staging=false;refresh()}}
@@ -194,13 +195,20 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
         args.push(fixedRoot?path.relative(cwd,rom):rom);
       }
       if(name==='melonDS'){
-        const folder=lib.at(path.relative(lib.root,cwd),'portable');fs.mkdirSync(folder,{recursive:true});
+        const folder=require('./melonds-config.cjs').prepare(lib,exe);
+        details.config=lib.at(path.relative(lib.root,folder),'melonDS.toml');
         const cfg=lib.at(path.relative(lib.root,folder),'melonDS.toml');
         if(g&&selected(g)!=='main'&&!fs.existsSync(cfg))throw Error('PH_EMUCONFIG');
         if(fs.existsSync(cfg)){
           const current=fs.readFileSync(cfg,'utf8'),portableConfig=fixedRoot?current.replace(/^LastROMFolder\s*=.*$/gm,'LastROMFolder = ""').replace(/^RecentROM\s*=.*$/gm,'RecentROM = []'):current,next=portableConfig.replace(/^(\s*SaveFilePath\s*=).*$/gm,()=>'SaveFilePath = '+JSON.stringify(g&&selected(g)!=='main'?path.dirname(active(g)).split(path.sep).join('/'):''));
           if(g&&selected(g)!=='main'&&!/SaveFilePath\s*=/.test(current))throw Error('PH_EMUCONFIG');
-          if(current!==next)jsonText(cfg,next);
+          if(current!==next){
+            const recovery=lib.at('config','melonds-config-recovery');fs.mkdirSync(recovery,{recursive:true});
+            const bytes=fs.readFileSync(cfg),sum=crypto.createHash('sha256').update(bytes).digest('hex'),recoveryFile=lib.at('config','melonds-config-recovery',sum+'-melonDS.toml');
+            if(!fs.existsSync(recoveryFile))fs.writeFileSync(recoveryFile,bytes,{flag:'wx'});
+            if(!fs.readFileSync(recoveryFile).equals(bytes))throw Error('melonDS configuration recovery verification failed');
+            jsonText(cfg,next);
+          }
         }
       }
       log('launch',details);
