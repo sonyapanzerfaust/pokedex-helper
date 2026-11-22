@@ -30,6 +30,22 @@ app.on('browser-window-created',(_,win)=>{
         fs.writeFileSync(path.resolve(__dirname,'../docs/screenshots/'+name+'.png'),capture.toPNG());
       }
       await js("prefs.language='en';applyLocale();render();document.getElementById('routeNav').click();window.scrollTo(0,0)");
+      for(const [lang,expected] of [['ru','Маршрут 221 · Высокая трава · 25%'],['en','Route 221 · Tall Grass · 25%']]){
+        const check=await js(`(()=>{
+          prefs.language=${JSON.stringify(lang)};applyLocale();render();
+          const row=key=>document.querySelector('[data-task="'+key+'"]');
+          const primary=row('get.185').querySelector('.note').textContent;
+          const checkpoint=row('6-1');
+          row('get.185').querySelector('button').click();
+          const details=document.getElementById('detailBody').textContent;
+          document.getElementById('detail').close();
+          return [primary,checkpoint.querySelector('.note').textContent,
+            checkpoint.querySelector('input').type,details,row('2-24').querySelector('input').checked];
+        })()`);
+        if(check[0]!==expected||!check[1].includes(lang==='ru'?'бабушки':'grandmother')||check[2]!=='checkbox'||
+          !check[3].includes('214')||check[3].includes(expected)||!check[4])throw Error('Catch detail or saved checkpoint: '+check);
+      }
+
       await capturePage('route');
       await js("document.querySelector('[data-section=emerald]').scrollIntoView({block:'start'})");await capturePage('campaigns');
       await js("Promise.all([...new Set([...document.querySelectorAll('img.section-art')].map(i=>i.src))].map(url=>{const img=new Image();img.src=url;return img.decode()}))");

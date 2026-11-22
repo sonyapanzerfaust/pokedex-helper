@@ -76,24 +76,39 @@ function methodLabel(e){
   return ({'static':'Static Encounter','npc-trade':'In-game Trade','gift-egg':'Gift Egg','honey-tree':'Honey Trees','roaming-grass':I18n.t("encounter.roaming_grass"),'roaming-water':I18n.t("encounter.roaming_water"),'feebas-tile-fishing':I18n.t("encounter.fishing_on_a_special_tile"),'pokeflute':'Poké Flute','devon-scope':'Devon Scope'})[e.method]||e.method.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 }
 const namesOfGames={platinum:'Platinum',diamond:'Diamond',pearl:'Pearl',heartgold:'HeartGold',soulsilver:'SoulSilver',emerald:'Emerald',firered:'FireRed',leafgreen:'LeafGreen'};
-function registration(game){
-  return game==='platinum'?I18n.t("encounter.registered_when_obtained_in_platinum"):['emerald','firered','leafgreen'].includes(game)?I18n.t("encounter.transfer_via_pal_park_on_route_221_after"):I18n.t("encounter.trade_from")+namesOfGames[game]+I18n.t("encounter.to_platinum_in_the_union_room");
-}
 function encounterList(body,entry,item){
   const picker=node('select'),label=node('label',I18n.t("encounter.game"));label.append(picker);body.append(label);
-  const available=Object.keys(namesOfGames).filter(g=>item.encounters.some(e=>e.game===g));
-  const suggested=available.find(g=>entry.place.toLowerCase().includes(g))||available[0];
+  // Keep alternate tables on the same map (Radar, swarms and cartridge slots).
+  const records=[entry.task,...model.guide.species[entry.nationalId].alternatives];
+  const normalize=value=>value.toLowerCase().replace(/^(sinnoh|johto|hoenn|kanto)[ -]route/,'route').replace(/[^a-z0-9]/g,'');
+  const remaining=item.encounters.filter(enc=>!records.some(r=>{
+    if(r.game?.toLowerCase()!==enc.game)return false;
+    const rawMap=normalize(enc.location.split(' ')[0]);
+    const location=normalize(model.guide.words.en[r.location] || r.location);
+    const fixed={'Gift Egg':'gift-egg',Gift:'gift','Static Encounter':'static','In-game Trade':'npc-trade'};
+    if(fixed[r.method]===enc.method && location.includes(rawMap))return true;
+    if(location!==normalize(enc.location))return false;
+    const labels={'Tall Grass':'walk',Cave:'walk',Building:'walk',Surf:'surf','Old Rod':'old-rod','Good Rod':'good-rod','Super Rod':'super-rod','Poké Radar':'walk',Swarm:'walk'};
+    if(labels[r.method]!==enc.method)return false;
+    const conditions=enc.conditions.split(', ').filter(Boolean);
+    if(r.method==='Poké Radar')return conditions.includes('radar-on');
+    if(r.method==='Swarm')return conditions.includes('swarm-yes');
+    return conditions.every(c=>/^(time-|radar-off$|swarm-no$|slot2-none$|backlot-not-mentioned$)/.test(c));
+  }));
+  const available=Object.keys(namesOfGames).filter(g=>remaining.some(e=>e.game===g));
+  if(!available.length){label.remove();return}
+  const suggested=available.find(g=>entry.task.game.toLowerCase()===g)||available[0];
   for(const game of available){const option=node('option',namesOfGames[game]);option.value=game;picker.append(option)}
   const list=node('div');body.append(list);
   function show(){
-    const game=picker.value;list.replaceChildren(node('p',registration(game)));
-    for(const enc of item.encounters.filter(e=>e.game===game)){
-      const conditions=enc.conditions.split(', ').filter(Boolean).map(condition);
+    const game=picker.value;list.replaceChildren();
+    for(const enc of remaining.filter(e=>e.game===game)){
+      const conditions=enc.conditions.split(', ').filter(Boolean).map(c=>model.guide.words[I18n.language]['@condition.'+c] || condition(c));
       const random=['walk','surf','old-rod','good-rod','super-rod','rock-smash','headbutt','headbutt-low','headbutt-high','headbutt-normal','honey-tree','feebas-tile-fishing'].includes(enc.method);
       const total=enc.slots.reduce((n,s)=>s.weight===''?NaN:n+Number(s.weight),0);
       const rate=Number.isFinite(total)&&total>0&&total<=100?total+'%':I18n.t("encounter.unconfirmed");
       const levels=[...new Set(enc.slots.map(s=>s.level.replace(/^(\d+)–\1$/,'$1')))].join(', ');
-      list.append(node('p',[enc.location.replace(/-/g,' '),methodName(enc),...conditions,random?I18n.t("encounter.combined_weight_of_the_listed_slots")+rate:'', I18n.t("encounter.lv")+levels].filter(Boolean).join(' · ')));
+      list.append(node('p',[entry.acquisition.tablePlace(enc.location),methodName(enc),...conditions,random?I18n.t("encounter.combined_weight_of_the_listed_slots")+rate:'', I18n.t("encounter.lv")+levels].filter(Boolean).join(' · ')));
     }
   }
   if(available.length){picker.value=suggested;picker.onchange=show;show()}else label.remove();

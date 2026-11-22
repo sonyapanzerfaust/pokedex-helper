@@ -37,6 +37,7 @@
 !/runtime/resources/app/management-ui.js
 !/runtime/resources/app/management-words.js
 !/runtime/resources/app/save.js
+!/runtime/resources/app/acquisition.js
 !/runtime/resources/app/approved.js
 !/runtime/resources/app/approved-data.json
 !/runtime/resources/app/methods.json

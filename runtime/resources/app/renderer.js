@@ -54,23 +54,30 @@ function story(e){
 }
 function donorGames(id){return Object.entries(model.cache).filter(([g,d])=>g!=='Platinum'&&d.caught.includes(id)).map(([g])=>g)}
 function detail(entry){
-  $('detailTitle').textContent=I18n.display(entry.name);const body=$('detailBody');body.replaceChildren(node('p',readable(entry.how)));
-  if(entry.alternative)body.append(node('h3',I18n.t("renderer.later_method")),node('p',I18n.display(entry.alternative.place)+' · '+readable(entry.alternative.how)));
-  const item=model.methods[entry.nationalId];if(checked(entry))body.append(node('p',I18n.t("renderer.a_task_mark_from_the_previous_version_is")));
-  if(item.evolution.length)body.append(node('h3',I18n.t("renderer.evolution")),node('p',item.evolution.map(I18n.display).join(' / ')));
-  if(entry.path)body.append(node('h3',routeWord('alternative')),node('p',entry.local(entry.path.hint)));
-  if(entry.dependencyText)body.append(node('h3',routeWord('requires')),node('p',entry.dependencyText));
-  const pair=model.guide.species[entry.nationalId].versionTable;
-  if(pair&&['HeartGold','SoulSilver'].includes(entry.task.game))body.append(node('p',pair.both?routeWord('sameVersion')+' · '+pair.versions.join(' / '):routeWord('versionOnly')+' '+pair.version));
-  for(const a of model.guide.species[entry.nationalId].alternatives){
-    const text=[a.game,entry.local(a.location),entry.local(model.guide.methods[a.method]||a.method),entry.local(a.area),entry.local(a.group),a.level,
-      ...Object.entries(a.rarity_percent||{}).map(([period,rate])=>(routeWord(period)||period)+' '+rate+'%'),
-      ...[a.steps,a.access,a.probability_basis,...(a.items||[]),...(a.hm||[]),a.rod,a.registration].filter(Boolean).map(entry.local)];
-    body.append(node('p',text.filter(Boolean).join(' · ')));
+  $('detailTitle').textContent=I18n.display(entry.name);
+  const body=$('detailBody');body.replaceChildren();
+  const id=entry.nationalId, item=model.methods[id], view=entry.acquisition;
+  const listed=new Set([entry.task.game+' · '+entry.how]);
+  function alternative(game,line){
+    const text=[game,line].filter(Boolean).join(' · ');
+    if(listed.has(text))return;
+    listed.add(text);
+    body.append(node('p',text));
   }
-  body.append(node('h3',I18n.t("renderer.acquisition_methods")),node('p',I18n.t("renderer.slot_weights_apply_to_the_specified_table_and")));
-  encounterList(body,entry,item);
-  if(!item.encounters.length)body.append(node('p',I18n.t("renderer.no_separate_encounter_table_exists_for_this_method")));
+  for(const option of model.guide.species[id].alternatives)
+    alternative(option.game,view.format(option,id));
+  if(entry.path){
+    const other=model.guide.tasks.find(t=>t.id===(entry.early?entry.path.target:entry.path.earlyId));
+    if(other)alternative(other.game,view.format(other,id));
+  }
+  if(entry.method!=='Evolution')for(const line of view.evolution(id))alternative('',line);
+  const versions=model.guide.species[id].versionTable;
+  if(versions && ['HeartGold','SoulSilver'].includes(entry.task.game) && versions.both){
+    const other=versions.versions.find(game=>game!==entry.task.game);
+    if(other)alternative(other,entry.how);
+  }
+  if(item.encounters.length)encounterList(body,entry,item);
+  if(!body.childElementCount)body.append(node('p',routeWord('noAlternatives')));
   $('detail').showModal();
 }
 function celebrate(){
@@ -135,7 +142,7 @@ function taskMark(e,s){
 function render(){
 
   const pt=dex(),auto=automatic(),caught=new Set(auto?pt?.caught:Object.keys(prefs.caught).filter(id=>prefs.caught[id]).map(Number)),seen=new Set(auto?pt?.seen:[]);
-  sections=approvedRoute(model.guide,model.catalog,selected(),prefs.deferred,caught,I18n.language);
+  sections=approvedRoute(model.guide,model.catalog,selected(),prefs.deferred,caught,I18n.language,model.methods);
   const complete=e=>e.goal?caught.has(e.nationalId):e.deferred?false:story(e);
   const dexMilestone=sections.find(s=>s.stage==='platinum.finish').entries.find(e=>e.key==='9-9');
   const storyStages=sections.filter(s=>typeof s.stage==='number');
@@ -219,14 +226,14 @@ function render(){
       const id=e.nationalId,row=node('div',null,'row'),box=node('input'),content=node('div'),tag=node('span',null,'badge');
       row.dataset.task=e.key;box.type='checkbox';box.checked=complete(e);box.disabled=!!(e.deferred||(auto&&e.goal));box.setAttribute('aria-label',(id?I18n.t("renderer.registered_in_platinum"):I18n.t("renderer.story.2"))+I18n.display(e.name));
       box.onchange=safely(async()=>{if(e.goal){if(auto)return;prefs.caught[id]=box.checked}else prefs.manual[e.key]=box.checked;await save();render()});
-      const h=node('h3');if(id)h.append(node('span','#'+String(id).padStart(3,'0'),'number'));h.append(document.createTextNode(I18n.display(e.name)));if(id)h.append(node('small',taskMark(e,s),'task-mark'));if(id&&methodIcon[e.method])h.prepend(fieldIcon(methodIcon[e.method]));content.append(h,node('div',e.place,'place'),node('div',readable(e.how),'note'));
+      const h=node('h3');if(id)h.append(node('span','#'+String(id).padStart(3,'0'),'number'));h.append(document.createTextNode(I18n.display(e.name)));if(id)h.append(node('small',taskMark(e,s),'task-mark'));if(id&&methodIcon[e.method])h.prepend(fieldIcon(methodIcon[e.method]));content.append(h);if(e.place)content.append(node('div',e.place,'place'));content.append(node('div',readable(e.how),'note'));
       if(e.method==='Evolution'){
         const parents=e.task.requirements.requires_species||[];
         const snapshot=auto&&model.cache[e.task.game];
         const inventory=snapshot&&Array.isArray(snapshot.party)&&Array.isArray(snapshot.boxes)?[...snapshot.party,...snapshot.boxes]:null;
         const status=inventory&&parents.length?parents.every(n=>inventory.some(m=>m.species===n&&!m.egg))?'sourcePresent':'sourceAbsent':
           e.task.game!=='Platinum'?'localSource':parents.every(n=>caught.has(n))?'sourceRegistered':'sourceMissing';
-        content.append(node('small',parents.map(n=>names.get(n)||model.guide.species[n].name).join(' / ')+' → '+e.name+' · '+routeWord(status)));
+        content.append(node('small',routeWord(status)));
       }
       if(id){
         content.append(button(I18n.t("renderer.acquisition_methods.2"),()=>detail(e)));
@@ -235,7 +242,6 @@ function render(){
         const donors=donorGames(id);
         if(e.exclusive)content.append(node('small',e.exclusive,'place'));
         tag.textContent=e.kind==='local_requirement'?(checked(e)?I18n.t('navigation.completed'):routeWord('available')):e.deferred?routeWord('deferred'):caught.has(id)?'☑ '+routeWord('registered'):donors.length?I18n.t("renderer.obtained_in_donor_awaiting_transfer")+donors.join(', '):routeWord('unchecked')+(seen.has(id)?' · '+I18n.t('pokedex.seen'):'');
-        if(e.deferred)content.append(node('small',e.local(e.path.hint)));
         if(prefs.manual['species-'+id]||prefs.done['species-'+id]||prefs.tasks['species-'+id])content.append(node('small',routeWord('historical')));
       }else tag.textContent=I18n.t("renderer.story.3");
       if(id)row.dataset.species=id;

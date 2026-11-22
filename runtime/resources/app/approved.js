@@ -1,8 +1,9 @@
 'use strict';
 // Adapt the reviewed task sequence without using display strings as progress keys.
-function approvedRoute(guide, catalog, starter, deferred, caught, language) {
+function approvedRoute(guide, catalog, starter, deferred, caught, language, methods) {
   const local = value => typeof value === 'string' && value.startsWith('@')
     ? (guide.words[language]?.[value] ?? guide.words.en[value]) : value;
+  const acquisition = (typeof module === 'undefined' ? acquisitionView : require('./acquisition.js'))(guide, language, methods || require('./methods.json'));
   const label = key => local('@ui.' + key);
   const line = ({387:'Turtwig',390:'Chimchar',393:'Piplup'})[starter] || 'Turtwig';
   const overrides = guide.variants[line];
@@ -21,7 +22,6 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language) {
     description:local('@section.'+stage+'.description').replace(/\{(\w+)\}/g,(_,key)=>parameters[key])
   }));
   const bySection = new Map(sections.map(section=>[section.stage,section]));
-  const byId = new Map(plan.map(task=>[task.id,task]));
   const paths = new Map(guide.deferrals.map(path=>[path.id,path]));
   const deferredNow = id => Boolean(deferred[id] && !caught.has(id));
   function group(t) {
@@ -34,19 +34,6 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language) {
     if (/^(johto|kanto)\./.test(phase)) return 'hgss';
     return phase;
   }
-  function description(t) {
-    const req=t.requirements||{};
-    const parts=[local(t.steps||t.action), local(req.access)];
-    if(t.method) parts.push([label('method'), local(guide.methods[t.method]||t.method),local(req.area),local(req.group)].filter(Boolean).join(' · '));
-    if(req.rate && typeof req.rate==='object') parts.push(Object.entries(req.rate).map(([period,n])=>
-      (period==='all'?'':label(period)+' ')+n+'%').join(' / '));
-    if(req.rate===null && ['Tall Grass','Cave','Headbutt','Tile fishing','Honey Trees','Poké Radar','Great Marsh','Safari Zone','Super Rod','Good Rod','Old Rod','Surf'].includes(t.method))parts.push(label('unknown'));
-    if(req.rate_basis)parts.push(local(req.rate_basis));
-    parts.push([...(req.hm||[]),...(req.items||[]),req.rod].filter(Boolean).map(local).join(' · '));
-    if(t.registration)parts.push(local(t.registration));
-    return [...new Set(parts.filter(Boolean))].join(' ');
-  }
-
   for(const task of plan){
     if(isRouteNarration(task))continue;
     const id=task.national_dex_id, path=paths.get(id), skip=deferredNow(id);
@@ -56,8 +43,7 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language) {
     const section=bySection.get(g);
     const goal=!!id && (task.kind==='acquire'||early||late) && !(early&&skip);
     const species=guide.species[id];
-    const action=local(task.action);
-    let how=description(task);
+    let how=id ? acquisition.format(task,id) : local(task.steps||task.action);
     if(task.species_ids){
       const ids=task.species_ids.filter(n=>{
         const neededForTemple=[377,378,379].includes(n)&&!caught.has(486);
@@ -69,26 +55,17 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language) {
       for(const p of paths.values())if(p.addTo===task.id&&deferredNow(p.id))ids.push(p.id);
       how+=' '+ids.map(n=>guide.species[n].name).join(', ');
     }
-    const dependencies=new Set(task.depends_on||[]);
-    for(const parent of task.requirements?.requires_species||[]){
-      const choice=paths.get(parent);
-      if(!choice)continue;
-      if(deferredNow(parent)){
-        dependencies.delete(choice.earlyId);
-        if(choice.donorAlternative){
-          for(const key of dependencies)if(byId.get(key)?.species_ids?.includes(parent))dependencies.delete(key);
-          if(choice.addTo)dependencies.add(choice.addTo);
-        }
-        dependencies.add(choice.target);
-        if(parent===349)dependencies.add('palpark.Emerald.7');
-      }else if(parent===349)dependencies.add(choice.earlyId);
-    }
     const row={key:task.id,name:species?.name || (task.kind==='story'?local('@milestone.'+task.id):task.kind==='transfer'?label('transfer'):label('task')),
       place:[local(task.game),local(task.location)].filter(Boolean).join(' · '),how,nationalId:id,goal,
-      kind:task.kind||'action',method:task.method,early,late,deferred:early&&skip,path,task,local,
-      dependencyText:[...dependencies].map(key=>{
-        const dep=byId.get(key);return dep ? (guide.species[dep.national_dex_id]?.name||local(dep.action)):key;
-      }).join(' · ')};
+      kind:task.kind||'action',method:task.method,early,late,deferred:early&&skip,path,task,local};
+    if(task.kind==='story' && guide.words[language]['@stop.'+task.id]){
+      row.place=acquisition.place(local('@stop.'+task.id));
+      row.how=local('@checkpoint.'+task.id);
+    }
+    if(id){
+      row.place=task.game==='Platinum'?'':task.game;
+      row.acquisition=acquisition;
+    }
     section.entries.push(row);
   }
   // The pre-integration story checklist uses stable IDs also found in old exports.
@@ -104,6 +81,40 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language) {
     section.entries.splice(next<0?section.entries.length:next,0,...rows);
     if(source.stage===8)section.entries.push({key:'story-giratina',name:'Событие Giratina',place:'Distortion World',how:'',kind:'legacyStory'});
   }
+  // Place unlocks immediately before the first dependent stop. Keep the keys
+  // and legacyId of catalog rows so existing checkbox and badge state survives.
+  function checkpoint(stage, key, before, place, title) {
+    const entries=bySection.get(stage).entries;
+    const old=entries.findIndex(e=>e.key===key);
+    const row=old<0 ? {key,kind:'legacyStory',name:title,phase:entries.find(e=>e.key===before)?.task?.phase}
+      : entries.splice(old,1)[0];
+    row.place=acquisition.place(place);
+    row.how=local('@checkpoint.'+key);
+    const index=entries.findIndex(e=>e.key===before);
+    entries.splice(index<0?entries.length:index,0,row);
+  }
+  checkpoint(1,'1-10','get.129','Route 218');
+  checkpoint(2,'2-4','get.412','Floaroma Meadow');
+  checkpoint(2,'story.windworks','get.425','Valley Windworks','Valley Windworks');
+  checkpoint(3,'story.bicycle','get.175','Eterna City',label('bicycle'));
+  checkpoint(4,'4-2','get.118','Route 209');
+  checkpoint(4,'3-9','get.442','Route 209 · Hallowed Tower');
+  checkpoint(6,'story.secretpotion','get.333','Valor Lakefront','SecretPotion');
+  checkpoint(6,'story.psyduck','get.333','Route 210',acquisition.place('Route 210')+' · Psyduck');
+  checkpoint(6,'story.celestic','get.194','Celestic Town',label('ruins'));
+  checkpoint(6,'6-1','get.194','Celestic Town');
+  checkpoint(6,'story.strength','get.042','Iron Island','HM04 Strength');
+  checkpoint(6,'story.riley','get.447','Iron Island',label('riley'));
+  checkpoint(7,'story.lakes','get.349','Lake Verity',label('lakes'));
+  checkpoint(8,'8-0','get.308','Veilstone Galactic HQ');
+  checkpoint(8,'story-giratina','get.480','Distortion World');
+  checkpoint(9,'9-4','get.073','Sunyshore Gym');
+  checkpoint(9,'story.waterfall','get.082','Sunyshore City','HM07 Waterfall');
+  checkpoint('platinum.finish','9-9','get.488','Sandgem Town');
+  checkpoint('platinum.finish','10-6','get.055','Fight Area');
+  checkpoint('platinum.finish','story.marley','get.087','Victory Road','Marley');
+  checkpoint('platinum.finish','story.heatran','get.485','Stark Mountain','Magma Stone');
+  checkpoint('platinum.finish','story.orbs','get.483','Celestic Town',label('orbs'));
   return sections;
 }
 // Keep explicit choices from an earlier, split section until the merged card is toggled.

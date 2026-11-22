@@ -48,7 +48,7 @@ for(const [starter,line] of [[387,'Turtwig'],[390,'Chimchar'],[393,'Piplup']]){
   const expectedKeys=guide.tasks.filter(t=>{
     const path=guide.deferrals.find(p=>p.target===t.id);return !isRouteNarration(t)&&(!path||state[path.id]);
   }).map(t=>t.id);
-  expectedKeys.push('story-giratina',...catalog.filter(s=>s.stage>=1&&s.stage<=15).flatMap(s=>s.entries.filter(e=>!e.nationalId).map(e=>e.key)));
+  expectedKeys.push('story-giratina','story.windworks','story.bicycle','story.secretpotion','story.psyduck','story.lakes','story.waterfall','story.marley','story.heatran','story.orbs','story.strength','story.celestic','story.riley',...catalog.filter(s=>s.stage>=1&&s.stage<=15).flatMap(s=>s.entries.filter(e=>!e.nationalId).map(e=>e.key)));
   assert.deepEqual(rows.map(e=>e.key).sort(),expectedKeys.sort());
   assert.equal(new Set(rows.map(e=>e.key)).size,rows.length);
   assert.equal(stages[0].stage,1);assert.equal(stages[10].group,'emerald');
@@ -59,3 +59,26 @@ for(const [starter,line] of [[387,'Turtwig'],[390,'Chimchar'],[393,'Piplup']]){
  }
 }
 console.log('Approved route: 493 unique goals, 3 starters, all 64 Skip combinations, 8 Pal Park batches and locale parity.');
+for(const lang of ['en','ru']){
+  const rows=approvedRoute(guide,catalog,387,{},new Set(),lang).flatMap(s=>s.entries);
+  const row=key=>rows.find(e=>e.key===key);
+  const before=(first,second)=>assert(rows.indexOf(row(first))<rows.indexOf(row(second)),first);
+  assert.equal(row('get.185').how,lang==='en'?'Route 221 · Tall Grass · 25%':'Маршрут 221 · Высокая трава · 25%');
+  assert.equal(row('get.447').how,lang==='en'?'Iron Island · Egg from Riley':'Железный остров · Яйцо от Райли');
+  for(const [first,second] of [['1-10','get.129'],['story.secretpotion','story.psyduck'],['story.psyduck','get.333'],['6-1','get.194'],['6-1','get.185'],['9-9','get.304'],['10-6','get.055']])before(first,second);
+  assert.match(row('get.123').how,/15%.*5%.*5%/);
+  assert.match(row('get.349').how,/50%/);
+  assert.match(row('get.451').how,/10%/);
+  assert.match(row('get.304').how,/22%/);
+  assert.match(row('get.212').how,/Scyther → Scizor.*Metal Coat/);
+  const view=row('get.185').acquisition;
+  for(const t of guide.tasks.filter(t=>t.national_dex_id)){
+    const id=t.national_dex_id, line=view.format(t,id);
+    const narrative='SENTINEL';
+    assert.equal(view.format({...t,steps:narrative,action:narrative,registration:narrative,
+      requirements:{...t.requirements,access:narrative,rate_basis:narrative}},id),line);
+    if(lang==='en')assert(!/[А-Яа-яЁё]/.test(line),line);
+    for(const alt of guide.species[id].alternatives)
+      assert(!view.format({...alt,steps:narrative,access:narrative},id).includes(narrative));
+  }
+}
