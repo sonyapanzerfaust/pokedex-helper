@@ -3,7 +3,7 @@ const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),asse
 const {library}=require('../runtime/resources/app/library.cjs'),{prepare}=require('../runtime/resources/app/melonds-config.cjs');
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'melonds-config-check-')),lib=library(path.join(root,'library'),{create:true});
 const release=n=>{const dir=lib.at('emulators','melonds',n);fs.mkdirSync(dir,{recursive:true});return path.join(dir,'melonDS.exe')};
-const config='[Instance0.Keyboard]\nA = 76\nB = 75\nHK_FastForward = 9\n[Instance0.Joystick]\nA = 3\n[Instance0.Window0]\nScreenLayout = 2\n[Instance0.Audio]\nVolume = 123\n[DS]\nFirmwarePath = "firmware.bin"\n';
+const config='RecentROM = [\n  "first.nds",\n  "second.nds",\n]\n[Instance0]\n  SaveFilePath = ""\n[Instance0.Keyboard]\nA = 76\nB = 75\nHK_FastForward = 9\n[Instance0.Joystick]\nA = 3\n[Instance0.Window0]\nScreenLayout = 2\n[Instance0.Audio]\nVolume = 123\n[DS]\nFirmwarePath = "firmware.bin"\n'.replaceAll('\n','\r\n');
 const exe=release('original'),adjacent=path.join(path.dirname(exe),'melonDS.toml');fs.writeFileSync(adjacent,config);
 const folder=prepare(lib,exe),cfg=path.join(folder,'melonDS.toml');assert.equal(fs.readFileSync(cfg,'utf8'),config);assert.equal(fs.readFileSync(adjacent,'utf8'),config);
 const recovery=lib.at('config','melonds-config-recovery'),files=fs.readdirSync(recovery);assert.equal(files.length,1);assert.equal(fs.readFileSync(path.join(recovery,files[0]),'utf8'),config);

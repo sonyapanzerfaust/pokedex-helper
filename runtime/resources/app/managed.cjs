@@ -200,7 +200,12 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
         const cfg=lib.at(path.relative(lib.root,folder),'melonDS.toml');
         if(g&&selected(g)!=='main'&&!fs.existsSync(cfg))throw Error('PH_EMUCONFIG');
         if(fs.existsSync(cfg)){
-          const current=fs.readFileSync(cfg,'utf8'),portableConfig=fixedRoot?current.replace(/^LastROMFolder\s*=.*$/gm,'LastROMFolder = ""').replace(/^RecentROM\s*=.*$/gm,'RecentROM = []'):current,next=portableConfig.replace(/^(\s*SaveFilePath\s*=).*$/gm,()=>'SaveFilePath = '+JSON.stringify(g&&selected(g)!=='main'?path.dirname(active(g)).split(path.sep).join('/'):''));
+          const current=fs.readFileSync(cfg,'utf8');
+          // Keep both bytes of CRLF. A leading \s* can start between CR and LF.
+          const portableConfig=fixedRoot?current.replace(/^LastROMFolder[ \t]*=.*$/gm,'LastROMFolder = ""')
+            .replace(/^RecentROM[ \t]*=[ \t]*\[.*\][ \t]*$/gm,'RecentROM = []'):current;
+          const saveFolder=g&&selected(g)!=='main'?path.dirname(active(g)).split(path.sep).join('/'):'';
+          const next=portableConfig.replace(/^([ \t]*SaveFilePath[ \t]*=[ \t]*)[^\r\n]*$/gm,(_line,prefix)=>prefix+JSON.stringify(saveFolder));
           if(g&&selected(g)!=='main'&&!/SaveFilePath\s*=/.test(current))throw Error('PH_EMUCONFIG');
           if(current!==next){
             const recovery=lib.at('config','melonds-config-recovery');fs.mkdirSync(recovery,{recursive:true});

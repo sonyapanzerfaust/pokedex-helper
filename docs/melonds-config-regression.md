@@ -28,3 +28,9 @@ On a disposable complete portable copy only:
 6. With disposable Platinum ROM/SAV, verify launch, repeated-launch protection, active save profile and unchanged SAV hash when no in-game save is performed.
 
 No public release is created by this fix.
+
+### Windows CRLF regression
+
+The old SaveFilePath replacement could match immediately after a carriage return and consume the following line feed. This made a valid Windows TOML file invalid even when the save path was already correct. The launcher now matches horizontal whitespace only and leaves multiline recent-ROM lists intact.
+
+Reproduced with a disposable copy of melonDS 1.1 and Platinum. The old substitution alone cleared custom bindings. With the corrected managed launcher, all keyboard assignments survived three consecutive game launches and normal exits. The automated launcher fixture also checks a CRLF configuration with an indented save path and multiline recent-ROM list.
