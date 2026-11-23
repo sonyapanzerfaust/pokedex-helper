@@ -15,7 +15,7 @@ function fieldIcon(name){
   const el=document.createElement('span');el.className='field-icon fi-'+name;el.setAttribute('aria-hidden','true');return el;
 }
 function decorateNavigation(){
-  for(const [id,icon] of Object.entries({routeNav:'route',setup:'settings',backups:'backup',export:'upload',import:'download',syncBadge:'sync'})){
+  for(const [id,icon] of Object.entries({routeNav:'route',setup:'settings',backups:'backup',requirementsNav:'event',export:'upload',import:'download',syncBadge:'sync'})){
     const el=document.getElementById(id);
     el.textContent=el.textContent.replace(/^[⌖⚙▤↑↓]\s*/u,'');el.prepend(fieldIcon(icon));
   }
