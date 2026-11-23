@@ -109,3 +109,6 @@ nav button[aria-current=page]{background:var(--card);color:var(--accent);border-
 
 #requirementsPage .info-card{margin-block-end:.85rem;max-width:72ch}
 .compact aside #requirementsNav::before{content:attr(data-icon);font-size:1.15rem}
+
+#requirementsPage :is(ul,ol){margin:0;padding-inline-start:1.5em}
+#requirementsPage li+li{margin-block-start:.5em}

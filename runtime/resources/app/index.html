@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'"><title>Pokédex Helper · Platinum</title><link rel="stylesheet" href="style.css"></head>
 <body><aside><div class="brand"><img alt="" src="art/notebook.svg"><strong>Pokédex Helper</strong><button id="compact" type="button">◧</button></div>
 <section class="game-controls"><label for="donorSelect" data-i18n="navigation.game_to_launch">Game to launch</label><div class="game-picker"><select id="donorSelect"></select></div><button class="primary" id="play" data-i18n="navigation.launch_game">▶ Launch game</button><small id="launchHint"></small></section>
-<nav aria-label="Controls" data-aria-label="navigation.controls"><button id="routeNav">⌖ Route</button><button id="setup" data-i18n="navigation.settings">⚙ Settings</button><button id="backups" data-i18n="navigation.backups">▤ Backups</button><div class="file-actions"><button id="export" data-i18n="navigation.export">↑ Export</button><button id="import" data-i18n="navigation.import">↓ Import</button></div><button id="requirementsNav" data-i18n="requirements.title">Requirements</button></nav>
+<nav aria-label="Controls" data-aria-label="navigation.controls"><button id="routeNav">⌖ Route</button><button id="setup" data-i18n="navigation.settings">⚙ Settings</button><button id="backups" data-i18n="navigation.backups">▤ Backups</button><div class="file-actions"><button id="export" data-i18n="navigation.export">↑ Export</button><button id="import" data-i18n="navigation.import">↓ Import</button></div><button id="requirementsNav" data-i18n="requirements.title">Requirements and rules</button></nav>
 </aside><main><p id="pageStatus" role="status"></p><section id="routePage"><header><div class="campaign"><small id="campaignLabel"></small><h1 data-i18n="navigation.national_pok_dex">National Pokédex</h1></div><div class="overview">
 <section class="collection"><h2 data-i18n="navigation.platinum_collection">Platinum collection</h2><div class="totals"><strong id="caught">—</strong><span>/ 493</span><small data-i18n="navigation.seen">Seen <b id="seen">—</b></small></div><progress id="progress" max="493" value="0" aria-label="National Dex progress" data-aria-label="navigation.national_dex_progress"></progress>
 <p data-i18n="navigation.story_tasks">Story tasks <b id="manual">—</b></p><small id="syncBadge"></small></section>
@@ -12,13 +12,66 @@
 <details id="diagnostics" hidden><summary data-i18n="navigation.save_diagnostics">Save diagnostics</summary><p id="source"></p><p id="status" role="status"></p></details><p id="actionError" role="alert"></p></header>
 <h2 class="route-heading" data-i18n="navigation.playthrough_route">Playthrough route</h2><div class="toolbar"><input id="search" placeholder="Name, number or location…" data-placeholder="navigation.name_number_or_location" aria-label="Search" data-aria-label="navigation.search"><select id="filter" data-aria-label="navigation.filter_tasks"><option value="all" data-i18n="navigation.all_tasks">All tasks</option><option value="missing" data-i18n="navigation.still_missing">Still missing</option><option value="caught" data-i18n="pokedex.caught">Caught</option><option value="seen" data-i18n="navigation.seen_only">Seen only</option><option value="donor" data-i18n="navigation.obtained_in_donor">Obtained in donor</option><option value="done" data-i18n="navigation.completed">Completed</option><option value="available" id="availableFilter"></option><option value="deferred" id="deferredFilter"></option></select><button id="currentNav"></button><button id="expand" data-i18n="navigation.expand_all">Expand all</button></div>
 <div id="sections"></div></section><section id="settingsPage" class="workpage" hidden><h1></h1><div id="settingsTabs" role="tablist"></div><div id="settingsContent" role="tabpanel"></div></section><section id="backupsPage" class="workpage" hidden><h1></h1><div id="backupContent"></div></section><section id="requirementsPage" class="workpage" hidden>
-<h1 tabindex="-1" data-i18n="requirements.title">Requirements</h1>
-<section class="info-card"><h2 data-i18n="requirements.games">Games and saves</h2><p data-i18n="requirements.target">Collect all 493 species in your main Pokémon Platinum (USA) save. A catch in a donor game counts once that Pokémon reaches Platinum. Keep separate saves for extra starter runs.</p><p data-i18n="requirements.ds">Nintendo DS · melonDS. Play Platinum (USA) as the destination game. The DS donor stages use Diamond, Pearl, HeartGold and SoulSilver.</p><p data-i18n="requirements.gba">Game Boy Advance · mGBA. The GBA donor stages use Emerald, FireRed and LeafGreen. For migration, switch to the DS setup described below.</p></section>
-<section class="info-card"><h2 data-i18n="requirements.equipment">Playing and transferring</h2><p data-i18n="requirements.tools">On PC, use melonDS for DS and mGBA for GBA, with your own game files. For automatic tracking, save from the in-game menu and connect the battery save (.sav). On a console, use manual tracking.</p><p data-i18n="requirements.trade">For version exclusives and trade evolutions, arrange a local trade between two compatible Gen IV games (two DS systems or emulator sessions with working local communication). Equip the required held item before trading.</p><p data-i18n="requirements.park">For the GBA stages, unlock the National Dex and Pal Park in Platinum. Use a DS or DS Lite with the donor cartridge in the GBA slot, or configure its equivalent in melonDS with the GBA game and save. Migrate six Pokémon at a time, then catch them in Pal Park. Migration is one-way.</p></section>
-<section class="info-card"><h2 data-i18n="requirements.ranger">Optional spin-off for Manaphy</h2><p data-i18n="requirements.rangerGame">Pokémon Ranger (Nintendo DS, US version) offers an alternative to the Diamond event gift in the route. Before starting a used cartridge, check whether its Manaphy Egg has already been sent. Only one egg can be sent per cartridge, even after starting a new game.</p><p data-i18n="requirements.rangerSteps">Finish the main story, unlock the Manaphy mission in Ranger Net with the US password and complete it. Send the egg over local wireless to Diamond or Pearl on a second DS. Collect and hatch it there, then trade Manaphy to your main Platinum save. Breed Manaphy with Ditto for Phione.</p><p data-i18n="requirements.rangerOther">Other DS options are Pokémon Ranger: Shadows of Almia and Pokémon Ranger: Guardian Signs. Each requires its own downloadable Manaphy mission. If the distribution has ended, the route allows restoring the historical mission and completing it in-game. Choose one Ranger game. For emulator play, run Ranger separately in melonDS and check local communication with the receiving session before committing to the playthrough.</p></section>
-<section class="info-card"><h2 data-i18n="requirements.rules">What the route allows</h2><p data-i18n="requirements.limits">Catch, breed, evolve and trade ordinary species in-game. Before using a save editor or Action Replay, back up the save. Restore only the original gift or the missing condition described below. Finish the encounter or collect the gift in-game and save normally.</p></section>
-<section class="info-card"><h2 data-i18n="requirements.events">Expired distributions</h2><p data-i18n="requirements.gifts">Use a documented Gen IV distribution compatible with the game and region. In Platinum, the Member Card opens the encounter with Darkrai and Oak’s Letter opens the path to Shaymin. For Arceus, use a distributed gift such as the Toys “R” Us Wonder Card. The Azure Flute was never distributed for these DS games.</p></section>
-<section class="info-card"><h2 data-i18n="requirements.online">Discontinued services and Spiritomb</h2><p data-i18n="requirements.network">If a required online service has shut down, the route allows restoring its specific unlock with a save editor or Action Replay. You do not need to set up a replacement server. Local trades still work independently of Nintendo Wi-Fi Connection.</p><p data-i18n="requirements.spirit">Spiritomb uses local DS wireless. Place the Odd Keystone in the Hallowed Tower on Route 209 and speak to another player 32 times in the Underground. The same partner counts after leaving and re-entering. If you cannot arrange local play, this route allows setting only the Underground interaction counter to 32. Return to the tower and catch Spiritomb yourself.</p></section>
+<h1 tabindex="-1" data-i18n="requirements.title">Requirements and rules</h1>
+<section class="info-card">
+<h2 data-i18n="requirements.hardware">Consoles for cartridge play</h2>
+<ul>
+<li data-i18n="requirements.first">Nintendo DS or DS Lite — for Platinum, the other DS games and Pal Park migration. Its GBA slot also plays Emerald, FireRed and LeafGreen.</li>
+<li data-i18n="requirements.second">A second DS-compatible system with local wireless — for trades, Underground conversations and the Ranger egg transfer. You can borrow it for these steps.</li>
+<li data-i18n="requirements.handheld">Game Boy Advance or GBA SP — optional for playing the GBA games. A DS or DS Lite already covers them. Track console progress manually in the helper.</li>
+</ul>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.emulators">Emulators for PC play</h2>
+<ul>
+<li data-i18n="requirements.melon">melonDS — for DS games. Trading requires two sessions with working local communication. For Pal Park, connect the GBA game and save to the emulated GBA slot.</li>
+<li data-i18n="requirements.mgba">mGBA — for playing GBA games. For automatic tracking, connect the .sav created by saving from the in-game menu.</li>
+</ul>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.games">Games used by the route</h2>
+<ul>
+<li data-i18n="requirements.target">Destination · DS — Pokémon Platinum (USA). Register all 493 species here.</li>
+<li data-i18n="requirements.ds">Donors · DS — Diamond, Pearl, HeartGold and SoulSilver. Use separate saves for additional starter runs.</li>
+<li data-i18n="requirements.gba">Donors · GBA — Emerald, FireRed and LeafGreen.</li>
+<li data-i18n="requirements.spinoffs">Optional Manaphy Egg route · DS — choose Pokémon Ranger, Pokémon Ranger: Shadows of Almia or Pokémon Ranger: Guardian Signs. The route also offers a historical gift in Diamond.</li>
+</ul>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.rules">Route rules</h2>
+<ol>
+<li data-i18n="requirements.regular">Obtain ordinary species in-game by catching, breeding, evolving or trading. A donor catch counts once registered in the main Platinum save.</li>
+<li data-i18n="requirements.transfer">Equip any item required for a trade evolution. For GBA migration, unlock the National Dex and Pal Park, migrate six Pokémon and catch them in the park. Migration is one-way.</li>
+<li data-i18n="requirements.events">Expired distribution: a save editor or Action Replay may restore the historical gift or encounter access for a compatible game and region.</li>
+<li data-i18n="requirements.network">Discontinued online service: restore only the requirement that depended on that service. A replacement server is optional. Spiritomb has a separate local-play exception below.</li>
+<li data-i18n="requirements.backup">Back up the save before editing. After restoring access, collect the gift or catch the Pokémon in-game and save from the game menu.</li>
+</ol>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.mythicals">Mythical Pokémon and distributions</h2>
+<ul>
+<li data-i18n="requirements.darkrai">Darkrai — restore the Platinum Member Card distribution and complete the Newmoon Island encounter.</li>
+<li data-i18n="requirements.shaymin">Shaymin — Oak’s Letter opens the path from Route 224 to Flower Paradise.</li>
+<li data-i18n="requirements.arceus">Arceus — use a released Wonder Card such as the Toys “R” Us gift. The Azure Flute was never officially distributed for the original Gen IV games.</li>
+</ul>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.manaphy">Manaphy and Phione</h2>
+<ul>
+<li data-i18n="requirements.ranger">Pokémon Ranger (US). Before starting, check whether the cartridge has already sent its egg. Each cartridge sends one egg, even if you start a new game.</li>
+<li data-i18n="requirements.mission">Finish the story, unlock the Ranger Net Manaphy mission with the US password and complete it. Shadows of Almia and Guardian Signs each use a downloadable mission. Restoring its historical distribution is allowed.</li>
+<li data-i18n="requirements.egg">Send the egg over local wireless to Diamond or Pearl on the second DS. Hatch Manaphy and trade it to Platinum. On PC, launch Ranger separately in melonDS and check local communication before the playthrough.</li>
+<li data-i18n="requirements.phione">For Phione, leave Manaphy and Ditto at the Day Care and hatch their egg.</li>
+</ul>
+</section>
+<section class="info-card">
+<h2 data-i18n="requirements.spirit">Spiritomb and the Underground</h2>
+<ol>
+<li data-i18n="requirements.tower">Place the Odd Keystone in the Hallowed Tower on Route 209.</li>
+<li data-i18n="requirements.talk">Speak to another player in the Underground 32 times over DS local wireless. Leaving and re-entering lets the same partner count again. No internet connection is required.</li>
+<li data-i18n="requirements.counter">If local play is unavailable, you may set the interaction counter to 32. Then return to the tower and catch Spiritomb.</li>
+</ol>
+</section>
 </section></main>
 <dialog id="wizard" aria-labelledby="wizardTitle"><form method="dialog"><button aria-label="Close" data-aria-label="navigation.close">×</button></form><p id="step"></p><h2 id="wizardTitle"></h2><div id="choices"></div><p id="wizardError" role="status"></p><footer><button id="prev" data-i18n="navigation.back">Back</button><button id="next" class="primary" data-i18n="renderer.next">Next</button></footer></dialog>
 <dialog id="detail" aria-labelledby="detailTitle"><form method="dialog"><button data-i18n="navigation.close">Close</button></form><h2 id="detailTitle"></h2><div id="detailBody"></div></dialog>
