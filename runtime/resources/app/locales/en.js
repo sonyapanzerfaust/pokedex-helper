@@ -5,7 +5,7 @@ globalThis.dexLocales.en = {
   "requirements.hardware": "Consoles for cartridge play",
   "requirements.first": "Two Nintendo DS or DS Lite systems with GBA slots. Use local wireless for DS trades, the Underground and the Ranger egg transfer. Track console progress manually.",
   "requirements.second": "DS systems run GBA cartridges in single-player mode. For the Kanto starters, migrate separately from each FireRed save: box the starter and five other Pokémon, keep one in the party and catch all six in Platinum’s Pal Park.",
-  "requirements.handheld": "Game Boy Advance or GBA SP (optional). For direct trades between two FireRed cartridges, use two GBA or GBA SP systems and a GBA Game Link Cable. You can then migrate all three starters together through Pal Park.",
+  "requirements.handheld": "Game Boy Advance or GBA SP (optional). With two systems and a GBA Game Link Cable, trade Emerald ↔ Emerald or FireRed ↔ FireRed to gather Pokémon from different saves onto one cartridge. This can reduce the number of Pal Park batches.",
   "requirements.emulators": "Emulators for PC play",
   "requirements.melon": "melonDS — for DS games. Trading requires two sessions with working local communication. For Pal Park, connect the GBA game and save to the emulated GBA slot.",
   "requirements.mgba": "mGBA — for playing GBA games. For automatic tracking, connect the .sav created by saving from the in-game menu.",
