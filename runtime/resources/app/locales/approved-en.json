@@ -5474,7 +5474,7 @@
   "@section.8.description": "Take on Team Galactic at its headquarters and follow Giratina from Spear Pillar into the Distortion World.",
   "@section.9.description": "Win the Beacon Badge, climb the waterfall to Victory Road and defeat the League to prepare for the National Dex.",
   "@section.emerald.description": "Start the first donor campaign with Mudkip and trade in Treecko and Torchic from short saves. Migrate {targets} target species in {batches} Pal Park batches ({slots} Pokémon including fillers).",
-  "@section.frlg.description": "Choose Bulbasaur, Charmander and Squirtle on three independent saves. With two linked copies, trade the starters onto one FireRed save for one Pal Park batch; migrating directly from each save takes three batches.",
+  "@section.frlg.description": "A second FireRed can replace LeafGreen for the Charmander step. Choose the three different starters across three runs. On DS or DS Lite, migrate each directly through Pal Park in a separate batch of six. With GBA link trades, gather all three in the main FireRed and migrate one batch.",
   "@section.diamond.description": "Choose {Diamond} for a missing Sinnoh starter line, obtain Cranidos and Stunky, and trade them to Platinum.",
   "@section.pearl.description": "Choose {Pearl} for the other missing Sinnoh starter line, then collect Misdreavus, Shieldon and Glameow for trade to Platinum.",
   "@section.hgss.description": "Collect the Johto starters, version exclusives and legendaries across Johto and Kanto. Headbutt can supply Heracross, and Kanto’s Snorlax provides a breeding parent for Munchlax.",

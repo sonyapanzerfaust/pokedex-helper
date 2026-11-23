@@ -5474,7 +5474,7 @@
   "@section.8.description": "Пройди штаб Team Galactic и последуй за Гиратиной со Spear Pillar в Distortion World.",
   "@section.9.description": "Получи Beacon Badge, поднимись по водопаду к Victory Road и победи Лигу на пути к National Dex.",
   "@section.emerald.description": "Начни первую донорскую игру с Mudkip и получи Treecko и Torchic обменом с коротких сохранений. Перенеси {targets} целевой вид за {batches} партий Pal Park ({slots} покемона с учётом запасных).",
-  "@section.frlg.description": "Выбери Bulbasaur, Charmander и Squirtle в трёх независимых сохранениях. Через две связанные копии собери стартеров в одном FireRed для одной партии Pal Park; прямой перенос из каждого сохранения займёт три партии.",
+  "@section.frlg.description": "LeafGreen в шаге с Charmander можно заменить второй FireRed. Выбери трёх разных стартеров в трёх прохождениях. На DS или DS Lite переноси каждого напрямую через Pal Park отдельной партией из шести. Если доступен обмен GBA, собери троих в основной FireRed и перенеси одной партией.",
   "@section.diamond.description": "Выбери {Diamond} для недостающей стартовой линии Синно, получи Cranidos и Stunky и обменяй их в Platinum.",
   "@section.pearl.description": "Выбери {Pearl} для оставшейся стартовой линии Синно, затем собери Misdreavus, Shieldon и Glameow для обмена в Platinum.",
   "@section.hgss.description": "Собери стартеров Джото, эксклюзивы версий и легендарных покемонов в Джото и Канто. Headbutt поможет получить Heracross, а Snorlax из Канто пригодится для разведения Munchlax.",
