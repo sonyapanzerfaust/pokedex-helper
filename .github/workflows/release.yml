@@ -38,15 +38,17 @@ jobs:
           cd "$RUNNER_TEMP/extracted/PokedexHelper"
           test -x PokedexHelper
           test -d data
-          xvfb-run -a bash -eu -c '
-            ./PokedexHelper >"$RUNNER_TEMP/helper.log" 2>&1 &
+          node -e "require('./resources/app/portable.cjs').initialize(require('node:path').resolve('data')).catch(e => { console.error(e); process.exitCode = 1; })"
+          dbus-run-session -- xvfb-run -a bash -eu -c '
+            ./PokedexHelper --ozone-platform=x11 >"$RUNNER_TEMP/helper.log" 2>&1 &
             pid=$!
             trap "kill $pid || true" EXIT
             for i in {1..30}; do
               kill -0 "$pid" || { cat "$RUNNER_TEMP/helper.log"; exit 1; }
-              if xwininfo -root -tree | grep -i "Pokedex Helper"; then exit 0; fi
+              if xwininfo -root -tree | grep -i "Platinum"; then exit 0; fi
               sleep 1
             done
+            xwininfo -root -tree
             cat "$RUNNER_TEMP/helper.log"; exit 1'
       - uses: actions/upload-artifact@v4
         with:
