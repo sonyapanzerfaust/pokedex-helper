@@ -1,0 +1,73 @@
+name: Publish portable release
+on:
+  push:
+    branches: [main]
+    paths: ['runtime/resources/app/package.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            target: win32-x64
+          - os: ubuntu-22.04
+            target: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 26.13.1
+      - run: node scripts/locale-checks.cjs
+      - if: runner.os == 'Windows'
+        run: |
+          node scripts/verify.cjs
+          node scripts/portable-checks.cjs
+          node scripts/recovery-checks.cjs
+      - run: node scripts/build.cjs ${{ matrix.target }}
+      - if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          mkdir "$RUNNER_TEMP/extracted"
+          tar -xf dist/*-linux-x64.tar.gz -C "$RUNNER_TEMP/extracted"
+          cd "$RUNNER_TEMP/extracted/PokedexHelper"
+          test -x PokedexHelper
+          test -d data
+          xvfb-run -a bash -eu -c '
+            ./PokedexHelper >"$RUNNER_TEMP/helper.log" 2>&1 &
+            pid=$!
+            trap "kill $pid || true" EXIT
+            for i in {1..30}; do
+              kill -0 "$pid" || { cat "$RUNNER_TEMP/helper.log"; exit 1; }
+              if xwininfo -root -tree | grep -i "Pokedex Helper"; then exit 0; fi
+              sleep 1
+            done
+            cat "$RUNNER_TEMP/helper.log"; exit 1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}
+          path: dist/Pokedex-Helper-*-portable-${{ matrix.target }}.*
+          if-no-files-found: error
+  publish:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd dist
+          sha256sum -c *.sha256
+          version=$(node -p "require('../runtime/resources/app/package.json').version")
+          tag="v${version%.0}"
+          gh release create "$tag" --target "$GITHUB_SHA" --title "Pokédex Helper ${tag#v}" --notes-file ../RELEASE-NOTES.md *.zip *.tar.gz *.sha256

@@ -13,6 +13,7 @@ const names=new Map();
 const trainingLevels=new Map();
 function applyLocale(){
   I18n.set(prefs.language);document.documentElement.lang=I18n.language;
+  for(const option of $('donorSelect').options)option.textContent=I18n.display(option.value);
   for(const el of document.querySelectorAll('[data-i18n]'))(Array.from(el.childNodes).find(n=>n.nodeType===Node.TEXT_NODE)||el.appendChild(document.createTextNode(''))).nodeValue=I18n.t(el.dataset.i18n);
   for(const attr of ['placeholder','aria-label'])for(const el of document.querySelectorAll('[data-'+attr+']'))el.setAttribute(attr,I18n.t(el.getAttribute('data-'+attr)));
 }
@@ -103,11 +104,11 @@ async function milestone(){
 function updateLaunch(){
   const game=$('donorSelect').value;
   const emu=['Emerald','FireRed','LeafGreen'].includes(game)?'mGBA':'melonDS';
-  const missing=!model.availability.rom[game]?'ROM '+game:!model.availability.emulator[emu]?emu:'';
-  $('play').textContent=I18n.t("renderer.play")+game;$('play').disabled=!!missing;
+  const missing=!model.availability.rom[game]?'ROM '+I18n.display(game):!model.availability.emulator[emu]?emu:'';
+  $('play').textContent=I18n.t("renderer.play")+I18n.display(game);$('play').disabled=!!missing;
   $('play').textContent=$('play').textContent.replace(/^[▶▷]\s*/, '');$('play').prepend(fieldIcon('launch'));
   $('play').title=$('play').textContent;$('play').setAttribute('aria-label',$('play').title);
-  $('donorSelect').title=game;
+  $('donorSelect').title=I18n.display(game);
   $('launchHint').textContent=missing?I18n.t("renderer.connect")+missing+I18n.t("renderer.in_settings"):I18n.t("renderer.emulator")+emu;
 }
 let boxNumber=0;
@@ -117,7 +118,7 @@ function roster(){
   if(!pt){root.append(node('p',I18n.t("renderer.connect_your_platinum_save")));return}
   const selector=node('select');selector.setAttribute('aria-label',I18n.t("renderer.party_or_box"));
   for(let i=0;i<=18;i++){
-    const o=node('option',i?I18n.t('renderer.pc_box',{number:i}):I18n.t("renderer.active_party"));o.value=i;selector.append(o);
+    const o=node('option',i?I18n.t('renderer.pc_box',{box:i}):I18n.t("renderer.active_party"));o.value=i;selector.append(o);
   }
   selector.value=boxNumber;selector.onchange=()=>{boxNumber=Number(selector.value);roster();root.querySelector('select').focus()};
   const grid=node('div',null,'members');root.append(selector,grid);
@@ -186,7 +187,7 @@ function render(){
   const shownStage=platinumStage||sections.find(s=>s.stage==='platinum.finish');
   paintScene(document.querySelector('.campaign'),sceneFor(sections.find(s=>s.stage===active)||shownStage));
   paintScene(document.querySelector('.now'),sceneFor(shownStage));
-  $('currentStage').textContent=shownStage.title;
+  $('currentStage').textContent=I18n.display(shownStage.title);
   $('nextTask').textContent=next?[next.name,next.place].map(I18n.display).filter(Boolean).join(' · '):caught.size===493?I18n.t("renderer.route_complete"):routeWord('none');
   $('jump').hidden=!next;$('jump').onclick=()=>revealTask(objectiveSection,next?.key);
   $('currentNav').onclick=()=>revealTask(shownStage,null);
@@ -197,9 +198,9 @@ function render(){
   updateLaunch();roster();
   for(const [id,icon] of Object.entries({routeNav:'⌖',requirementsNav:'☷',setup:'⚙',backups:'▤',export:'↑',import:'↓',play:'▶'})){const el=$(id);el.dataset.icon=icon;el.title=el.textContent;el.setAttribute('aria-label',el.textContent)}
   decorateNavigation();
-  $('donorSelect').title=$('donorSelect').value;
+  $('donorSelect').title=I18n.display($('donorSelect').value);
   $('diagnostics').hidden=!auto||!Object.keys(model.errors).length;
-  $('status').textContent=Object.entries(model.errors).map(([g,msg])=>g+' · '+I18n.message(msg)+(model.cache[g]?I18n.t("renderer.showing_the_last_known_data"):'')).join('\n')||(pt?I18n.t("renderer.last_platinum_read_succeeded_sha_256")+pt.hash:I18n.t("renderer.waiting_for_a_save"));
+  $('status').textContent=Object.entries(model.errors).map(([g,msg])=>I18n.display(g)+' · '+I18n.message(msg)+(model.cache[g]?I18n.t("renderer.showing_the_last_known_data"):'')).join('\n')||(pt?I18n.t("renderer.last_platinum_read_succeeded_sha_256")+pt.hash:I18n.t("renderer.waiting_for_a_save"));
   const line=selected();document.body.dataset.theme=prefs.theme==='auto'?String(line):prefs.theme;
   const focused=document.activeElement,oldRow=focused.closest('[data-task]');
   const oldSection=focused.closest('details[data-section]');
@@ -229,7 +230,7 @@ function render(){
     for(const e of entries){
       if(s.stage==='platinum.finish'){
         const phase=e.task?.phase||e.phase;
-        if(phase!==previousPhase){const n=Number(phase.split('.')[1]);const title=n===15?routeWord('swarmHeading'):e.local?e.local(model.guide.titles[n]||model.guide.titles[phase]):model.guide.words[I18n.language][model.guide.titles[n]];
+        if(phase!==previousPhase){const n=Number(phase.split('.')[1]);const title=n===15?routeWord('swarmHeading'):e.local?e.local(model.guide.titles[n]||model.guide.titles[phase]):(model.guide.words[I18n.language]?.[model.guide.titles[n]]??model.guide.words.en[model.guide.titles[n]]);
           const sub=node('h3',title,'route-subheading');sub.prepend(sceneImage(sceneFor({stage:phase})));d.append(sub);previousPhase=phase}
       }
       const id=e.nationalId,row=node('div',null,'row'),box=node('input'),content=node('div'),tag=node('span',null,'badge');
@@ -250,7 +251,7 @@ function render(){
         if(!auto&&e.goal&&(e.method==='Evolution'||!['Platinum'].includes(e.task.game)))content.append(button((prefs.tasks[e.key]?'✓ ':'')+(e.method==='Evolution'?I18n.t("renderer.evolution_complete"):I18n.t("renderer.transfer_complete")),async()=>{prefs.tasks[e.key]=!prefs.tasks[e.key];await save();render()}));
         const donors=donorGames(id);
         if(e.exclusive)content.append(node('small',e.exclusive,'place'));
-        tag.textContent=e.kind==='local_requirement'?(checked(e)?I18n.t('navigation.completed'):routeWord('available')):e.deferred?routeWord('deferred'):caught.has(id)?'☑ '+routeWord('registered'):donors.length?I18n.t("renderer.obtained_in_donor_awaiting_transfer")+donors.join(', '):routeWord('unchecked')+(seen.has(id)?' · '+I18n.t('pokedex.seen'):'');
+        tag.textContent=e.kind==='local_requirement'?(checked(e)?I18n.t('navigation.completed'):routeWord('available')):e.deferred?routeWord('deferred'):caught.has(id)?'☑ '+routeWord('registered'):donors.length?I18n.t("renderer.obtained_in_donor_awaiting_transfer")+donors.map(I18n.display).join(', '):routeWord('unchecked')+(seen.has(id)?' · '+I18n.t('pokedex.seen'):'');
         if(prefs.manual['species-'+id]||prefs.done['species-'+id]||prefs.tasks['species-'+id])content.append(node('small',routeWord('historical')));
       }else tag.textContent=I18n.t("renderer.story.3");
       if(id)row.dataset.species=id;
@@ -279,6 +280,13 @@ function render(){
   }
 }
 const pages=['Добро пожаловать','Эмуляторы и режим','ROM-файлы','Сохранения','Стартер','Итоговая конфигурация'];
+function languageControl(){
+  const field=node('div');
+  field.append(select(I18n.t('settings.language'),'language',globalThis.dexLanguages.map(({id,name})=>[id,name])));
+  const notice=globalThis.dexLanguages.find(({id})=>id===I18n.language)?.notice;
+  if(notice)field.append(node('small',notice,'locale-notice'));
+  return field;
+}
 function select(label,key,options){
   const field=node('label',label+' '),menu=node('select');
   for(const [value,name] of options){const o=node('option',name);o.value=value;menu.append(o)}
@@ -366,7 +374,7 @@ function wizard(){
   $('step').hidden=step<0;$('prev').hidden=step<0;$('next').hidden=step<0;
 
   $('prev').disabled=step===0;$('next').textContent=step===5?I18n.t("renderer.finish"):I18n.t("renderer.next");
-  if(step===0)area.append(select(I18n.t('settings.language'),'language',[['en','English'],['ru','Русский']]),node('p',I18n.t("renderer.pok_dex_helper_guides_you_through_catching_all")),node('p',I18n.t('requirements.summary')),node('small',model.platform));
+  if(step===0)area.append(languageControl(),node('p',I18n.t("renderer.pok_dex_helper_guides_you_through_catching_all")),node('p',I18n.t('requirements.summary')),node('small',model.platform));
   if(step===1)area.append(select(I18n.t("renderer.mode"),'mode',[['auto',I18n.t("renderer.automatic")],['manual',I18n.t("renderer.manual")]]),node('p',I18n.t("renderer.automatic_mode_is_for_emulator_play_helper_reads")),node('p',I18n.t("renderer.manual_mode_is_for_nintendo_ds_or_tracking")));
   if(step===1)emulatorControls(area);
   if(step===2||step===3)fileControls(area,step===2?'rom':'save');
@@ -391,7 +399,7 @@ async function init(){
     const match=spec.evolution?.length===1&&spec.evolution[0].match(/ → level-up, ур\. (\d+)$/);
     if(match)trainingLevels.set(Number(id),Number(match[1]));
   }
-  for(const game of games)$('donorSelect').append(node('option',game));
+  for(const game of games){const option=node('option',game);option.value=game;$('donorSelect').append(option)}
   $('donorSelect').onchange=updateLaunch;$('team').ontoggle=roster;
   $('play').onclick=safely(()=>service.play($('donorSelect').value));$('backups').onclick=safely(()=>openBackups());
   $('search').oninput=render;$('filter').onchange=render;

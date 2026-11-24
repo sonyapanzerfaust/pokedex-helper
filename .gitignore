@@ -43,6 +43,8 @@
 !/runtime/resources/app/methods.json
 !/runtime/resources/app/catalog.json
 !/runtime/resources/app/i18n.js
+!/runtime/resources/app/locale-registry.js
+!/runtime/resources/app/locale-loader.cjs
 !/runtime/resources/app/pokeapi-LICENSE.txt
 !/runtime/resources/app/package.json
 !/runtime/resources/app/portable.cjs
@@ -57,6 +59,9 @@
 !/runtime/resources/app/preload.cjs
 !/runtime/resources/app/locales/en.js
 !/runtime/resources/app/locales/ru.js
+!/runtime/resources/app/locales/interface.js
+!/runtime/resources/app/locales/guide-interface.js
+!/docs/localization.md
 !/runtime/resources/app/locales/approved-en.json
 !/runtime/resources/app/locales/approved-ru.json
 !/runtime/resources/app/art/grassland.svg
@@ -85,3 +90,12 @@
 !/scripts/interface-checks.cjs
 !/scripts/smoke.cjs
 !/scripts/launch-copy-check.cjs
+
+!/runtime/resources/app/locales/ja-guide.json
+!/runtime/resources/app/locales/ja-game.js
+!/runtime/resources/app/locales/european-terms.js
+!/runtime/resources/app/locales/european-game.js
+!/runtime/resources/app/locales/european-guide.json
+!/runtime/resources/app/locales/encounter-locations.js
+
+!/.github/workflows/release.yml

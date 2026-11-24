@@ -1,6 +1,8 @@
-﻿# Pokédex Helper for Windows x64
+﻿# Pokédex Helper for Windows and Linux x64
 
-Extract the entire ZIP into a writable local folder and launch PokedexHelper.exe. Keep the Electron runtime files and resources together. Setup accepts your own ROMs and battery saves. Installing or updating an emulator requires an internet connection. Previously installed components work offline.
+On Linux, extract the tar.gz into a writable folder and run ./PokedexHelper.
+
+On Windows, extract the entire ZIP into a writable local folder and launch PokedexHelper.exe. Keep the Electron runtime files and resources together. Setup accepts your own ROMs and battery saves. Installing or updating an emulator requires an internet connection. Previously installed components work offline.
 
 ## Bring an earlier library
 

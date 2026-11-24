@@ -1,5 +1,5 @@
 'use strict';
-const {app,BrowserWindow,ipcMain,dialog:nativeDialog,shell}=require('electron');
+const {app,BrowserWindow,Menu,ipcMain,dialog:nativeDialog,shell}=require('electron');
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {parse,confirm}=require('./save');
 const components=require('./components.cjs');
@@ -9,9 +9,49 @@ const local=app.helperLibrary;
 const dir=local?path.join(local,'config'):path.join(home,'data'),backup=local?path.join(local,'legacy-backups'):path.join(home,'backups');
 fs.mkdirSync(dir,{recursive:true});fs.mkdirSync(backup,{recursive:true});
 function read(name,fallback){const file=path.join(dir,name);return fs.existsSync(file)?JSON.parse(fs.readFileSync(file,'utf8').replace(/^\uFEFF/,'')):fallback}
-require('./locales/en');require('./locales/ru');
+const localePacks=require('./locale-loader.cjs');
 const i18n=require('./i18n');
 const prior=read('preferences-v1.json',null);i18n.set(prior?.language||(prior?'ru':'en'));
+const menuLabels={
+  filemenu: ["File","Файл","ファイル","Fichier","File","Datei","Archivo"],
+  editmenu: ["Edit","Правка","編集","Édition","Modifica","Bearbeiten","Editar"],
+  viewmenu: ["View","Вид","表示","Affichage","Visualizza","Ansicht","Ver"],
+  windowmenu: ["Window","Окно","ウィンドウ","Fenêtre","Finestra","Fenster","Ventana"],
+  help: ["Help","Помощь","ヘルプ","Aide","Aiuto","Hilfe","Ayuda"],
+  undo: ["Undo","Отменить","元に戻す","Annuler","Annulla","Rückgängig","Deshacer"],
+  redo: ["Redo","Повторить","やり直す","Rétablir","Ripeti","Wiederholen","Rehacer"],
+  cut: ["Cut","Вырезать","切り取り","Couper","Taglia","Ausschneiden","Cortar"],
+  copy: ["Copy","Копировать","コピー","Copier","Copia","Kopieren","Copiar"],
+  paste: ["Paste","Вставить","貼り付け","Coller","Incolla","Einfügen","Pegar"],
+  delete: ["Delete","Удалить","削除","Supprimer","Elimina","Löschen","Eliminar"],
+  selectall: ["Select All","Выделить всё","すべて選択","Tout sélectionner","Seleziona tutto","Alles auswählen","Seleccionar todo"],
+  reload: ["Reload","Перезагрузить","再読み込み","Recharger","Ricarica","Neu laden","Recargar"],
+  forcereload: ["Force Reload","Принудительно перезагрузить","強制再読み込み","Forcer le rechargement","Forza ricaricamento","Neu laden erzwingen","Forzar recarga"],
+  toggledevtools: ["Toggle Developer Tools","Инструменты разработчика","開発者ツール","Outils de développement","Strumenti di sviluppo","Entwicklerwerkzeuge","Herramientas de desarrollo"],
+  resetzoom: ["Actual Size","Исходный масштаб","実際のサイズ","Taille réelle","Dimensioni effettive","Originalgröße","Tamaño real"],
+  zoomin: ["Zoom In","Увеличить","拡大","Agrandir","Ingrandisci","Vergrößern","Acercar"],
+  zoomout: ["Zoom Out","Уменьшить","縮小","Réduire","Riduci","Verkleinern","Alejar"],
+  togglefullscreen: ["Toggle Full Screen","Полный экран","フルスクリーン切替","Plein écran","Schermo intero","Vollbild","Pantalla completa"],
+  minimize: ["Minimize","Свернуть","最小化","Réduire la fenêtre","Riduci a icona","Minimieren","Minimizar"],
+  zoom: ["Zoom","Развернуть","拡大・縮小","Agrandir la fenêtre","Ingrandisci la finestra","Maximieren","Maximizar"],
+  close: ["Close Window","Закрыть окно","ウィンドウを閉じる","Fermer la fenêtre","Chiudi finestra","Fenster schließen","Cerrar ventana"],
+  quit: ["Quit","Выйти","終了","Quitter","Esci","Beenden","Salir"],
+  learnmore: ["Learn More","Подробнее","詳しく見る","En savoir plus","Ulteriori informazioni","Mehr erfahren","Más información"],
+};
+function localizeMenu(){
+  const menu=Menu.getApplicationMenu();
+  if(!menu)return;
+  const column=['en','ru','ja','fr','it','de','es'].indexOf(i18n.language);
+  function translate(items){
+    for(const item of items){
+      const labels=menuLabels[item.role?.toLowerCase()]??Object.values(menuLabels).find(row=>row.includes(item.label.replaceAll('&','')));
+      if(labels)item.label=labels[column];
+      if(item.submenu)translate(item.submenu.items);
+    }
+  }
+  translate(menu.items);
+  Menu.setApplicationMenu(menu);
+}
 const dialog={showErrorBox:(title,detail)=>nativeDialog.showErrorBox(i18n.message(title),i18n.message(detail))};
 for(const fn of ['showOpenDialog','showSaveDialog','showMessageBox'])dialog[fn]=(win,opts)=>{
  const options={...opts};for(const field of ['title','message','detail'])if(options[field])options[field]=i18n.message(options[field]);
@@ -85,8 +125,8 @@ async function setupLibrary(){
   delete errors.library;tick();notify();return snapshot();
 }
 ipcMain.handle('library',setupLibrary);
-ipcMain.handle('get',()=>({...snapshot(),prefs:read('preferences-v1.json',null),legacy:read('helper-state.json',read('pre-1.0-catalog-progress.json',{})),guide:{...require('./approved-data.json'),words:{en:require('./locales/approved-en.json'),ru:require('./locales/approved-ru.json')}},catalog:require('./catalog.json').sections,methods:require('./methods.json')}));
-ipcMain.handle('prefs',(_,value)=>{const was=read('preferences-v1.json',{});persist('preferences-v1.json',value);i18n.set(value.language);if(was.autoBackup===false&&value.autoBackup!==false)checked.clear()});
+ipcMain.handle('get',()=>({...snapshot(),prefs:read('preferences-v1.json',null),legacy:read('helper-state.json',read('pre-1.0-catalog-progress.json',{})),guide:{...require('./approved-data.json'),words:localePacks.words},catalog:require('./catalog.json').sections,methods:require('./methods.json')}));
+ipcMain.handle('prefs',(_,value)=>{const was=read('preferences-v1.json',{});persist('preferences-v1.json',value);i18n.set(value.language);if(was.language!==value.language)localizeMenu();if(was.autoBackup===false&&value.autoBackup!==false)checked.clear()});
 ipcMain.handle('importProgress',async()=>{
   const choice=await dialog.showOpenDialog(win,{properties:['openFile'],filters:[{name:'Прогресс Pokédex Helper',extensions:['json']}]});
   if(choice.canceled)return null;
@@ -102,11 +142,12 @@ ipcMain.handle('choose',async(_,kind,name)=>{
   if(!['emulator','save','rom','folder'].includes(kind))throw Error('Неизвестная настройка');
   if(kind==='emulator'?!['melonDS','mGBA'].includes(name):!games.includes(name))throw Error('Неизвестная игра');
   const filter=kind==='save'?['sav']:kind==='rom'?(['Emerald','FireRed','LeafGreen'].includes(name)?['gba']:['nds']):['zip','7z','appimage'];
-  const pick=await dialog.showOpenDialog(win,{properties:[kind==='folder'?'openDirectory':'openFile'],filters:kind==='folder'?[]:[{name:kind,extensions:filter}]});
+  const filterNames={save:'renderer.saves',rom:'renderer.rom_files',emulator:'management.emulators'};
+  const pick=await dialog.showOpenDialog(win,{properties:[kind==='folder'?'openDirectory':'openFile'],filters:kind==='folder'?[]:[{name:i18n.t(filterNames[kind]),extensions:filter}]});
   if(pick.canceled)return snapshot();
   let file=pick.filePaths[0];
   if(kind==='folder'){
-    const next=await dialog.showOpenDialog(win,{defaultPath:file,title:'Сохранение '+name,properties:['openFile'],filters:[{name:'Save',extensions:['sav']}]});
+    const next=await dialog.showOpenDialog(win,{defaultPath:file,title:'Сохранение '+name,properties:['openFile'],filters:[{name:i18n.t('renderer.saves'),extensions:['sav']}]});
     if(next.canceled)return snapshot();
     file=next.filePaths[0];
   }
@@ -150,6 +191,7 @@ app.whenReady().then(async()=>{
   }
   win=new BrowserWindow({icon:path.join(__dirname,'art','notebook.ico'),...bounds,minWidth:Math.min(480,workAreaSize.width),minHeight:Math.min(420,workAreaSize.height),autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),sandbox:true,contextIsolation:true,nodeIntegration:false}});
   win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());
+  localizeMenu();
   win.on('close',()=>{try{if(!win.isMaximized()&&!win.isMinimized())persist('window-bounds.json',win.getBounds())}catch(e){dialog.showErrorBox('Pokédex Helper',e.message)}});
   if(local)await setupLibrary();
   await win.loadFile(path.join(__dirname,'index.html'));

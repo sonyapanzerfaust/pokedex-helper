@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.2.0
+
+- Sort the language selector by native name within Latin, Cyrillic and Japanese scripts.
+- Ship Windows and Linux x64 portable archives with sibling data directories.
+
+- Translate onboarding, settings, backups, navigation, menus and diagnostics
+  into Japanese, French, Italian, German and Spanish.
+- Share the language registry between setup, settings and native dialogs.
+- Localize the walkthrough, story checklist and all 544 encounter locations.
+- Preserve route/progress identifiers across languages and validate coverage,
+  placeholders, plural forms, packaging and all seven interface languages.
+
 ## 1.1.1
 
 ### New sidebar section: Requirements and rules

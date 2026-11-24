@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 const mt=key=>managementText(key,I18n.language);
 let settingsPanel='appearance',backupGame,backupProfile,activePage='route',inArchive=false,viewGeneration=0;
 function managementError(e){
@@ -45,7 +45,7 @@ function showSettings(){
   area.setAttribute('aria-labelledby','tab-'+settingsPanel);
   if(entering)window.scrollTo(0,pageScroll.settings);
   if(settingsPanel==='appearance'){
-    area.append(scaleControl(),select(I18n.t('settings.language'),'language',[['en','English'],['ru','Русский']]),
+    area.append(scaleControl(),languageControl(),
       select(I18n.t('renderer.theme'),'theme',[['auto',I18n.t('renderer.match_starter')],['387',I18n.t('renderer.green')],['390',I18n.t('renderer.orange')],['393',I18n.t('renderer.blue')]]),
       select(I18n.t('renderer.stage_when_unknown'),'stage',[['',I18n.t('renderer.base_species')],...[0,1,2].map(i=>[String(selected()+i),names.get(selected()+i)])]));
     if(automatic()&&dex()?.starter){

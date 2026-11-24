@@ -1,13 +1,13 @@
 # Pokédex Helper
 
-Pokédex Helper is a portable Windows field guide for completing the 493-species National Pokédex in **Pokémon Platinum USA**. Keep the guide beside your emulator to see the current story stage, find an acquisition method and check which registrations still belong in Platinum.
+Pokédex Helper is a portable Windows and Linux field guide for completing the 493-species National Pokédex in **Pokémon Platinum USA**. Keep the guide beside your emulator to see the current story stage, find an acquisition method and check which registrations still belong in Platinum.
 
 ![The route, collection counter and next field objective](docs/screenshots/route.png)
 
 ## Start a collection
 
-1. On a Windows x86_64 PC, extract the complete portable ZIP to a writable folder. Launch **PokedexHelper.exe**. Allow room for your games, emulators and backups.
-2. In setup, choose English or Russian and automatic or manual tracking. Automatic tracking reads local battery saves. Manual mode lets you record catches and story tasks from a physical console.
+1. On a Windows x86_64 PC, extract the complete portable ZIP to a writable folder. Launch **PokedexHelper.exe**. On Linux x64, extract the tar.gz and launch **./PokedexHelper**. Allow room for your games, emulators and backups.
+2. In setup, choose your interface language and automatic or manual tracking. Automatic tracking reads local battery saves. Manual mode lets you record catches and story tasks from a physical console.
 3. Import your own Platinum ROM and save. The Helper checks the files and copies them into its library. Add donor games as needed. Supported donors are Emerald, FireRed, LeafGreen, Diamond, Pearl, HeartGold and SoulSilver.
 4. Connect melonDS for DS games or mGBA for GBA games. Install a supported official release with your consent, or import a supported official archive. Use the sidebar to select and launch a game.
 
@@ -20,6 +20,11 @@ Nine Platinum story stages lead to the League. Platinum postgame remains accessi
 ![Donor campaign cards in the desktop client](docs/screenshots/campaigns.png)
 
 ## Manage saves and appearance
+
+All seven languages include the interface, walkthrough, encounter locations
+and application diagnostics. Choose a language
+in setup or Settings. This does not change supported ROM editions. See
+[localization coverage](docs/localization.md) for the remaining translation work.
 
 Use **Backups** to select a game and profile, inspect a battery save, create a copy, export it or restore it after closing the emulator. Automatic backups retain up to ten managed copies per profile. Historical files have a separate archive. **Settings** holds the language, starter theme, interface scale, ROMs, emulators and save connections. Original illustrations are local and static.
 

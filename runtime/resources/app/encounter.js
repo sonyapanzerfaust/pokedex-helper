@@ -27,13 +27,20 @@ const conditionNames={
 };
 function condition(code){
   if(conditionNames[code])return I18n.display(conditionNames[code]);
+  const identifier=value=>{
+    if(value==='any-pokemon')return I18n.t('encounter.any');
+    const canonical=({ 'nidoran-m':'Nidoran♂','nidoran-f':'Nidoran♀',firered:'FireRed',leafgreen:'LeafGreen' })[value]??value;
+    if(I18n.language==='ja')return globalThis.jaIdentifier(canonical);
+    return globalThis.europeanIdentifier(canonical,I18n.language);
+  };
+  const blockTypes={plains:'encounter.plains',peak:'encounter.peak',forest:'encounter.forest',water:'encounter.water'};
   const rules=[
-    [/^johto-safari-blocks-(\w+)-min-(\d+)$/,(_,type,n)=>I18n.t("encounter.at_least")+n+I18n.t("encounter.block_points_of_type")+type+I18n.t("encounter.in_this_area")],
+    [/^johto-safari-blocks-(\w+)-min-(\d+)$/,(_,type,n)=>I18n.t("encounter.at_least")+n+I18n.t("encounter.block_points_of_type")+I18n.t(blockTypes[type]??type)+I18n.t("encounter.in_this_area")],
     [/^great-marsh-daily-slot-(\d+)-of-32$/,(_,n)=>I18n.t("encounter.daily_area_rotation")+n+I18n.t("encounter.of_32_species_selection_slots")],
     [/^honey-tree-group-(\w)$/,(_,group)=>I18n.t("encounter.honey_tree_group")+group.toUpperCase()],
-    [/^slot2-(.+)$/,(_,cart)=>I18n.t("encounter.cartridge")+cart+I18n.t("encounter.in_slot_2")],[/^trade-(.+)$/,(_,mon)=>I18n.t("encounter.offer")+mon.replace(/-/g,' ')+' NPC'],
-    [/^item-(.+)$/,(_,item)=>I18n.t("encounter.requires")+item.replace(/-/g,' ')],[/^coins-(\d+)$/,(_,n)=>n+I18n.t("encounter.game_corner_coins")],
-    [/^starter-(.+)$/,(_,mon)=>I18n.t("encounter.starter")+mon]
+    [/^slot2-(.+)$/,(_,cart)=>I18n.t("encounter.cartridge")+identifier(cart)+I18n.t("encounter.in_slot_2")],[/^trade-(.+)$/,(_,mon)=>I18n.t("encounter.offer")+identifier(mon)],
+    [/^item-(.+)$/,(_,item)=>I18n.t("encounter.requires")+identifier(item)],[/^coins-(\d+)$/,(_,n)=>n+I18n.t("encounter.game_corner_coins")],
+    [/^starter-(.+)$/,(_,mon)=>I18n.t("encounter.starter")+identifier(mon)]
   ];
   for(const [pattern,replacement] of rules)if(pattern.test(code))return code.replace(pattern,replacement);
   return code.replace(/-/g,' ');
@@ -73,7 +80,7 @@ function methodLabel(e){
     if(/tower|mansion|chateau|ironworks|temple/.test(e.location))return I18n.t("encounter.indoors");
     return 'Tall Grass';
   }
-  return ({'static':'Static Encounter','npc-trade':'In-game Trade','gift-egg':'Gift Egg','honey-tree':'Honey Trees','roaming-grass':I18n.t("encounter.roaming_grass"),'roaming-water':I18n.t("encounter.roaming_water"),'feebas-tile-fishing':I18n.t("encounter.fishing_on_a_special_tile"),'pokeflute':'Poké Flute','devon-scope':'Devon Scope'})[e.method]||e.method.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+  return ({'seaweed':I18n.t('encounter.seaweed'),'colosseum-bonus-disc-jpn':I18n.t('encounter.disc'),'wailmer-pail':I18n.t('encounter.pail'),'squirt-bottle':I18n.t('encounter.bottle'),'pokemon-ranger':'Pokémon Ranger','static':'Static Encounter','npc-trade':'In-game Trade','gift-egg':'Gift Egg','honey-tree':'Honey Trees','roaming-grass':I18n.t("encounter.roaming_grass"),'roaming-water':I18n.t("encounter.roaming_water"),'feebas-tile-fishing':I18n.t("encounter.fishing_on_a_special_tile"),'pokeflute':I18n.t('encounter.flute'),'devon-scope':I18n.t('encounter.scope')})[e.method]||e.method.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 }
 const namesOfGames={platinum:'Platinum',diamond:'Diamond',pearl:'Pearl',heartgold:'HeartGold',soulsilver:'SoulSilver',emerald:'Emerald',firered:'FireRed',leafgreen:'LeafGreen'};
 function encounterList(body,entry,item){
@@ -108,7 +115,7 @@ function encounterList(body,entry,item){
       const total=enc.slots.reduce((n,s)=>s.weight===''?NaN:n+Number(s.weight),0);
       const rate=Number.isFinite(total)&&total>0&&total<=100?total+'%':I18n.t("encounter.unconfirmed");
       const levels=[...new Set(enc.slots.map(s=>s.level.replace(/^(\d+)–\1$/,'$1')))].join(', ');
-      list.append(node('p',[entry.acquisition.tablePlace(enc.location),methodName(enc),...conditions,random?I18n.t("encounter.combined_weight_of_the_listed_slots")+rate:'', I18n.t("encounter.lv")+levels].filter(Boolean).join(' · ')));
+      list.append(node('p',[globalThis.encounterLocation(enc.location,I18n.language),methodName(enc),...conditions,random?I18n.t("encounter.combined_weight_of_the_listed_slots")+rate:'', I18n.t("encounter.lv")+levels].filter(Boolean).join(' · ')));
     }
   }
   if(available.length){picker.value=suggested;picker.onchange=show;show()}else label.remove();

@@ -1,5 +1,5 @@
 'use strict';
-if(typeof module!=='undefined'){require('./locales/en');require('./locales/ru')}
+if(typeof module!=='undefined')require('./locale-loader.cjs');
 function managementText(key,language){
   const id='management.'+key;
   return globalThis.dexLocales[language]?.[id]??globalThis.dexLocales.en[id]??key;

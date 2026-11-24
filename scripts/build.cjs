@@ -9,14 +9,15 @@ async function get(url){const r=await fetch(url,{signal:AbortSignal.timeout(3000
 async function build(target){
   if(!['source','win32-ia32','win32-x64','win32-arm64','linux-x64','linux-arm64'].includes(target))throw Error('Unknown target '+target);
   const stage=fs.mkdtempSync(path.join(os.tmpdir(),'pokedex-build-'));
-  const portable=target==='win32-x64',prefix='Pokedex-Helper-'+require(path.join(app,'package.json')).version+'-portable-'+target,folderName=portable?'PokedexHelper':prefix,folder=path.join(stage,folderName);fs.mkdirSync(folder);
+  const portable=['win32-x64','linux-x64'].includes(target),prefix='Pokedex-Helper-'+require(path.join(app,'package.json')).version+'-portable-'+target,folderName=portable?'PokedexHelper':prefix,folder=path.join(stage,folderName);fs.mkdirSync(folder);
+  if(target==='linux-x64' && process.platform!=='linux')throw Error('Build the Linux portable archive on Linux to preserve executable permissions.');
   if(target==='source'){copy(root,folder,source)}
   else{
     const version=target==='win32-ia32'?'43.8.12':'45.3.3';
     const local=process.env.POKEDEX_RUNTIME_CACHE,asset='electron-v'+version+'-'+target+'.zip',base='https://github.com/electron/electron/releases/download/v'+version+'/';
     const zip=local?fs.readFileSync(path.join(local,target==='win32-ia32'?asset:'electron-'+target.split('-')[1]+'.zip')):await get(base+asset);
     const sums=local?fs.readFileSync(path.join(local,'SHASUMS256.txt'),'utf8'):(await get(base+'SHASUMS256.txt')).toString();
-    const expected=target==='win32-ia32'?'e25dbd7102c2df6e100427822083e181dd67aea7a8de02249bc8dc18ddbf4e45':sums.split(/\r?\n/).find(l=>l.endsWith('*'+asset))?.split(' ')[0];
+    const expected=target==='win32-ia32'?'e25dbd7102c2df6e100427822083e181dd67aea7a8de02249bc8dc18ddbf4e45':sums.split(/\r?\n/).map(l=>l.trim().split(/\s+\*?/)).find(([,name])=>name===asset)?.[0];
     if(hash(zip)!==expected)throw Error('Electron SHA-256 mismatch');
     const file=path.join(stage,'runtime.zip');fs.writeFileSync(file,zip);
     if(process.platform==='win32')execFileSync('tar',['-xf',file,'-C',folder]);else execFileSync('unzip',['-q',file,'-d',folder]);
@@ -26,7 +27,7 @@ async function build(target){
       const binary=fs.readFileSync(exe),machine=binary.readUInt16LE(binary.readUInt32LE(60)+4);
       if(machine!==(target.endsWith('ia32')?332:target.endsWith('arm64')?43620:34404))throw Error('Unexpected PE architecture');
     }
-    if(portable){
+    if(portable && windows){
       if(process.platform!=='win32')throw Error('Build the Windows release candidate on Windows to embed the icon.');
       execFileSync('powershell.exe',['-NoProfile','-ExecutionPolicy','Bypass','-File',path.join(root,'scripts','embed-icon.ps1'),exe,path.join(app,'art','notebook.ico')],{stdio:'inherit'});
     }
