@@ -1,4 +1,5 @@
 ﻿'use strict';
+const {batterySize}=require('./save');
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {battery,recovery,swap}=require('./recovery.cjs');
 const text=require('./management-words.js');
@@ -32,7 +33,7 @@ function management({manager,dialog,win,read,persist,i18n,legacyFolder,openFolde
   function historical(name){
     if(typeof name!=='string'||path.basename(name)!==name||!name.toLowerCase().endsWith('.sav')||!fs.readdirSync(legacyFolder).includes(name))throw Error('PH_MISSING');
     const file=path.join(legacyFolder,name),st=fs.lstatSync(file);
-    if(!st.isFile()||st.nlink!==1||![131072,524288].includes(st.size))throw Error('PH_VERIFY');
+    if(!st.isFile()||st.nlink!==1||!batterySize(st.size))throw Error('PH_VERIFY');
     const bytes=fs.readFileSync(file),hash=require('./recovery.cjs').digest(bytes),data=require('./save').parse(bytes);
     const metadata=file+'.json';
     if(fs.existsSync(metadata)){

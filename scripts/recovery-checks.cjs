@@ -20,7 +20,7 @@ async function run(){
   const lib=library(path.join(base,'lib'),{create:true}),data=path.join(home,'data');
   fs.mkdirSync(data,{recursive:true});
   fs.writeFileSync(path.join(data,'library-location.json'),JSON.stringify({root:lib.root}));
-  const sav=lib.game('Emerald','save'),fresh=emerald();fs.writeFileSync(sav,fresh);
+  const sav=lib.game('Emerald','save'),fresh=Buffer.concat([emerald(),Buffer.alloc(16,0x42)]);fs.writeFileSync(sav,fresh);
   const connections={rom:{Emerald:true},save:{Emerald:true},metadata:{},emulator:{},migrated:true};
   if(process.argv[2]){fs.copyFileSync(process.argv[2],lib.game('Platinum','save'));connections.save.Platinum=true}
   fs.writeFileSync(lib.at('config','connections.json'),JSON.stringify(connections));

@@ -99,3 +99,7 @@
 !/runtime/resources/app/locales/encounter-locations.js
 
 !/.github/workflows/release.yml
+
+!/runtime/resources/app/helper-update.cjs
+!/TODO.md
+!/scripts/update-and-emerald-checks.cjs

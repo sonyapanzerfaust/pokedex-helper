@@ -108,10 +108,16 @@ const SaveReader = (() => {
     }
     return {game,caught,seen,badges,singleCopy:banks.length===1,trainer:u32(data,10)};
   }
+  // mGBA appends 16 bytes of RTC state to some 128 KiB flash saves.
+  function gbaSize(size) { return size===131072 || size===131088; }
+  function batterySize(size) { return gbaSize(size) || size===524288; }
+  function blankFlash(bytes) {
+    return gbaSize(bytes.length) && bytes.subarray(0,131072).every(b=>b===0xff);
+  }
   function parse(input) {
     const bytes=new Uint8Array(input);
     if(bytes.length===524288) return readDS(bytes);
-    if(bytes.length===131072) return readGBA(bytes);
+    if(gbaSize(bytes.length)) return readGBA(bytes.subarray(0,131072));
     throw Error('Требуется raw .sav на 512 КиБ (DS) или 128 КиБ (GBA)');
   }
   function confirm(snapshot,previous,game){
@@ -119,6 +125,6 @@ const SaveReader = (() => {
     if(snapshot.singleCopy && previous?.trainer===snapshot.trainer && previous.caught.some(id=>!snapshot.caught.includes(id)))
       throw Error('Только один корректный банк и в нём меньше записей. Сохранён последний подтверждённый снимок.');
   }
-  return {parse,confirm};
+  return {parse,confirm,batterySize,blankFlash};
 })();
 if(typeof module!=='undefined') module.exports=SaveReader;

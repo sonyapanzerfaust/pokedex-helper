@@ -1,4 +1,5 @@
 ﻿'use strict';
+const {batterySize,blankFlash}=require('./save');
 const fs=require('node:fs'),path=require('node:path');
 const {safe,inside,hash,space,library,games,gba,identify}=require('./library.cjs');
 const {battery,swap}=require('./recovery.cjs');
@@ -32,7 +33,7 @@ function validateCopy(root){
         if(!state.cleared?.[g]?.[id]&&(id!=='main'||state.save[g]&&id===(state.selected?.[g]||'main')))throw Error(file);
         continue;
       }
-      if(gba(g)&&fs.statSync(file).size===131072&&fs.readFileSync(file).every(n=>n===255)&&!cache[g]&&!state.save[g]&&id==='main')continue;
+      if(gba(g)&&batterySize(fs.statSync(file).size)&&blankFlash(fs.readFileSync(file))&&!cache[g]&&!state.save[g]&&id==='main')continue;
       battery(file,g);
     }
   }

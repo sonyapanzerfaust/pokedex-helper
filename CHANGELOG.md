@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+
+1. Исправлена ошибка при чтении сейвов GBA из mGBA. Helper принимает файлы с данными часов и сохраняет их при импорте и восстановлении. Emerald также можно запустить без импортированного сейва.
+2. Добавлен автоапдейтер для Windows и Linux. Helper проверяет новые версии на GitHub Releases и после подтверждения обновляет приложение, сохраняя папку `data`.
+
 ## 1.2.0
 
 - Sort the language selector by native name within Latin, Cyrillic and Japanese scripts.

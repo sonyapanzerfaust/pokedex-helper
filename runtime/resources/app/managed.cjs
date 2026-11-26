@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
 const {library,inside,games,gba,emulator,copy,identify,hash}=require('./library.cjs');
 const components=require('./components.cjs');
-const {parse,confirm}=require('./save');
+const {parse,confirm,batterySize,blankFlash}=require('./save');
 const families={Diamond:'Diamond/Pearl',Pearl:'Diamond/Pearl',HeartGold:'HG/SS',SoulSilver:'HG/SS',FireRed:'FireRed/LeafGreen',LeafGreen:'FireRed/LeafGreen'};
 const empty=()=>({rom:{},save:{},emulator:{},metadata:{}});
 function json(file,value){const tmp=file+'.'+crypto.randomUUID();fs.writeFileSync(tmp,JSON.stringify(value,null,2),{flag:'wx'});try{fs.renameSync(tmp,file)}finally{fs.rmSync(tmp,{force:true})}}
@@ -93,7 +93,7 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
   }
   function idle(name){if(running(name))throw Error('Закрой запущенный '+name+' перед этой операцией')}
   function validateSave(g,file){
-    if(![131072,524288].includes(fs.statSync(file).size))throw Error('Нужен полный battery save (.sav)');
+    if(!batterySize(fs.statSync(file).size))throw Error('Нужен полный battery save (.sav)');
     const data=parse(fs.readFileSync(file));if(data.game!==(families[g]||g))throw Error('Сохранение принадлежит другой игре');
     confirm(data,cache[g],g);return data;
   }
@@ -162,7 +162,7 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
       if(!await importRom(g,file))return;
       report(g,'ROM подключён',0,0);
       if(fs.existsSync(adjacent)){
-        if(!state.save[g]){state.expectedSave={...state.expectedSave,[g]:true};saveState()}
+        if(!gba(g)&&!state.save[g]){state.expectedSave={...state.expectedSave,[g]:true};saveState()}
         try{
         const data=validateSave(g,adjacent);
         if(await ask('Импортировать соседнее сохранение '+g+'?',adjacent+'\nCaught: '+data.caught.length,'Скопировать SAV'))await importSave(g,adjacent);
@@ -185,12 +185,12 @@ function managed({app,dialog,win,home,fixedRoot,legacy,cache,report}){
         if(!state.rom[g]||identify(rom).game!==g)throw Error('Импортируй ROM '+g);
         if(fs.existsSync(sav)){
           fs.accessSync(sav,fs.constants.R_OK|fs.constants.W_OK);
-          const blank=gba(g)&&fs.statSync(sav).size===131072&&fs.readFileSync(sav).every(byte=>byte===0xff);
-          if(blank&&(state.cleared?.[g]?.[selected(g)]||(!state.save[g]&&!cache[g]&&!state.expectedSave?.[g]&&!oldPaths().save[g]))){
+          const blank=gba(g)&&batterySize(fs.statSync(sav).size)&&blankFlash(fs.readFileSync(sav));
+          if(blank&&(state.cleared?.[g]?.[selected(g)]||(!state.save[g]&&!cache[g]&&(!state.expectedSave?.[g]||gba(g))&&(state.migrated||!oldPaths().save[g])))){
             log('uninitialized-flash',details);
           }else{validateSave(g,sav);state.save[g]=true}
         }
-        else if(!state.cleared?.[g]?.[selected(g)]&&(state.save[g]||cache[g]||(!state.migrated&&oldPaths().save[g])||state.expectedSave?.[g]))throw Error('Найден прежний прогресс. Импортируй активное сохранение '+g+' перед запуском.');
+        else if(!state.cleared?.[g]?.[selected(g)]&&(state.save[g]||cache[g]||(!state.migrated&&oldPaths().save[g])||(state.expectedSave?.[g]&&!gba(g))))throw Error('Найден прежний прогресс. Импортируй активное сохранение '+g+' перед запуском.');
         if(name==='mGBA')args.push('-C','savegamePath='+path.dirname(sav));
         args.push(fixedRoot?path.relative(cwd,rom):rom);
       }

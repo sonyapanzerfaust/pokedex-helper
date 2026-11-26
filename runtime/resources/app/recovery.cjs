@@ -1,12 +1,12 @@
 ﻿'use strict';
 const fs=require('node:fs'), path=require('node:path'), crypto=require('node:crypto');
-const {parse,confirm}=require('./save');
+const {parse,confirm,batterySize}=require('./save');
 const {games}=require('./library.cjs');
 const families={Diamond:'Diamond/Pearl',Pearl:'Diamond/Pearl',HeartGold:'HG/SS',SoulSilver:'HG/SS',FireRed:'FireRed/LeafGreen',LeafGreen:'FireRed/LeafGreen'};
 const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 function battery(file,g){
   const stat=fs.statSync(file);
-  if(!stat.isFile()||![131072,524288].includes(stat.size))throw Error('Нужен полный battery save (.sav)');
+  if(!stat.isFile()||!batterySize(stat.size))throw Error('Нужен полный battery save (.sav)');
   const bytes=fs.readFileSync(file),data=parse(bytes);
   if(data.game!==(families[g]||g))throw Error('Сохранение принадлежит другой игре');
   confirm(data,null,g);
@@ -77,7 +77,7 @@ function recovery(lib,g,id,active,guard=()=>{}){
     if(fs.existsSync(active)){
       try{before=battery(active,g);old=create(before,false,false).key}
       catch(e){
-        if(before||![131072,524288].includes(fs.statSync(active).size))throw e;
+        if(before||!batterySize(fs.statSync(active).size))throw e;
         const bytes=fs.readFileSync(active),hash=digest(bytes);
         const dest=local('damaged-'+hash+'.sav');
         if(!fs.existsSync(dest))swap(dest,bytes);

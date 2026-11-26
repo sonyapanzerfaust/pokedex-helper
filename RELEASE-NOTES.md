@@ -1,7 +1,6 @@
-# Pokédex Helper 1.2
+# Pokédex Helper 1.2.1
 
-The language selector in setup and settings now shows one list of native language names, grouped by writing system. Its order stays the same when the interface language changes.
+1. Исправлена ошибка при чтении сейвов GBA из mGBA. Helper принимает файлы с данными часов и сохраняет их при импорте и восстановлении. Emerald также можно запустить без импортированного сейва.
+2. Добавлен автоапдейтер для Windows и Linux. Helper проверяет новые версии на GitHub Releases и после подтверждения обновляет приложение, сохраняя папку `data`.
 
-The modular encounter descriptions, story checkpoints and Requirements and rules section are available in English, Russian, Japanese, French, Italian, German and Spanish.
-
-Extract the Windows x64 ZIP and run PokedexHelper.exe. On Linux x64, extract the tar.gz into a writable directory and run ./PokedexHelper. Both builds keep their library in the adjacent data directory. To update an existing installation, close the Helper and emulators and keep your data directory.
+При переходе с версии 1.2 скачайте portable-архив один раз. Последующие обновления можно устанавливать из приложения.

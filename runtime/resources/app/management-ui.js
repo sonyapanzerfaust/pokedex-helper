@@ -61,6 +61,7 @@ function showSettings(){
   }
   if(settingsPanel==='app'){
     area.append(node('p',mt('version')+' · '+model.version));
+      if(model.canUpdateHelper)area.append(button(mt('checkHelper'),()=>service.updateHelper()));
     if(model.libraryRoot)area.append(pathsDisclosure(model.libraryRoot));
     if(model.guide.edition)area.append(node('p',mt('route')+' · '+model.guide.edition));
     const saves=checkOption(mt('delSaves'),false),backups=checkOption(mt('delBackups'),false);

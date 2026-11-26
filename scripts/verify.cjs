@@ -1,3 +1,4 @@
+require('node:child_process').execFileSync(process.execPath,[require.resolve('./update-and-emerald-checks.cjs')],{stdio:'inherit'});
 require('./melonds-config-checks.cjs');
 require('./save-checks.cjs');
 require('./locale-checks.cjs');

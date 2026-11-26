@@ -1,7 +1,7 @@
 'use strict';
 const {app,BrowserWindow,Menu,ipcMain,dialog:nativeDialog,shell}=require('electron');
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
-const {parse,confirm}=require('./save');
+const {parse,confirm,batterySize,blankFlash}=require('./save');
 const components=require('./components.cjs');
 const games=['Platinum','HeartGold','SoulSilver','Diamond','Pearl','Emerald','FireRed','LeafGreen'];
 const home=app.helperLibrary||path.join(app.getPath('documents'),'PokedexHelper');
@@ -87,17 +87,17 @@ function logSave(game,message){
 const management=require('./save-management.cjs').management({manager,dialog,win:()=>win,read,persist,i18n,legacyFolder:backup,openFolder:file=>shell.openPath(path.dirname(file)),backupErrors,refresh:g=>{
   checked.delete(g);pending.delete(g);poll(g,true);notify()
 }});
-function snapshot(){return {profileLists:manager.root?Object.fromEntries(games.map(g=>[g,manager.profiles(g)])):{},version:require('./package.json').version,availability:{rom:Object.fromEntries(Object.entries(paths.rom).map(([g,f])=>[g,fs.existsSync(f)])),emulator:Object.fromEntries(Object.entries(paths.emulator).map(([g,e])=>[g,fs.existsSync(e.path)]))},profileNames:manager.root?Object.fromEntries(games.map(g=>[g,manager.profiles(g).find(p=>p.id===manager.selected(g))?.name])):{},profiles:manager.root?Object.fromEntries(games.map(g=>[g,manager.selected(g)])):{},cache,errors,paths,libraryRoot:manager.root,platform:process.platform+' '+process.arch}}
+function snapshot(){return {canUpdateHelper,profileLists:manager.root?Object.fromEntries(games.map(g=>[g,manager.profiles(g)])):{},version:require('./package.json').version,availability:{rom:Object.fromEntries(Object.entries(paths.rom).map(([g,f])=>[g,fs.existsSync(f)])),emulator:Object.fromEntries(Object.entries(paths.emulator).map(([g,e])=>[g,fs.existsSync(e.path)]))},profileNames:manager.root?Object.fromEntries(games.map(g=>[g,manager.profiles(g).find(p=>p.id===manager.selected(g))?.name])):{},profiles:manager.root?Object.fromEntries(games.map(g=>[g,manager.selected(g)])):{},cache,errors,paths,libraryRoot:manager.root,platform:process.platform+' '+process.arch}}
 function notify(){if(win&&!win.isDestroyed())win.webContents.send('snapshots',snapshot())}
 const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
 function poll(game,explicit=false){
   if(!paths.save[game])return;
   try{
-    const id=manager.selected(game),file=manager.active(game);const stat=fs.statSync(file);if(![131072,524288].includes(stat.size))throw Error('Неполный или неподдерживаемый файл');
+    const id=manager.selected(game),file=manager.active(game);const stat=fs.statSync(file);if(!batterySize(stat.size))throw Error('Неполный или неподдерживаемый файл');
     const bytes=fs.readFileSync(file),hash=digest(bytes);
     if(checked.get(game)===hash && !errors[game]&&(!backupRetries.has(game)||Date.now()<backupRetries.get(game)))return;
     if(!explicit&&pending.get(game)!==hash){pending.set(game,hash);return}
-    if(['Emerald','FireRed','LeafGreen'].includes(game)&&!cache[game]&&bytes.length===131072&&bytes.every(x=>x===0xff))throw Error('Ожидание первого сохранения через игровое меню');
+    if(['Emerald','FireRed','LeafGreen'].includes(game)&&!cache[game]&&blankFlash(bytes))throw Error('Ожидание первого сохранения через игровое меню');
     const data=parse(bytes);confirm(data,explicit?null:cache[game],game);
     if(data.game!==(families[game]||game))throw Error('Формат сейва не соответствует выбранной игре');
     if(!bytes.equals(fs.readFileSync(file)))return;
@@ -154,6 +154,36 @@ ipcMain.handle('choose',async(_,kind,name)=>{
   const result=await manager.transaction(()=>manager.choose(kind,name,file));tick();return {...snapshot(),importResult:result};
 });
 const installations=new Set();
+const canUpdateHelper=app.isPackaged && require('./package.json').portable===true &&
+  ['win32','linux'].includes(process.platform) && process.arch==='x64';
+let checkingHelper=false;
+async function checkHelper(manual){
+  if(!canUpdateHelper || checkingHelper)return;
+  checkingHelper=true;
+  const text=key=>require('./management-words.js')(key,i18n.language);
+  const updater=require('./helper-update.cjs'), root=path.dirname(app.getPath('exe'));
+  let offered=false;
+  try{
+    updater.cleanup(root);
+    const update=await updater.latest(require('./package.json').version);
+    if(!win || win.isDestroyed())return;
+    if(!update){
+      if(manual)await nativeDialog.showMessageBox(win,{message:text('helperCurrent')});
+      return;
+    }
+    offered=true;
+    const choice=await nativeDialog.showMessageBox(win,{type:'question',message:text('helperReady')+' · '+update.version,
+      buttons:[text('helperLater'),text('helperInstall')],defaultId:0,cancelId:0});
+    if(choice.response!==1)return;
+    await manager.transaction(async()=>{
+      manager.idle('mGBA');manager.idle('melonDS');
+      await updater.prepare(root,update);
+      app.quit();
+    });
+  }catch(error){if(manual||offered)nativeDialog.showErrorBox(text('helperFailed'),error.message)}
+  finally{checkingHelper=false}
+}
+ipcMain.handle('updateHelper',()=>checkHelper(true));
 ipcMain.handle('component',async(_,name,action)=>{
   if(!['melonDS','mGBA'].includes(name))throw Error('Неизвестная программа');
   if(action==='launch'){await manager.transaction(()=>manager.launch(name));return snapshot()}
@@ -197,5 +227,6 @@ app.whenReady().then(async()=>{
   await win.loadFile(path.join(__dirname,'index.html'));
   try{if(!local)await setupLibrary()}catch(e){errors.library=e.message;notify();dialog.showErrorBox('Локальная библиотека',e.message)}
   tick();setInterval(tick,2200);
+  if(canUpdateHelper)void checkHelper(false);
 }).catch(e=>{dialog.showErrorBox('Pokédex Helper',e.message);app.quit()});app.on('window-all-closed',()=>app.quit());
 }
