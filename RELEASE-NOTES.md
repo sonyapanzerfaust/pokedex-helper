@@ -1,6 +1,6 @@
 # Pokédex Helper 1.2.1
 
-1. Исправлена ошибка при чтении сейвов GBA из mGBA. Helper принимает файлы с данными часов и сохраняет их при импорте и восстановлении. Emerald также можно запустить без импортированного сейва.
-2. Добавлен автоапдейтер для Windows и Linux. Helper проверяет новые версии на GitHub Releases и после подтверждения обновляет приложение, сохраняя папку `data`.
+1. **Fixed GBA save imports from mGBA.** The Helper now recognizes saves that include real-time clock data and preserves those bytes during import and restore. You can also start a new Emerald game without importing a save first.
+2. **Added automatic update checks for Windows and Linux.** The Helper checks GitHub Releases at startup. When you confirm an update, it verifies the download, installs it, and restarts. Your games, saves, and settings stay in the `data` folder.
 
-При переходе с версии 1.2 скачайте portable-архив один раз. Последующие обновления можно устанавливать из приложения.
+If you’re upgrading from 1.2, download the portable archive once. After that, you can update from within the Helper.
