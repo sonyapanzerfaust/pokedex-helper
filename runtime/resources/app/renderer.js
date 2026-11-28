@@ -45,7 +45,8 @@ function save(){const copy=structuredClone(prefs);queued=queued.catch(()=>{}).th
 const automatic=()=>prefs.mode==='auto';
 const dex=()=>model.cache.Platinum;
 const selected=()=>automatic()&&dex()?.starter?dex().starter:Number(prefs.starter)||387;
-function checked(e){return prefs.manual[e.key]??!!prefs.done[e.legacyId]}
+function marked(key){return prefs.manual[key]??prefs.tasks[key]??!!prefs.done[key]}
+function checked(e){return prefs.manual[e.key]??(!!prefs.done[e.legacyId]||e.task?.progressAliases?.some(marked)||false)}
 function story(e){
   if(!automatic())return checked(e);
   if(Object.hasOwn(prefs.manual,e.key))return prefs.manual[e.key];
@@ -57,28 +58,7 @@ function donorGames(id){return Object.entries(model.cache).filter(([g,d])=>g!=='
 function detail(entry){
   $('detailTitle').textContent=I18n.display(entry.name);
   const body=$('detailBody');body.replaceChildren();
-  const id=entry.nationalId, item=model.methods[id], view=entry.acquisition;
-  const listed=new Set([entry.task.game+' · '+entry.how]);
-  function alternative(game,line){
-    const text=[game,line].filter(Boolean).join(' · ');
-    if(listed.has(text))return;
-    listed.add(text);
-    body.append(node('p',text));
-  }
-  for(const option of model.guide.species[id].alternatives)
-    alternative(option.game,view.format(option,id));
-  if(entry.path){
-    const other=model.guide.tasks.find(t=>t.id===(entry.early?entry.path.target:entry.path.earlyId));
-    if(other)alternative(other.game,view.format(other,id));
-  }
-  if(entry.method!=='Evolution')for(const line of view.evolution(id))alternative('',line);
-  const versions=model.guide.species[id].versionTable;
-  if(versions && ['HeartGold','SoulSilver'].includes(entry.task.game) && versions.both){
-    const other=versions.versions.find(game=>game!==entry.task.game);
-    if(other)alternative(other,entry.how);
-  }
-  if(item.encounters.length)encounterList(body,entry,item);
-  if(!body.childElementCount)body.append(node('p',routeWord('noAlternatives')));
+  encounterList(body,entry,model.methods[entry.nationalId]);
   $('detail').showModal();
 }
 function celebrate(){
@@ -150,13 +130,23 @@ function render(){
 
   const pt=dex(),auto=automatic(),caught=new Set(auto?pt?.caught:Object.keys(prefs.caught).filter(id=>prefs.caught[id]).map(Number)),seen=new Set(auto?pt?.seen:[]);
   sections=approvedRoute(model.guide,model.catalog,selected(),prefs.deferred,caught,I18n.language,model.methods);
-  const complete=e=>e.goal?caught.has(e.nationalId):e.deferred?false:story(e);
+  const ownsInDonor=(id,game)=>Boolean(model.cache[game]?.caught.includes(id));
+  const donorObtained=e=>ownsInDonor(e.nationalId,e.task.donor||e.task.game)||
+    (prefs.manual['donor.'+e.key]??e.task.progressAliases?.some(marked)??false);
+  const clamperlInPlatinum=auto&&pt?[...pt.party,...pt.boxes].filter(mon=>mon.species===366&&!mon.egg).length:null;
+  const remainingCopies=(e,id)=>id===366&&e.key==='transfer.emerald'?
+    clamperlRemaining(caught,transferred(e.task,id,new Set(),marked),clamperlInPlatinum):
+    Number(!transferred(e.task,id,caught,marked,n=>[377,378,379].includes(n)&&!caught.has(486)));
+  const pendingIds=e=>e.transferIds.filter(id=>remainingCopies(e,id)>0);
+  const complete=e=>e.goal?caught.has(e.nationalId):e.deferred?false:
+    e.transferIds?story(e)||pendingIds(e).length===0:
+    e.kind==='local_requirement'?(prefs.manual[e.key]??(checked(e)||donorObtained(e))):story(e);
   const dexMilestone=sections.find(s=>s.stage==='platinum.finish').entries.find(e=>e.key==='9-9');
   const storyStages=sections.filter(s=>typeof s.stage==='number');
   const gateOf=s=>s.entries.find(e=>e.name===boundaries[s.stage-1]);
   const platinumStage=storyStages.find(s=>!story(gateOf(s)));
   // Presentation order puts Postgame first; its donor-dependent goals cannot gate Emerald.
-  const recommended=[...storyStages,...sections.filter(s=>['emerald','frlg','diamond','pearl','hgss'].includes(s.stage)),...sections.filter(s=>['evolutions','platinum.finish','events'].includes(s.stage))];
+  const recommended=[...storyStages,...sections.filter(s=>['emerald','frlg','diamond','pearl','heartgold','soulsilver'].includes(s.stage)),...sections.filter(s=>['evolutions','platinum.finish','events'].includes(s.stage))];
   const active=recommended.find(s=>{
     if(s.stage<=9)return !story(s.entries.find(e=>e.name===boundaries[s.stage-1]));
     if(dexMilestone&&!story(dexMilestone))return s.stage==='platinum.finish';
@@ -168,6 +158,13 @@ function render(){
   $('source').textContent=auto?(pt?I18n.t('renderer.save_source',{id:String(pt.tid)}):I18n.t("renderer.automatic_mode_connect_your_platinum_save")):I18n.t("renderer.manual_mode_record_catches_from_your_console");
   if(!(auto&&pt?.starter)&&!prefs.starter)$('source').textContent+=I18n.t("renderer.previewing_the_turtwig_line_choose_your_starter_in");
   const entriesByKey=new Map(sections.flatMap(section=>section.entries.map(e=>[e.key,e])));
+  const donorEntries=new Map([...entriesByKey.values()].filter(e=>e.goal).map(e=>[e.nationalId,e]));
+  const ready=key=>{
+    if(key==='open.platinum.10')return story(dexMilestone);
+    const row=entriesByKey.get(key);
+    return !!row&&(complete(row)||(row.goal&&!row.deferred&&row.task.game!=='Platinum'&&donorObtained(row)));
+  };
+  const heldForRegi=(e,id)=>e.key==='transfer.emerald'&&[321,369].includes(id)&&!ready('open.emerald.ancients');
   const available=e=>{
     if(complete(e)||e.deferred||(auto&&!pt))return false;
     if(platinumStage && e.key===gateOf(platinumStage).key)return true;
@@ -177,10 +174,20 @@ function render(){
       const source=e.task.requirements.requires_species?.[0];
       return source&&[...(pt.party||[]),...(pt.boxes||[])].some(mon=>mon.species===source&&!mon.egg&&Number.isInteger(mon.level)&&mon.level<100);
     }
-    if(e.kind!=='story'||e.task.game==='Platinum'||e.key==='open.events')return false;
+    if(!e.task||e.task.game==='Platinum'||e.key==='open.events')return false;
     if(automatic()&&!pt?.national)return false;
     if(!dexMilestone||!story(dexMilestone))return false;
-    return e.task.depends_on.every(key=>key==='open.platinum.10'||(entriesByKey.has(key)&&complete(entriesByKey.get(key))));
+    if(e.transferIds){
+      return pendingIds(e).some(id=>{
+        if(heldForRegi(e,id))return false;
+        if(e.key==='transfer.emerald'&&id===321)return ready('emerald.local.321');
+        const task=donorEntries.get(id);
+        return ownsInDonor(id,e.task.game)||(task?.task.game===e.task.game&&donorObtained(task));
+      });
+    }
+    if(e.key==='open.emerald.ancients'&&!donorObtained(entriesByKey.get('get.369')))return false;
+    if(e.key==='emerald.local.321'&&!donorObtained(entriesByKey.get('get.320')))return false;
+    return ['story','local_requirement'].includes(e.kind)&&e.task.depends_on.every(ready);
   };
   const objectiveSection=recommended.find(s=>s.entries.some(available));
   const next=objectiveSection?.entries.find(available);
@@ -234,9 +241,29 @@ function render(){
           const sub=node('h3',title,'route-subheading');sub.prepend(sceneImage(sceneFor({stage:phase})));d.append(sub);previousPhase=phase}
       }
       const id=e.nationalId,row=node('div',null,'row'),box=node('input'),content=node('div'),tag=node('span',null,'badge');
-      row.dataset.task=e.key;box.type='checkbox';box.checked=complete(e);box.disabled=!!(e.deferred||(auto&&e.goal));box.setAttribute('aria-label',(id?I18n.t("renderer.registered_in_platinum"):I18n.t("renderer.story.2"))+I18n.display(e.name));
+      const holding=e.task?.holdUntil&&!ready(e.task.holdUntil);
+      row.dataset.task=e.key;box.type='checkbox';box.checked=complete(e);
+      box.disabled=!!(e.deferred||(auto&&e.goal)||(e.transferIds&&!complete(e)&&pendingIds(e).some(n=>heldForRegi(e,n))));
+      box.setAttribute("aria-label",(e.goal?I18n.t("renderer.registered_in_platinum"):I18n.t("renderer.story.2"))+I18n.display(e.name));
       box.onchange=safely(async()=>{if(e.goal){if(auto)return;prefs.caught[id]=box.checked}else prefs.manual[e.key]=box.checked;await save();render()});
-      const h=node('h3');if(id)h.append(node('span','#'+String(id).padStart(3,'0'),'number'));h.append(document.createTextNode(I18n.display(e.name)));if(id)h.append(node('small',taskMark(e,s),'task-mark'));if(id&&methodIcon[e.method])h.prepend(fieldIcon(methodIcon[e.method]));content.append(h);if(e.place)content.append(node('div',e.place,'place'));content.append(node('div',readable(e.how),'note'));
+      const h=node('h3');if(id)h.append(node('span','#'+String(id).padStart(3,'0'),'number'));h.append(document.createTextNode(I18n.display(e.name)));if(e.quantity>1)h.append(node('span','×'+e.quantity,'quantity'));if(id)h.append(node('small',taskMark(e,s),'task-mark'));if(id&&methodIcon[e.method])h.prepend(fieldIcon(methodIcon[e.method]));content.append(h);if(e.place)content.append(node('div',e.place,'place'));content.append(node('div',readable(e.how),'note'));
+      if(e.routeNote)content.append(node('div',e.routeNote,'note'));
+      if(e.copyHint)content.append(node('div',e.copyHint,'note'));
+      if(e.items?.length){
+        const list=node('ul',null,'route-items');
+        for(const item of e.items)list.append(node('li',item));
+        content.append(list);
+      }
+      if(e.transferIds){
+        const due=pendingIds(e);
+        const namesToTransfer=due.filter(n=>!heldForRegi(e,n)).map(n=>{
+          const quantity=remainingCopies(e,n);
+          return names.get(n)+(quantity>1?' ×'+quantity:'');
+        });
+        if(namesToTransfer.length)content.append(node('div',new Intl.ListFormat(I18n.language).format(namesToTransfer),'note'));
+        if(due.some(n=>heldForRegi(e,n)))content.append(node('div',e.local('@revision.reserved')+' · '+
+          new Intl.ListFormat(I18n.language).format(due.filter(n=>heldForRegi(e,n)).map(n=>names.get(n))),'note'));
+      }
       if(e.method==='Evolution'){
         const parents=e.task.requirements.requires_species||[];
         const snapshot=auto&&model.cache[e.task.game];
@@ -248,10 +275,21 @@ function render(){
       if(id){
         content.append(button(I18n.t("renderer.acquisition_methods.2"),()=>detail(e)));
         if(e.path&&(e.early||e.late)&&!caught.has(id))content.append(button(prefs.deferred[id]?I18n.t("renderer.undo_skip"):I18n.t("renderer.skip"),async()=>{prefs.deferred[id]=!prefs.deferred[id];await save();render()}));
-        if(!auto&&e.goal&&(e.method==='Evolution'||!['Platinum'].includes(e.task.game)))content.append(button((prefs.tasks[e.key]?'✓ ':'')+(e.method==='Evolution'?I18n.t("renderer.evolution_complete"):I18n.t("renderer.transfer_complete")),async()=>{prefs.tasks[e.key]=!prefs.tasks[e.key];await save();render()}));
+        if(!auto&&e.goal&&!holding&&(e.method==='Evolution'||e.task.game!=='Platinum'))content.append(button((prefs.tasks[e.key]?'✓ ':'')+(e.method==='Evolution'?I18n.t("renderer.evolution_complete"):I18n.t("renderer.transfer_complete")),async()=>{prefs.tasks[e.key]=!prefs.tasks[e.key];await save();render()}));
+        if(e.goal&&['get.320','get.369'].includes(e.key)&&(!caught.has(id)||!ready('open.emerald.ancients'))&&!ownsInDonor(id,'Emerald')){
+          const state=donorObtained(e),mark=button(e.local('@revision.markObtained'),async()=>{prefs.manual['donor.'+e.key]=!state;await save();render()});
+          mark.setAttribute("aria-pressed",String(Boolean(state)));content.append(mark);
+        }
         const donors=donorGames(id);
         if(e.exclusive)content.append(node('small',e.exclusive,'place'));
-        tag.textContent=e.kind==='local_requirement'?(checked(e)?I18n.t('navigation.completed'):routeWord('available')):e.deferred?routeWord('deferred'):caught.has(id)?'☑ '+routeWord('registered'):donors.length?I18n.t("renderer.obtained_in_donor_awaiting_transfer")+donors.map(I18n.display).join(', '):routeWord('unchecked')+(seen.has(id)?' · '+I18n.t('pokedex.seen'):'');
+        const inEmerald=['get.320','get.321','get.369','emerald.local.321'].includes(e.key)&&
+          (donorObtained(e)||(e.kind==='local_requirement'&&checked(e))||(id===321&&marked('emerald.local.321')));
+        tag.textContent=e.deferred?routeWord('deferred'):caught.has(id)&&e.goal?'✓ '+routeWord('registered'):
+          inEmerald&&!caught.has(id)?e.local('@revision.waiting'):
+          e.kind==='local_requirement'?(complete(e)?I18n.t('navigation.completed'):routeWord('available')):
+          donors.length?I18n.t("renderer.obtained_in_donor_awaiting_transfer")+donors.map(I18n.display).join(", "):
+          routeWord('unchecked')+(seen.has(id)?' · '+I18n.t('pokedex.seen'):'');
+        if(holding&&inEmerald)tag.title=e.local('@revision.reserved');
         if(prefs.manual['species-'+id]||prefs.done['species-'+id]||prefs.tasks['species-'+id])content.append(node('small',routeWord('historical')));
       }else tag.textContent=I18n.t("renderer.story.3");
       if(id)row.dataset.species=id;

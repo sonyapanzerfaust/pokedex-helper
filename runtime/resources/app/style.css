@@ -33,7 +33,22 @@ header summary{font-size:.86rem;font-weight:600}#source,#status,#roster{padding:
 .row{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:9px;padding:9px 13px;border-top:1px solid var(--line);align-items:start}.row h3{font-size:1.05rem}.number,.task-mark{font-size:.87rem;color:var(--muted);font-weight:500}.number{margin-right:6px}.task-mark{display:inline-block;margin-left:9px}.place,.note,.badge{font-size:.93rem}.place{font-weight:550}.note{margin:2px 0}.row button{padding:.3rem .65rem;margin:3px 5px 0 0;font-size:.93rem}.badge{color:var(--status);max-width:13em}.row small.place{display:block}
 dialog{background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:20px;width:min(44rem,94vw);max-width:94vw;max-height:90vh;overflow:auto;box-shadow:0 12px 50px var(--shadow);overflow-wrap:anywhere}dialog::backdrop{background:var(--overlay)}dialog form{text-align:right}dialog h2{font-size:1.4rem}dialog h3{margin:15px 0 4px}dialog p{margin:6px 0}dialog footer{display:flex;justify-content:space-between;gap:8px;margin-top:16px}
 #step{font-size:.87rem;color:var(--muted)}#choices button{margin:3px}#choices label,.setting{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0}#choices label select{max-width:60%}.setting{flex-wrap:wrap;border-bottom:1px solid var(--line)}.setting small{min-width:0}.starter-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.starter-options button{display:grid;justify-items:center;padding:8px}.starter-options img{width:58px;image-rendering:pixelated}.starter-options [aria-pressed=true]{border-color:var(--accent);color:var(--accent)}.install-meter progress{display:block;margin:6px 0}#wizardError{color:var(--warning)}
-#detailBody p{padding:5px 0;border-bottom:1px solid var(--line)}.confetti{position:fixed;inset:0;pointer-events:none;z-index:20}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:20}
+#detail{width:min(61rem,94vw)}
+.encounter-scroll{max-width:100%;overflow-x:auto;margin-block:.75rem;border:1px solid var(--line);border-radius:.5rem}
+.encounter-table{width:100%;min-width:32rem;border-collapse:collapse;font-size:.86rem;line-height:1.35}
+.encounter-table caption{text-align:start;font-weight:650;padding:.5rem .65rem}
+.encounter-table th,.encounter-table td{text-align:start;vertical-align:top;padding:.39rem .55rem;border-top:1px solid var(--line)}
+.encounter-table th{background:var(--side);font-size:.8rem}
+.encounter-table tr:nth-child(even) td{background:var(--side)}
+.encounter-table th:nth-last-child(-n+2),.encounter-table .encounter-number{text-align:end;font-variant-numeric:tabular-nums}
+.encounter-number small{display:block;min-width:4.5rem;color:var(--secondary)}
+.encounter-condition{display:inline-block;margin:0 .25rem .15rem 0;padding:.08rem .28rem;border-radius:.25rem;border:1px solid var(--line)}
+.encounter-symbol{width:1em;height:1em;margin-inline-end:.3em;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.7}
+.encounter-table .field-icon{margin-inline-end:.3em;vertical-align:-.15em}
+.route-items{margin:.35rem 0;padding-inline-start:1.2em;color:var(--secondary)}
+.route-items li+li{margin-top:.2rem}
+.quantity{display:inline-block;margin-inline:.42rem .16rem;color:var(--accent);font-variant-numeric:tabular-nums}
 @media(max-width:600px){main{padding:12px}.overview{grid-template-columns:1fr}.row{grid-template-columns:18px 1fr}.badge{grid-column:2;max-width:none}.badge:empty{display:none}#sections summary{flex-wrap:wrap}.counter{white-space:normal}.overview section{padding:10px 13px}}
 
 #sections summary > div{min-width:0}#sections summary .section-purpose{white-space:normal;overflow-wrap:anywhere;color:inherit;font-weight:normal}.route-subheading{margin:1rem 1rem .4rem;font-size:.95rem}
@@ -51,7 +66,8 @@ body.compact{grid-template-columns:3.7rem minmax(0,1fr)}body.compact aside{paddi
 .current>summary{background:linear-gradient(105deg,var(--raised),var(--card) 70%)}.current>summary strong:before,.now h2:before{content:'◆';color:var(--accent);font-size:.7em;margin-right:.5em}
 .row{grid-template-columns:1.25rem minmax(0,1fr)}.row .badge{display:inline-block;max-width:100%;margin:.1rem 0 .25rem;color:var(--status);font-size:.87rem;font-weight:600}.row[data-state=registered] .badge{color:var(--accent)}.row[data-state=deferred] .badge,.row[data-state=donor] .badge{color:var(--warning)}.row[data-state=missing] .badge{color:var(--secondary)}
 .row .note{overflow-wrap:anywhere}.row:focus{outline:2px solid var(--focus);outline-offset:-2px}
-.scale-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem}.scale-control input{width:100%;min-width:0}.scale-control label{grid-column:1/-1}
+.scale-control{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem}.scale-control input{width:100%;min-width:0;margin:0}.scale-control label{grid-column:1/-1}
+@media(max-width:480px){.scale-control{grid-template-columns:minmax(0,1fr)}.scale-control button{justify-self:start;overflow-wrap:anywhere}}
 .empty button{margin-top:.5rem}.empty{background:var(--card) var(--scene, url('art/grassland.svg')) right bottom/auto 2.8rem no-repeat;padding:1rem 1rem 3rem;border-radius:.6rem}
 @media(max-width:690px){.overview{grid-template-columns:1fr}.totals{flex-wrap:wrap}.file-actions{display:grid}.toolbar>*{max-width:100%}aside{gap:.8rem}dialog{padding:.85rem}}
 @media(max-width:480px){body:not(.compact){grid-template-columns:7.1rem minmax(0,1fr)}.brand{flex-wrap:wrap}aside{padding:.5rem .3rem}aside button{overflow-wrap:anywhere}.overview section{padding:.65rem}.setting{flex-wrap:wrap}}
@@ -65,7 +81,7 @@ nav button[aria-current=page]{background:var(--card);color:var(--accent);border-
 #settingsTabs{display:flex;gap:.35rem;overflow-x:auto;padding:.3rem .2rem .65rem;border-bottom:1px solid var(--line)}
 #settingsTabs button{flex:0 0 auto;background:transparent;border-color:transparent}
 #settingsTabs [aria-selected=true]{background:var(--raised);border-color:var(--accent);color:var(--accent)}
-#settingsContent,#backupContent,.info-card,.backup-card{display:grid;min-width:0;gap:.7rem}
+#settingsContent,#backupContent,.info-card,.backup-card{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:.7rem}
 #settingsContent{padding-block:1rem}#settingsContent>label,.selectors label{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.45rem}
 #settingsContent>.setting,.info-card,.backup-card{padding:.9rem;border:1px solid var(--line);border-radius:.65rem;background:var(--card)}
 #settingsContent .setting small{width:100%}#settingsContent>.setting button{margin-left:auto}

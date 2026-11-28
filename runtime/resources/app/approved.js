@@ -7,18 +7,17 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language, meth
   const label = key => local('@ui.' + key);
   const line = ({387:'Turtwig',390:'Chimchar',393:'Piplup'})[starter] || 'Turtwig';
   const overrides = guide.variants[line];
-  const plan = guide.tasks.map(task => ({...task,...overrides[task.id]})).sort((a,b)=>a.position-b.position);
-  const order = [1,2,3,4,5,6,7,8,9,'platinum.finish','emerald','frlg','diamond','pearl','hgss','evolutions','events'];
-  const batches = plan.filter(t=>t.id.startsWith('palpark.Emerald.'));
-  const parameters = {
-    targets:batches.reduce((sum,t)=>sum+t.species_ids.length,0),
-    slots:batches.length*6, batches:batches.length
-  };
+  const revisions = typeof module === 'undefined' ? {revisedRoutePlan,requiredCopies,itemChecklist} : require('./route-revisions');
+  const plan = revisions.revisedRoutePlan(guide.tasks.map(task => ({...task,...overrides[task.id]})));
+  const copies = revisions.requiredCopies(plan);
+  const items = revisions.itemChecklist(plan,local,acquisition,guide.species,language);
+  const order = [1,2,3,4,5,6,7,8,9,'platinum.finish','emerald','frlg','diamond','pearl','heartgold','soulsilver','evolutions','events'];
+  const parameters = {};
   for(const game of ['Diamond','Pearl']){
     parameters[game]=plan.find(t=>t.phase===game.toLowerCase() && t.method==='Gift').action;
   }
   const sections = order.map((stage,index)=>({
-    stage,group:stage,title:String(index+1).padStart(2,'0')+' · '+local(guide.titles[stage]).replace(/^\d+ · /,''),entries:[],
+    stage,group:stage,title:String(index+1).padStart(2,'0')+' · '+local(({heartgold:'HeartGold',soulsilver:'SoulSilver'})[stage]||guide.titles[stage]).replace(/^\d+ · /,''),entries:[],
     description:local('@section.'+stage+'.description').replace(/\{(\w+)\}/g,(_,key)=>parameters[key])
   }));
   const bySection = new Map(sections.map(section=>[section.stage,section]));
@@ -26,12 +25,12 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language, meth
   const deferredNow = id => Boolean(deferred[id] && !caught.has(id));
   function group(t) {
     const phase=t.phase;
-    if(t.method==='Evolution') return 'evolutions';
+    if(t.method==='Evolution'&&t.kind!=='local_requirement') return 'evolutions';
     if(phase==='platinum.temple'||phase==='platinum.finish')return 'platinum.finish';
     if (/^platinum\.\d+$/.test(phase)) return Number(phase.split('.')[1])<=9 ? Number(phase.split('.')[1]) : 'platinum.finish';
     if (phase.startsWith('emerald.')) return 'emerald';
     if (/^(firered|leafgreen)\./.test(phase)) return 'frlg';
-    if (/^(johto|kanto)\./.test(phase)) return 'hgss';
+    if (/^(johto|kanto)\./.test(phase)) return t.game.toLowerCase();
     return phase;
   }
   for(const task of plan){
@@ -43,24 +42,28 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language, meth
     const section=bySection.get(g);
     const goal=!!id && (task.kind==='acquire'||early||late) && !(early&&skip);
     const species=guide.species[id];
-    let how=id ? acquisition.format(task,id) : local(task.steps||task.action);
+    const how=id ? acquisition.format(task,id) : local(task.steps||task.action);
+    let transferIds;
     if(task.species_ids){
-      const ids=task.species_ids.filter(n=>{
-        const neededForTemple=[377,378,379].includes(n)&&!caught.has(486);
-        if(caught.has(n)&&!neededForTemple)return false;
-        if(n===214&&!deferredNow(214)&&task.id==='trade.hgss')return false;
-        return !(deferredNow(n)&&paths.get(n)?.omitFrom&&task.id.startsWith(paths.get(n).omitFrom));
+      transferIds=task.species_ids.filter(n=>{
+        if(n===214&&task.id==='transfer.heartgold')return deferredNow(n);
+        return !(deferredNow(n)&&((task.id==='transfer.emerald'&&[273,287].includes(n))||(task.id==='transfer.heartgold'&&n===234)));
       });
-      if(task.conditional_filler && deferredNow(349))ids.push(349);
-      for(const p of paths.values())if(p.addTo===task.id&&deferredNow(p.id))ids.push(p.id);
-      how+=' '+ids.map(n=>guide.species[n].name).join(', ');
+      if(task.id==='transfer.emerald'&&deferredNow(349))transferIds.push(349);
+      if(task.id==='transfer.heartgold')for(const n of [273,287])if(deferredNow(n))transferIds.push(n);
     }
-    const row={key:task.id,name:species?.name || (task.kind==='story'?local('@milestone.'+task.id):task.kind==='transfer'?label('transfer'):label('task')),
+    const copyKey=({44:'gloom',61:'poliwhirl',133:'eevee',236:'tyrogue',265:'wurmple',280:'ralts',281:'kirlia',290:'nincada',361:'snorunt',366:'clamperl',412:'burmy'})[id];
+    const row={key:task.id,name:species?.name || (task.kind==='story'?local(task.title||'@milestone.'+task.id):task.kind==='transfer'?local('@revision.transfer'):label('task')),
       place:[local(task.game),local(task.location)].filter(Boolean).join(' · '),how,nationalId:id,goal,
-      kind:task.kind||'action',method:task.method,early,late,deferred:early&&skip,path,task,local};
+      kind:task.kind||'action',method:task.method,early,late,deferred:early&&skip,path,task,local,transferIds,
+      quantity:copies.get(id),copyHint:copyKey&&local('@revision.copies.'+copyKey),routeNote:local(task.routeNote)};
     if(task.kind==='story' && guide.words[language]['@stop.'+task.id]){
       row.place=acquisition.place(local('@stop.'+task.id));
       row.how=local('@checkpoint.'+task.id);
+    }
+    if(task.kind==='story'&&row.routeNote){
+      row.how=row.routeNote;
+      row.routeNote=null;
     }
     if(id){
       row.place=task.game==='Platinum'?'':task.game;
@@ -115,6 +118,7 @@ function approvedRoute(guide, catalog, starter, deferred, caught, language, meth
   checkpoint('platinum.finish','story.marley','get.087','Victory Road','Marley');
   checkpoint('platinum.finish','story.heatran','get.485','Stark Mountain','Magma Stone');
   checkpoint('platinum.finish','story.orbs','get.483','Celestic Town',label('orbs'));
+  for(const section of sections)for(const row of section.entries)row.items=items.get(row.key);
   return sections;
 }
 // Keep explicit choices from an earlier, split section until the merged card is toggled.
@@ -125,6 +129,7 @@ function sectionOpen(open, id, fallback){
   if(Object.hasOwn(open,id))return open[id];
   const aliases=Object.keys(open).filter(key=>
     (id==='evolutions'&&key.startsWith('evolutions.'))||
+    (['heartgold','soulsilver'].includes(id)&&key==='hgss')||
     (id==='platinum.finish'&&(/^(10|11|12|13|14|15)$/.test(key)||key==='platinum.temple'||key.startsWith('platinum.finish.'))));
   return aliases.length?aliases.some(key=>open[key]):fallback;
 }

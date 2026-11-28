@@ -18,21 +18,28 @@ function acquisitionView(guide, language, methods) {
     if (new Set(Object.values(rate)).size === 1) return entries[0][1] + '%';
     return entries.filter(([,n])=>n>0).map(([period, n]) => term('@ui.' + period) + ' ' + n + '%').join(' / ');
   }
-  function evolution(id) {
+  function evolutionRows(id) {
     return (methods[id]?.evolution || []).map(line => {
       const [parent, rule] = line.split(' → ');
       const parts = rule.split(', ').map(token => {
         const level = token.match(/^ур\. (\d+)$/);
         if (level) return term('Level') + ' ' + level[1];
         const item = token.match(/^(держать|знать|использовать|в команде) (.+)$/);
-        if (item) return [term(item[1]), item[2].split('-').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')].filter(Boolean).join(' ');
+        if (item) {
+          const title = item[2].split('-').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ');
+          return [term(item[1]),term(title==='Up Grade'?'Upgrade':title)].filter(Boolean).join(' ');
+        }
         return term(token);
       });
       if (parts.length > 1 && ['use-item','shed'].includes(rule.split(', ')[0])) parts.shift();
       if (rule.startsWith('level-up, ур.')) parts.shift();
       const source = parent[0].toUpperCase() + parent.slice(1);
-      return join([source + ' → ' + name(id), parts.join(', ')]);
+      return {location:'', method:term(guide.methods.Evolution), icon:'evolution',
+        conditions:[source + ' → ' + name(id), parts.join(', ')]};
     });
+  }
+  function evolution(id) {
+    return evolutionRows(id).map(row=>join(row.conditions));
   }
   function format(record, id) {
     const req = record.requirements || record;
@@ -71,6 +78,32 @@ function acquisitionView(guide, language, methods) {
     const title = text=>text.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
     return join([place(title(base)), area && (words['@area.'+area] || title(area))]);
   }
-  return {format, evolution, place, tablePlace};
+  function rows(record, id) {
+    const req=record.requirements||record, method=record.method;
+    if(method==='Evolution')return evolutionRows(id);
+    const local=value=>words[value]??guide.words.en[value]??value;
+    const parents=(req.requires_species||[]).map(name);
+    const groups=['Special','Fishing','Surfing',method,req.area];
+    const conditions=[
+      req.group&&!groups.includes(req.group)&&!req.group.startsWith('Catch/entry')&&term(req.group),
+      words['@catch.'+method+'.'+id]??guide.words.en['@catch.'+method+'.'+id],
+      ...(['In-game Trade','Egg','Static Encounter'].includes(method)?parents:[]),
+      ...(method==='Honey Trees'?[term('Honey window')]:[]),
+      ...(method==='Tile fishing'?[term(record.game==='Emerald'?'sixTiles':'fourTiles')]:[]),
+      ...(method==='Event'&&!req.items?.length?[term('historicalCard')]:[]),
+      ...(req.items||[]).filter(item=>item!==req.rod&&item!==method).map(item=>term(local(item))),
+      ...(req.hm||[]).map(item=>term(local(item)))
+    ].filter(Boolean);
+    const chanceBasis=local(req.rate_basis||req.probability_basis);
+    if(method==='Tile fishing'||method==='Great Marsh'||(method==='Honey Trees'&&!req.rate&&!req.rarity_percent))
+      if(chanceBasis&&chanceBasis!==guide.words.en['@task.get.387.requirements.rate_basis'])conditions.push(chanceBasis);
+    const location=method==='Fossil'?'Oreburgh Mining Museum':local(record.location);
+    const base={location:join([place(location),term(req.area)]),
+      method:term(guide.methods[method]||method),methodId:method, conditions:[...new Set(conditions)],
+      level:record.level||req.level, chanceBasis};
+    const rates=Object.entries(req.rate||req.rarity_percent||{}).filter(([,n])=>n>0);
+    return rates.length?rates.map(([period,chance])=>({...base,time:period==='all'?'':period,chance:chance+'%'})):[base];
+  }
+  return {format, evolution, evolutionRows, rows, term, place, tablePlace};
 }
 if (typeof module !== 'undefined') module.exports = acquisitionView;

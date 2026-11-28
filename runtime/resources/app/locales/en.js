@@ -285,7 +285,6 @@ globalThis.dexLocales.en = {
   "encounter.fishing_on_a_special_tile": "Fishing on a special tile",
   "encounter.game": "Game ",
   "encounter.unconfirmed": "Unconfirmed",
-  "encounter.combined_weight_of_the_listed_slots": "Combined weight of the listed slots: ",
   "encounter.lv": "Lv. ",
   "main.local": "local",
   "main.incomplete_or_unsupported_file": "Incomplete or unsupported file",

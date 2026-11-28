@@ -15,4 +15,5 @@ for(const [key,english] of Object.entries(words.en)){
   if(Object.hasOwn(europeanGuide,english))europeanLanguages.forEach((id,index)=>{words[id][key]=europeanGuide[english][index]});
   if(Object.hasOwn(guideJapanese,english))words.ja[key]=guideJapanese[english];
 }
+require('./locales/route-revisions.cjs')(words);
 module.exports={languages,words};

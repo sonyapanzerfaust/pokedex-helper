@@ -104,7 +104,6 @@
     "encounter.fishing_on_a_special_tile": ["Pêche sur une case spéciale","Pesca in una casella speciale","Angeln auf einem besonderen Feld","Pesca en una casilla especial"],
     "encounter.game": ["Jeu ","Gioco ","Spiel ","Juego "],
     "encounter.unconfirmed": ["Non confirmé","Non confermato","Unbestätigt","Sin confirmar"],
-    "encounter.combined_weight_of_the_listed_slots": ["Probabilité totale des rencontres indiquées : ","Probabilità totale degli incontri elencati: ","Gesamtwahrscheinlichkeit der aufgeführten Begegnungen: ","Probabilidad total de los encuentros indicados: "],
     "encounter.lv": ["Niv. ","Liv. ","Lv. ","Nv. "],
   };
   for (const [column, language] of languages.entries()) {

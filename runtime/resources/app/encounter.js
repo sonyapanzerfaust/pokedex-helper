@@ -83,40 +83,105 @@ function methodLabel(e){
   return ({'seaweed':I18n.t('encounter.seaweed'),'colosseum-bonus-disc-jpn':I18n.t('encounter.disc'),'wailmer-pail':I18n.t('encounter.pail'),'squirt-bottle':I18n.t('encounter.bottle'),'pokemon-ranger':'Pokémon Ranger','static':'Static Encounter','npc-trade':'In-game Trade','gift-egg':'Gift Egg','honey-tree':'Honey Trees','roaming-grass':I18n.t("encounter.roaming_grass"),'roaming-water':I18n.t("encounter.roaming_water"),'feebas-tile-fishing':I18n.t("encounter.fishing_on_a_special_tile"),'pokeflute':I18n.t('encounter.flute'),'devon-scope':I18n.t('encounter.scope')})[e.method]||e.method.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
 }
 const namesOfGames={platinum:'Platinum',diamond:'Diamond',pearl:'Pearl',heartgold:'HeartGold',soulsilver:'SoulSilver',emerald:'Emerald',firered:'FireRed',leafgreen:'LeafGreen'};
-function encounterList(body,entry,item){
-  const picker=node('select'),label=node('label',I18n.t("encounter.game"));label.append(picker);body.append(label);
-  // Keep alternate tables on the same map (Radar, swarms and cartridge slots).
-  const records=[entry.task,...model.guide.species[entry.nationalId].alternatives];
-  const normalize=value=>value.toLowerCase().replace(/^(sinnoh|johto|hoenn|kanto)[ -]route/,'route').replace(/[^a-z0-9]/g,'');
-  const remaining=item.encounters.filter(enc=>!records.some(r=>{
-    if(r.game?.toLowerCase()!==enc.game)return false;
-    const rawMap=normalize(enc.location.split(' ')[0]);
-    const location=normalize(model.guide.words.en[r.location] || r.location);
-    const fixed={'Gift Egg':'gift-egg',Gift:'gift','Static Encounter':'static','In-game Trade':'npc-trade'};
-    if(fixed[r.method]===enc.method && location.includes(rawMap))return true;
-    if(location!==normalize(enc.location))return false;
-    const labels={'Tall Grass':'walk',Cave:'walk',Building:'walk',Surf:'surf','Old Rod':'old-rod','Good Rod':'good-rod','Super Rod':'super-rod','Poké Radar':'walk',Swarm:'walk'};
-    if(labels[r.method]!==enc.method)return false;
-    const conditions=enc.conditions.split(', ').filter(Boolean);
-    if(r.method==='Poké Radar')return conditions.includes('radar-on');
-    if(r.method==='Swarm')return conditions.includes('swarm-yes');
-    return conditions.every(c=>/^(time-|radar-off$|swarm-no$|slot2-none$|backlot-not-mentioned$)/.test(c));
+
+const slotMethods=new Set(['walk','surf','old-rod','good-rod','super-rod','rock-smash','headbutt','headbutt-low','headbutt-high','headbutt-normal','honey-tree','feebas-tile-fishing','seaweed','dive']);
+function encounterRow(enc) {
+  const codes=enc.conditions.split(', ').filter(Boolean);
+  const period=codes.find(code=>['time-morning','time-day','time-night'].includes(code));
+  const conditions=codes.filter(code=>code!==period).map(code=>({
+    text:model.guide.words[I18n.language]['@condition.'+code]||condition(code),
+    icon:code.startsWith('radio-')?'radio':code.startsWith('swarm-')?'swarm':code.startsWith('radar-')?'radar':''
   }));
-  const available=Object.keys(namesOfGames).filter(g=>remaining.some(e=>e.game===g));
-  if(!available.length){label.remove();return}
-  const suggested=available.find(g=>entry.task.game.toLowerCase()===g)||available[0];
-  for(const game of available){const option=node('option',namesOfGames[game]);option.value=game;picker.append(option)}
-  const list=node('div');body.append(list);
-  function show(){
-    const game=picker.value;list.replaceChildren();
-    for(const enc of remaining.filter(e=>e.game===game)){
-      const conditions=enc.conditions.split(', ').filter(Boolean).map(c=>model.guide.words[I18n.language]['@condition.'+c] || condition(c));
-      const random=['walk','surf','old-rod','good-rod','super-rod','rock-smash','headbutt','headbutt-low','headbutt-high','headbutt-normal','honey-tree','feebas-tile-fishing'].includes(enc.method);
-      const total=enc.slots.reduce((n,s)=>s.weight===''?NaN:n+Number(s.weight),0);
-      const rate=Number.isFinite(total)&&total>0&&total<=100?total+'%':I18n.t("encounter.unconfirmed");
-      const levels=[...new Set(enc.slots.map(s=>s.level.replace(/^(\d+)–\1$/,'$1')))].join(', ');
-      list.append(node('p',[globalThis.encounterLocation(enc.location,I18n.language),methodName(enc),...conditions,random?I18n.t("encounter.combined_weight_of_the_listed_slots")+rate:'', I18n.t("encounter.lv")+levels].filter(Boolean).join(' · ')));
-    }
+  const total=enc.slots.reduce((sum,slot)=>slot.weight===''?NaN:sum+Number(slot.weight),0);
+  const weight=slotMethods.has(enc.method)&&total>0&&total<=100?total+'%':'';
+  const levels=[...new Set(enc.slots.map(s=>s.level.replace(/^(\d+)[–-]\1$/,'$1')).filter(Boolean))].join(', ');
+  const type=methodLabel(enc);
+  const icon=methodIcon[type] || (enc.method.startsWith('headbutt')?'headbutt':enc.method==='feebas-tile-fishing'?'fishing':'special');
+  return {location:globalThis.encounterLocation(enc.location,I18n.language),method:methodName(enc),icon,conditions,
+    time:period?.slice(5),weight,level:levels,unknownWeight:slotMethods.has(enc.method)&&!weight};
+}
+
+const encounterIconPaths={
+  morning:'M2 17h20M5 14a7 7 0 0 1 14 0M12 2v3M4 6l2 2m14-2-2 2',
+  day:'M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M19 5l-2 2M7 17l-2 2M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0',
+  night:'M21 15a9 9 0 0 1-12-12 9 9 0 1 0 12 12Z',
+  radio:'M3 10h18v10H3zM5 10l13-6m-12 10h6m-6 3h6m4-2h2',
+  radar:'M12 12l5-5M12 12h.01M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0',
+  swarm:'M12 2l1.8 4.2L18 8l-4.2 1.8L12 14l-1.8-4.2L6 8l4.2-1.8zM4 14v6m-3-3h6m12-3v6m-3-3h6'
+};
+function encounterIcon(id) {
+  const ns='http://www.w3.org/2000/svg';
+  const icon=document.createElementNS(ns,'svg'),path=document.createElementNS(ns,'path');
+  icon.setAttribute('viewBox','0 0 24 24');icon.setAttribute('class','encounter-symbol');icon.setAttribute('aria-hidden','true');
+  path.setAttribute('d',encounterIconPaths[id]);icon.append(path);return icon;
+}
+
+function acquisitionTable(rows, caption) {
+  const word=key=>routeWord('table.'+key);
+  const frame=node('div',null,'encounter-scroll'), table=node('table',null,'encounter-table');
+  frame.tabIndex=0;frame.setAttribute('role','region');frame.setAttribute('aria-label',caption);frame.append(table);
+  const head=node('thead'), headers=node('tr'), body=node('tbody');
+  table.append(node('caption',caption),head,body);head.append(headers);
+  for(const key of ['location','method','time','conditions','rate','level']){
+    const th=node('th',word(key));th.scope='col';headers.append(th);
   }
-  if(available.length){picker.value=suggested;picker.onchange=show;show()}else label.remove();
+  for(const row of rows) {
+    const tr=node('tr');body.append(tr);
+    tr.append(node('td',row.location||'—'));
+    const method=node('td',row.method||'—');
+    if(row.method){method.prepend(fieldIcon(row.icon||methodIcon[row.methodId]||'special'));method.title=I18n.display(row.method)}
+    const time=node('td',row.time?routeWord(row.time):'—');
+    if(encounterIconPaths[row.time]){time.prepend(encounterIcon(row.time));time.title=time.textContent}
+    const conditions=node('td');
+    for(const value of row.conditions||[]){
+      const item=typeof value==='string'?{text:value}:value;
+      const pill=node('span',item.text,'encounter-condition');pill.title=pill.textContent;
+      if(item.icon)pill.prepend(encounterIcon(item.icon));
+      conditions.append(pill);
+    }
+    if(!conditions.childElementCount)conditions.textContent='—';
+    const chance=node('td',row.chance||row.weight||'—','encounter-number');
+    if(row.weight){
+      chance.append(node('small',word('slots')));
+      chance.title=word('slotExplanation');
+    }else if(row.chance&&row.chanceBasis)chance.title=I18n.display(row.chanceBasis);
+    else if(row.unknownWeight)chance.title=I18n.t('encounter.unconfirmed');
+    tr.append(method,time,conditions,chance,node('td',row.level||'—','encounter-number'));
+  }
+  return frame;
+}
+
+function encounterList(body,entry,item) {
+  const id=entry.nationalId,view=entry.acquisition;
+  const records=[entry.task,...model.guide.species[id].alternatives];
+  if(entry.path){
+    const other=model.guide.tasks.find(task=>task.id===(entry.early?entry.path.target:entry.path.earlyId));
+    if(other)records.push(other);
+  }
+  const versions=model.guide.species[id].versionTable;
+  if(versions?.both&&['HeartGold','SoulSilver'].includes(entry.task.game)&&!entry.task.routeNote){
+    const other=versions.versions.find(game=>game!==entry.task.game);
+    if(other)records.push({...entry.task,game:other});
+  }
+  const games=[...new Set([...records.map(record=>entry.local(record.game)),...item.encounters.map(enc=>namesOfGames[enc.game])].filter(Boolean))];
+  const picker=node('select'),label=node('label',I18n.t('encounter.game')+' '),list=node('div');
+  for(const game of games){const option=node('option',game);option.value=game;picker.append(option)}
+  label.append(picker);body.append(label,list);
+  function show(){
+    const game=picker.value;
+    list.replaceChildren();
+    const reviewed=records.filter(record=>entry.local(record.game)===game).flatMap(record=>{
+      const rows=view.rows({...record,location:entry.local(record.location)},id);
+      if(record.routeNote)for(const row of rows)row.conditions.push(entry.local(record.routeNote));
+      return rows;
+    });
+    if(reviewed.length)list.append(acquisitionTable(reviewed,routeWord('table.guide')));
+    const raw=item.encounters.filter(enc=>namesOfGames[enc.game]===game).map(encounterRow);
+    if(raw.length)list.append(acquisitionTable(raw,routeWord('table.encounters')));
+  }
+  picker.onchange=show;show();
+  if(entry.method!=='Evolution'){
+    const evolution=view.evolutionRows(id);
+    if(evolution.length)body.append(acquisitionTable(evolution,I18n.t('method.evolution')));
+  }
 }

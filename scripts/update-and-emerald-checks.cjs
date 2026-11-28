@@ -53,7 +53,13 @@ async function check(){
     assert(fs.readFileSync(sav).equals(save));await m.launch('mGBA','Emerald');
     fs.unlinkSync(sav);await assert.rejects(m.launch('mGBA','Emerald'));
     assert.equal(launches,3);
-    console.log('Portable update, data preservation, fresh Emerald launch and mGBA RTC import passed.');
+    const ndsSave=require('./save-checks.cjs').platinumFixture;
+    const ndsInput=path.join(temp,'platinum.sav');
+    fs.writeFileSync(ndsInput,ndsSave);
+    await m.choose('save','Platinum',ndsInput);
+    assert(fs.readFileSync(m.active('Platinum')).equals(ndsSave));
+    assert(fs.readFileSync(ndsInput).equals(ndsSave));
+    console.log('Portable update, data preservation, fresh Emerald launch and GBA/NDS save imports passed.');
   }finally{cp.execFileSync=originalExec;cp.spawn=originalSpawn;components.inspect=originalInspect;fs.rmSync(temp,{recursive:true,force:true})}
 }
 check().catch(e=>{console.error(e);process.exitCode=1});

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2
+
+- Minor route improvements.
+- Fixed the **Acquisition methods** menu. Encounter details now appear in a table.
+
 ## 1.2.1
 
 1. **Fixed GBA save imports from mGBA.** The Helper now recognizes saves that include real-time clock data and preserves those bytes during import and restore. You can also start a new Emerald game without importing a save first.

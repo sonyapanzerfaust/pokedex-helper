@@ -2,10 +2,10 @@
 // Explicit publication boundary. Add new files here after review.
 const art=['grassland.svg','woodland.svg','cave.svg','coast.svg','mountain.svg','snow.svg','volcano.svg','ruins.svg','symbols.svg','notebook.svg','notebook.ico'];
 const desktop=[
-  'index.html','encounter.js','style.css','field-art.js','renderer.js','management-ui.js','management-words.js','save.js','approved.js','acquisition.js','approved-data.json','methods.json','catalog.json','i18n.js','pokeapi-LICENSE.txt',
+  'index.html','encounter.js','style.css','field-art.js','renderer.js','management-ui.js','management-words.js','save.js','approved.js','route-revisions.js','acquisition.js','approved-data.json','methods.json','catalog.json','i18n.js','pokeapi-LICENSE.txt',
   'package.json','portable.cjs','bootstrap.cjs','helper-update.cjs','main.cjs','components.cjs','library.cjs','managed.cjs','melonds-config.cjs','recovery.cjs','save-management.cjs','component-hashes.json','preload.cjs',
   'locale-registry.js','locale-loader.cjs',
-  ...['en.js','ru.js','interface.js','guide-interface.js','ja-guide.json','ja-game.js','european-terms.js','european-game.js','encounter-locations.js','european-guide.json','approved-en.json','approved-ru.json'].map(f=>'locales/'+f),...art.map(f=>'art/'+f)
+  ...['en.js','ru.js','interface.js','guide-interface.js','ja-guide.json','ja-game.js','european-terms.js','european-game.js','encounter-locations.js','european-guide.json','approved-en.json','approved-ru.json','route-revisions.cjs'].map(f=>'locales/'+f),...art.map(f=>'art/'+f)
 ];
 const docs=['README.md','BUILDING.md','PORTABLE.md','PRIVACY.md','THIRD_PARTY_NOTICES.md','CHANGELOG.md','RELEASE_CHECKLIST.md','LICENSE','RELEASE-NOTES.md'];
 const source=[

@@ -285,7 +285,6 @@ globalThis.dexLocales.ru = {
   "encounter.fishing_on_a_special_tile": "Рыбалка на особой клетке",
   "encounter.game": "Игра ",
   "encounter.unconfirmed": "Не подтверждено",
-  "encounter.combined_weight_of_the_listed_slots": "Сумма весов указанных слотов: ",
   "encounter.lv": "ур. ",
   "main.local": "локальная",
   "main.incomplete_or_unsupported_file": "Неполный или неподдерживаемый файл",

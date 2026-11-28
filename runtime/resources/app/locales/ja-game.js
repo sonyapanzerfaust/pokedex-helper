@@ -4101,7 +4101,6 @@ globalThis.jaGameText=(() => {
   "encounter.fishing_on_a_special_tile": "特定のマスで釣る",
   "encounter.game": "ソフト ",
   "encounter.unconfirmed": "未確認",
-  "encounter.combined_weight_of_the_listed_slots": "該当する出現枠の合計：",
   "encounter.lv": "レベル "
 });
   const terms=globalThis.jaGameTerms;

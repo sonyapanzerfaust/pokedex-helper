@@ -103,3 +103,5 @@
 !/runtime/resources/app/helper-update.cjs
 !/TODO.md
 !/scripts/update-and-emerald-checks.cjs
+!/runtime/resources/app/route-revisions.js
+!/runtime/resources/app/locales/route-revisions.cjs
